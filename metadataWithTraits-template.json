@@ -1,0 +1,59 @@
+{
+    "collection": {
+            "type": "Basic NFT",
+            "name": "",
+            "description": "",
+            "preview": {
+                "source": "",
+                "mimetype": ""
+            },
+            "files": [
+                {
+                    "source": "",
+                    "mimetype": ""
+                }
+            ],
+            "external_url": ""
+    },
+    "nfts":
+        [
+            {
+                "address": "",
+                "preview_url": "",
+                "url": "",
+                "name": "",
+                "description": "",
+                "mimetype": "",
+                "mimetype_preview": "",
+                "external_url": "",
+                "attributes": [
+                  {
+                      "trait_type": "",
+                      "value": ""
+                  },
+                  {
+                      "trait_type": "",
+                      "value": ""
+                  }]
+            },
+            {
+                "address": "",
+                "preview_url":	"",
+                "url": "",
+                "name": "",
+                "description": "",
+                "mimetype": "",
+                "mimetype_preview": "",
+                "external_url": "",
+                "attributes": [
+                  {
+                      "trait_type": "",
+                      "value": ""
+                  },
+                  {
+                      "trait_type": "",
+                      "value": ""
+                  }]
+            }
+        ]
+}
