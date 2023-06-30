@@ -1,6 +1,6 @@
 {
   "name": "@broxus/tip4",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set of ready-to-use tvm nft token contracts following tip4 standard",
   "main": "",
   "scripts": {},
@@ -20,7 +20,7 @@
     "tip4",
     "dapps"
   ],
-  "homepage": "https://github.com/broxus/tip3",
+  "homepage": "https://github.com/broxus/tip4",
   "license": "ISC",
   "devDependencies": {
     "dotenv": "16.0.3",
