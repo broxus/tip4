@@ -1,0 +1,6 @@
+pragma ever-solidity ^0.61.2;
+
+
+enum PlatformType {
+    NFT
+}

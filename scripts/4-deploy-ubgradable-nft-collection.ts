@@ -1,5 +1,4 @@
 import { Migration } from "./migration";
-import { Address } from "locklift";
 
 const migration = new Migration();
 const BigNumber = require("bignumber.js");
@@ -27,7 +26,7 @@ async function main() {
     },
   ]);
 
-  const data = fs.readFileSync("metadata-royalty-template.json", "utf8");
+  const data = fs.readFileSync("metadata-template.json", "utf8");
   if (data) array_json = JSON.parse(data);
 
   const requiredGas = new BigNumber(array_json.length)
@@ -46,23 +45,19 @@ async function main() {
     );
   }
 
-  const Nft = await locklift.factory.getContractArtifacts("NftWithRoyalty");
-  const Index = await locklift.factory.getContractArtifacts("Index");
-  const IndexBasis = await locklift.factory.getContractArtifacts("IndexBasis");
-
-  type Royalty = {
-    numerator: number;
-    denominator: number;
-    receiver: Address;
-  };
+  const Nft = (await locklift.factory.getContractArtifacts("NftUpgradable"));
+  const Index = (await locklift.factory.getContractArtifacts("Index"));
+  const IndexBasis = (await locklift.factory.getContractArtifacts("IndexBasis"));
+  const Platform = (await locklift.factory.getContractArtifacts("Platform"));
 
   console.log("Start deploy collection");
 
   const { contract: collection, tx } = await locklift.factory.deployContract({
-    contract: "CollectionWithRoyalty",
+    contract: "CollectionWithUpgradableNft",
     publicKey: signer?.publicKey as string,
     constructorParams: {
       codeNft: Nft.code,
+      codePlatform: Nft.code,
       codeIndex: Index.code,
       codeIndexBasis: IndexBasis.code,
       owner: account.address,
@@ -76,8 +71,8 @@ async function main() {
   });
 
   // const collection = (await locklift.factory.getDeployedContract('Collection', new Address('0:432da1db5a47e400ab62570938ec95310610fa483483b3fd7fa25db98cd144e0')));
-  console.log("CollectionWithRoyalty", collection.address);
-  migration.store(collection, "CollectionWithRoyalty");
+  console.log("Collection", collection.address);
+  migration.store(collection, "Collection");
 
   if (array_json.nfts) {
     for (const element of array_json.nfts) {
@@ -97,23 +92,12 @@ async function main() {
           },
         ],
         external_url: element.external_url,
-        royalty: {
-          royaltyType: "Dynamic",
-          description: "The percentage of royalties depends on the time of existence of the NFT: up to a year - 10%, from 1-5 years - 20%, more than 5 years - 30%"
-        }
       };
-
-      let royalty_ = {
-        numerator: element.royalty.numerator,
-        denominator: element.royalty.denominator,
-        receiver: element.royalty.receiver,
-      } as Royalty;
 
       await collection.methods
         .mintNft({
           _owner: element.address != "" ? element.address : account.address,
           _json: JSON.stringify(item),
-          _royalty: royalty_,
         })
         .send({
           from: account.address,

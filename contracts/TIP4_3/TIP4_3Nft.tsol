@@ -27,6 +27,14 @@ abstract contract TIP4_3Nft is TIP4_1Nft, ITIP4_3NFT {
         uint128 indexDestroyValue,
         TvmCell codeIndex
     ) public {
+        _init4_3(indexDeployValue, indexDestroyValue, codeIndex);
+    }
+
+    function _init4_3(
+        uint128 indexDeployValue,
+        uint128 indexDestroyValue,
+        TvmCell codeIndex
+    ) internal {
         _indexDeployValue = indexDeployValue;
         _indexDestroyValue = indexDestroyValue;
         _codeIndex = codeIndex;
@@ -34,7 +42,7 @@ abstract contract TIP4_3Nft is TIP4_1Nft, ITIP4_3NFT {
         _supportedInterfaces[
             bytes4(tvm.functionId(ITIP4_3NFT.indexCode)) ^
             bytes4(tvm.functionId(ITIP4_3NFT.indexCodeHash)) ^
-            bytes4(tvm.functionId(ITIP4_3NFT.resolveIndex)) 
+            bytes4(tvm.functionId(ITIP4_3NFT.resolveIndex))
         ] = true;
 
         _deployIndex();

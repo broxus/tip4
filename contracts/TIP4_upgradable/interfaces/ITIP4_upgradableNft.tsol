@@ -1,0 +1,13 @@
+//pragma ever-solidity ^0.61.2;
+//
+//interface ITIP4_upgradableCollection {
+//
+//    event UpgradeNft(uint32 from, uint32 to, address initiator);
+//
+//
+//    function onCodeUpgrade(TvmCell input, bool upgrade) internal;
+//    function requestUpgrade() external view;
+//    function upgrade(TvmCell newCode, uint32 newVersion, address remainingGasTo) internal;
+//
+//
+//}
