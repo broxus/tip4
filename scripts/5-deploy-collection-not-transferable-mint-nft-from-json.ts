@@ -59,7 +59,7 @@ async function main() {
       codeIndex: Index.code,
       codeIndexBasis: IndexBasis.code,
       owner: account.address,
-      remainOnNft: locklift.utils.toNano(0.2),
+      remainOnNft: locklift.utils.toNano(0.5),
       json: JSON.stringify(array_json.collection),
       transferable: false,
     },
