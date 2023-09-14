@@ -1,4 +1,4 @@
-.version sol 0.61.2
+.version sol 0.62.0
 
 .macro constructor
 DROP
@@ -108,13 +108,13 @@ DICTUSETB
 SETGLOB 10
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 55
 CALLREF {
-	CALL $_deployIndexBasis_internal_macro$
+	CALL $_deployIndexBasis_5852e463_internal_macro$
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 SWAP
 .loc ../contracts/access/OwnableInternal.tsol, 12
 CALLREF {
-	CALL $_transferOwnership_internal_macro$
+	CALL $_transferOwnership_d29d44ee_internal_macro$
 }
 .loc ../contracts/CollectionWithRoyalty.tsol, 42
 ACCEPT
@@ -143,7 +143,7 @@ IFREF {
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $codeDepth_internal_macro$
+	CALL $codeDepth_b85a2af4_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -172,15 +172,15 @@ IFREF {
 }
 THROW 0
 
-.globl	codeDepth_internal
-.type	codeDepth_internal, @function
-CALL $codeDepth_internal_macro$
+.globl	codeDepth_b85a2af4_internal
+.type	codeDepth_b85a2af4_internal, @function
+CALL $codeDepth_b85a2af4_internal_macro$
 
-.macro codeDepth_internal_macro
+.macro codeDepth_b85a2af4_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 48
 MYADDR
 CALLREF {
-	CALL $_buildNftCode_internal_macro$
+	CALL $_buildNftCode_c58e679e_internal_macro$
 }
 CDEPTH
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
@@ -216,7 +216,7 @@ SWAP
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $mintNft_internal_macro$
+	CALL $mintNft_39493e82_internal_macro$
 }
 DROP
 CALLREF {
@@ -224,11 +224,11 @@ CALLREF {
 }
 THROW 0
 
-.globl	mintNft_internal
-.type	mintNft_internal, @function
-CALL $mintNft_internal_macro$
+.globl	mintNft_39493e82_internal
+.type	mintNft_39493e82_internal, @function
+CALL $mintNft_39493e82_internal_macro$
 
-.macro mintNft_internal_macro
+.macro mintNft_39493e82_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 31
 GETGLOB 9
 PARSEMSGADDR
@@ -239,7 +239,7 @@ DUP
 PUSHCONT {
 	DROP
 	CALLREF {
-		CALL $owner_internal_macro$
+		CALL $owner_8da5cb5b_internal_macro$
 	}
 	GETGLOB 9
 	SDEQ
@@ -276,7 +276,7 @@ PUSHINT 0
 PUSHPOW2 7
 ROLL 4
 CALLREF {
-	CALL $_mintNft_internal_macro$
+	CALL $_mintNft_956d9c70_internal_macro$
 }
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
@@ -298,7 +298,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $totalMinted_internal_macro$
+	CALL $totalMinted_a2309ff8_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -354,7 +354,7 @@ IFREF {
 }
 THROW 0
 
-.macro totalMinted_internal_macro
+.macro totalMinted_a2309ff8_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 61
 GETGLOB 4
 PUSHINT 0
@@ -402,7 +402,7 @@ SWAP
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $batchMintNft_internal_macro$
+	CALL $batchMintNft_cbf51c18_internal_macro$
 }
 DROP
 CALLREF {
@@ -410,11 +410,11 @@ CALLREF {
 }
 THROW 0
 
-.globl	batchMintNft_internal
-.type	batchMintNft_internal, @function
-CALL $batchMintNft_internal_macro$
+.globl	batchMintNft_cbf51c18_internal
+.type	batchMintNft_cbf51c18_internal, @function
+CALL $batchMintNft_cbf51c18_internal_macro$
 
-.macro batchMintNft_internal_macro
+.macro batchMintNft_cbf51c18_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 31
 GETGLOB 9
 PARSEMSGADDR
@@ -425,7 +425,7 @@ DUP
 PUSHCONT {
 	DROP
 	CALLREF {
-		CALL $owner_internal_macro$
+		CALL $owner_8da5cb5b_internal_macro$
 	}
 	GETGLOB 9
 	SDEQ
@@ -479,7 +479,7 @@ PUSHCONT {
 	PUSHINT 0
 	PUSH S7
 	CALLREF {
-		CALL $_mintNft_internal_macro$
+		CALL $_mintNft_956d9c70_internal_macro$
 	}
 	.loc ../contracts/CollectionWithRoyalty.tsol, 0
 	OVER
@@ -490,11 +490,11 @@ WHILE
 BLKDROP 5
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
-.globl	_mintNft_internal
-.type	_mintNft_internal, @function
-CALL $_mintNft_internal_macro$
+.globl	_mintNft_956d9c70_internal
+.type	_mintNft_956d9c70_internal, @function
+CALL $_mintNft_956d9c70_internal_macro$
 
-.macro _mintNft_internal_macro
+.macro _mintNft_956d9c70_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 78
 GETGLOB 22
 DUP
@@ -509,12 +509,12 @@ SETGLOB 12
 .loc ../contracts/CollectionWithRoyalty.tsol, 82
 MYADDR
 CALLREF {
-	CALL $_buildNftCode_internal_macro$
+	CALL $_buildNftCode_c58e679e_internal_macro$
 }
 .loc ../contracts/CollectionWithRoyalty.tsol, 83
 OVER
 CALLREF {
-	CALL $_buildNftState_internal_macro$
+	CALL $_buildNftState_c971fdf8_internal_macro$
 }
 .loc ../contracts/CollectionWithRoyalty.tsol, 84
 ROT
@@ -645,7 +645,7 @@ LDU 128
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $setRemainOnNft_internal_macro$
+	CALL $setRemainOnNft_02b98f09_internal_macro$
 }
 DROP
 CALLREF {
@@ -653,7 +653,7 @@ CALLREF {
 }
 THROW 0
 
-.macro setRemainOnNft_internal_macro
+.macro setRemainOnNft_02b98f09_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 31
 GETGLOB 9
 PARSEMSGADDR
@@ -664,7 +664,7 @@ DUP
 PUSHCONT {
 	DROP
 	CALLREF {
-		CALL $owner_internal_macro$
+		CALL $owner_8da5cb5b_internal_macro$
 	}
 	GETGLOB 9
 	SDEQ
@@ -680,11 +680,11 @@ THROWIFNOT 101
 SETGLOB 21
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
-.globl	_buildNftState_internal
-.type	_buildNftState_internal, @function
-CALL $_buildNftState_internal_macro$
+.globl	_buildNftState_c971fdf8_internal
+.type	_buildNftState_c971fdf8_internal, @function
+CALL $_buildNftState_c971fdf8_internal_macro$
 
-.macro _buildNftState_internal_macro
+.macro _buildNftState_c971fdf8_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 109
 PUSHINT 0
 NEWC
@@ -737,7 +737,7 @@ LDMSGADDR
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $resolveIndexCodeHash_internal_macro$
+	CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -766,14 +766,14 @@ IFREF {
 }
 THROW 0
 
-.globl	resolveIndexCodeHash_internal
-.type	resolveIndexCodeHash_internal, @function
-CALL $resolveIndexCodeHash_internal_macro$
+.globl	resolveIndexCodeHash_253cd2d2_internal
+.type	resolveIndexCodeHash_253cd2d2_internal, @function
+CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
-.macro resolveIndexCodeHash_internal_macro
+.macro resolveIndexCodeHash_253cd2d2_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 113
 CALLREF {
-	CALL $_buildIndexCode_internal_macro$
+	CALL $_buildIndexCode_0065688c_internal_macro$
 }
 .loc ../contracts/CollectionWithRoyalty.tsol, 114
 HASHCU
@@ -814,7 +814,7 @@ LDREF
 ENDS
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 CALLREF {
-	CALL $acceptNftBurn_internal_macro$
+	CALL $acceptNftBurn_7e293577_internal_macro$
 }
 DROP
 CALLREF {
@@ -822,7 +822,7 @@ CALLREF {
 }
 THROW 0
 
-.macro acceptNftBurn_internal_macro
+.macro acceptNftBurn_7e293577_internal_macro
 .loc ../contracts/CollectionWithRoyalty.tsol, 125
 GETGLOB 9
 PARSEMSGADDR
@@ -834,7 +834,7 @@ PUSHCONT {
 	DROP
 	PUSH S5
 	CALLREF {
-		CALL $_resolveNft_internal_macro$
+		CALL $_resolveNft_2d542587_internal_macro$
 	}
 	GETGLOB 9
 	SDEQ
@@ -944,7 +944,7 @@ IFREF {
 ENDS
 .loc ../contracts/access/OwnableInternal.tsol, 0
 CALLREF {
-	CALL $owner_internal_macro$
+	CALL $owner_8da5cb5b_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -977,11 +977,11 @@ IFREF {
 }
 THROW 0
 
-.globl	owner_internal
-.type	owner_internal, @function
-CALL $owner_internal_macro$
+.globl	owner_8da5cb5b_internal
+.type	owner_8da5cb5b_internal, @function
+CALL $owner_8da5cb5b_internal_macro$
 
-.macro owner_internal_macro
+.macro owner_8da5cb5b_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 16
 GETGLOB 19
 .loc ../contracts/access/OwnableInternal.tsol, 0
@@ -1007,7 +1007,7 @@ LDMSGADDR
 ENDS
 .loc ../contracts/access/OwnableInternal.tsol, 0
 CALLREF {
-	CALL $transferOwnership_internal_macro$
+	CALL $transferOwnership_f2fde38b_internal_macro$
 }
 DROP
 CALLREF {
@@ -1015,11 +1015,11 @@ CALLREF {
 }
 THROW 0
 
-.globl	transferOwnership_internal
-.type	transferOwnership_internal, @function
-CALL $transferOwnership_internal_macro$
+.globl	transferOwnership_f2fde38b_internal
+.type	transferOwnership_f2fde38b_internal, @function
+CALL $transferOwnership_f2fde38b_internal_macro$
 
-.macro transferOwnership_internal_macro
+.macro transferOwnership_f2fde38b_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 31
 GETGLOB 9
 PARSEMSGADDR
@@ -1030,7 +1030,7 @@ DUP
 PUSHCONT {
 	DROP
 	CALLREF {
-		CALL $owner_internal_macro$
+		CALL $owner_8da5cb5b_internal_macro$
 	}
 	GETGLOB 9
 	SDEQ
@@ -1050,15 +1050,15 @@ PLDU 256
 THROWIFNOT 100
 .loc ../contracts/access/OwnableInternal.tsol, 21
 CALLREF {
-	CALL $_transferOwnership_internal_macro$
+	CALL $_transferOwnership_d29d44ee_internal_macro$
 }
 .loc ../contracts/access/OwnableInternal.tsol, 0
 
-.globl	_transferOwnership_internal
-.type	_transferOwnership_internal, @function
-CALL $_transferOwnership_internal_macro$
+.globl	_transferOwnership_d29d44ee_internal
+.type	_transferOwnership_d29d44ee_internal, @function
+CALL $_transferOwnership_d29d44ee_internal_macro$
 
-.macro _transferOwnership_internal_macro
+.macro _transferOwnership_d29d44ee_internal_macro
 .loc ../contracts/access/OwnableInternal.tsol, 25
 GETGLOB 19
 .loc ../contracts/access/OwnableInternal.tsol, 26
@@ -1082,11 +1082,11 @@ PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/access/OwnableInternal.tsol, 0
 
-.globl	_deployIndexBasis_internal
-.type	_deployIndexBasis_internal, @function
-CALL $_deployIndexBasis_internal_macro$
+.globl	_deployIndexBasis_5852e463_internal
+.type	_deployIndexBasis_5852e463_internal, @function
+CALL $_deployIndexBasis_5852e463_internal_macro$
 
-.macro _deployIndexBasis_internal_macro
+.macro _deployIndexBasis_5852e463_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 63
 GETGLOB 15
 HASHCU
@@ -1103,12 +1103,12 @@ GREATER
 THROWIFNOT 100
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 66
 CALLREF {
-	CALL $_buildIndexBasisCode_internal_macro$
+	CALL $_buildIndexBasisCode_789e5705_internal_macro$
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 67
 MYADDR
 CALLREF {
-	CALL $_buildIndexBasisState_internal_macro$
+	CALL $_buildIndexBasisState_a23ddf1c_internal_macro$
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 68
 DUP
@@ -1176,7 +1176,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 CALLREF {
-	CALL $indexBasisCode_internal_macro$
+	CALL $indexBasisCode_d4988fdc_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -1229,7 +1229,7 @@ IFREF {
 }
 THROW 0
 
-.macro indexBasisCode_internal_macro
+.macro indexBasisCode_d4988fdc_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 73
 GETGLOB 4
 PUSHINT 0
@@ -1260,7 +1260,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 CALLREF {
-	CALL $indexBasisCodeHash_internal_macro$
+	CALL $indexBasisCodeHash_9bc9aab8_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -1316,7 +1316,7 @@ IFREF {
 }
 THROW 0
 
-.macro indexBasisCodeHash_internal_macro
+.macro indexBasisCodeHash_9bc9aab8_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 78
 GETGLOB 4
 PUSHINT 0
@@ -1327,7 +1327,7 @@ FALSE
 SETINDEXQ 1
 SETGLOB 4
 CALLREF {
-	CALL $_buildIndexBasisCode_internal_macro$
+	CALL $_buildIndexBasisCode_789e5705_internal_macro$
 }
 HASHCU
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
@@ -1350,7 +1350,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 CALLREF {
-	CALL $resolveIndexBasis_internal_macro$
+	CALL $resolveIndexBasis_a28def97_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -1410,15 +1410,15 @@ IFREF {
 }
 THROW 0
 
-.macro resolveIndexBasis_internal_macro
+.macro resolveIndexBasis_a28def97_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 83
 CALLREF {
-	CALL $_buildIndexBasisCode_internal_macro$
+	CALL $_buildIndexBasisCode_789e5705_internal_macro$
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 84
 MYADDR
 CALLREF {
-	CALL $_buildIndexBasisState_internal_macro$
+	CALL $_buildIndexBasisState_a23ddf1c_internal_macro$
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 85
 HASHCU
@@ -1443,11 +1443,11 @@ SETINDEXQ 1
 SETGLOB 4
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
-.globl	_buildIndexBasisCode_internal
-.type	_buildIndexBasisCode_internal, @function
-CALL $_buildIndexBasisCode_internal_macro$
+.globl	_buildIndexBasisCode_789e5705_internal
+.type	_buildIndexBasisCode_789e5705_internal, @function
+CALL $_buildIndexBasisCode_789e5705_internal_macro$
 
-.macro _buildIndexBasisCode_internal_macro
+.macro _buildIndexBasisCode_789e5705_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 95
 PUSHREF {
 	.blob x6e6674
@@ -1566,11 +1566,11 @@ CALLREF {
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
-.globl	_buildIndexBasisState_internal
-.type	_buildIndexBasisState_internal, @function
-CALL $_buildIndexBasisState_internal_macro$
+.globl	_buildIndexBasisState_a23ddf1c_internal
+.type	_buildIndexBasisState_a23ddf1c_internal, @function
+CALL $_buildIndexBasisState_a23ddf1c_internal_macro$
 
-.macro _buildIndexBasisState_internal_macro
+.macro _buildIndexBasisState_a23ddf1c_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 107
 PUSHINT 0
 NEWC
@@ -1614,7 +1614,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 CALLREF {
-	CALL $indexCode_internal_macro$
+	CALL $indexCode_aee52235_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -1667,7 +1667,7 @@ IFREF {
 }
 THROW 0
 
-.macro indexCode_internal_macro
+.macro indexCode_aee52235_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 116
 GETGLOB 4
 PUSHINT 0
@@ -1698,7 +1698,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 CALLREF {
-	CALL $indexCodeHash_internal_macro$
+	CALL $indexCodeHash_bbb6b582_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -1754,7 +1754,7 @@ IFREF {
 }
 THROW 0
 
-.macro indexCodeHash_internal_macro
+.macro indexCodeHash_bbb6b582_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 121
 GETGLOB 4
 PUSHINT 0
@@ -1768,11 +1768,11 @@ GETGLOB 14
 HASHCU
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
-.globl	_buildIndexCode_internal
-.type	_buildIndexCode_internal, @function
-CALL $_buildIndexCode_internal_macro$
+.globl	_buildIndexCode_0065688c_internal
+.type	_buildIndexCode_0065688c_internal, @function
+CALL $_buildIndexCode_0065688c_internal_macro$
 
-.macro _buildIndexCode_internal_macro
+.macro _buildIndexCode_0065688c_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 131
 PUSHREF {
 	.blob x6e6674
@@ -1896,11 +1896,11 @@ CALLREF {
 }
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
-.globl	_buildIndexState_internal
-.type	_buildIndexState_internal, @function
-CALL $_buildIndexState_internal_macro$
+.globl	_buildIndexState_27db62db_internal
+.type	_buildIndexState_27db62db_internal, @function
+CALL $_buildIndexState_27db62db_internal_macro$
 
-.macro _buildIndexState_internal_macro
+.macro _buildIndexState_27db62db_internal_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 145
 PUSHINT 0
 NEWC
@@ -1926,11 +1926,11 @@ STZERO
 ENDC
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
-.globl	TIP4_3Collection__buildNftState
-.type	TIP4_3Collection__buildNftState, @function
-CALL $TIP4_3Collection__buildNftState_macro$
+.globl	TIP4_3Collection__buildNftState_c971fdf8
+.type	TIP4_3Collection__buildNftState_c971fdf8, @function
+CALL $TIP4_3Collection__buildNftState_c971fdf8_macro$
 
-.macro TIP4_3Collection__buildNftState_macro
+.macro TIP4_3Collection__buildNftState_c971fdf8_macro
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 157
 PUSHINT 0
 NEWC
@@ -1976,7 +1976,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_2/TIP4_2Collection.tsol, 0
 CALLREF {
-	CALL $getJson_internal_macro$
+	CALL $getJson_f703db39_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2029,7 +2029,7 @@ IFREF {
 }
 THROW 0
 
-.macro getJson_internal_macro
+.macro getJson_f703db39_internal_macro
 .loc ../contracts/TIP4_2/TIP4_2Collection.tsol, 36
 GETGLOB 4
 PUSHINT 0
@@ -2042,11 +2042,11 @@ SETGLOB 4
 GETGLOB 13
 .loc ../contracts/TIP4_2/TIP4_2Collection.tsol, 0
 
-.globl	TIP4_2Collection__buildNftState
-.type	TIP4_2Collection__buildNftState, @function
-CALL $TIP4_2Collection__buildNftState_macro$
+.globl	TIP4_2Collection__buildNftState_c971fdf8
+.type	TIP4_2Collection__buildNftState_c971fdf8, @function
+CALL $TIP4_2Collection__buildNftState_c971fdf8_macro$
 
-.macro TIP4_2Collection__buildNftState_macro
+.macro TIP4_2Collection__buildNftState_c971fdf8_macro
 .loc ../contracts/TIP4_2/TIP4_2Collection.tsol, 44
 PUSHINT 0
 NEWC
@@ -2092,7 +2092,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 CALLREF {
-	CALL $totalSupply_internal_macro$
+	CALL $totalSupply_18160ddd_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2145,7 +2145,7 @@ IFREF {
 }
 THROW 0
 
-.macro totalSupply_internal_macro
+.macro totalSupply_18160ddd_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 43
 GETGLOB 4
 PUSHINT 0
@@ -2176,7 +2176,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 CALLREF {
-	CALL $nftCode_internal_macro$
+	CALL $nftCode_6e5fc867_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2229,7 +2229,7 @@ IFREF {
 }
 THROW 0
 
-.macro nftCode_internal_macro
+.macro nftCode_6e5fc867_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 49
 GETGLOB 4
 PUSHINT 0
@@ -2241,7 +2241,7 @@ SETINDEXQ 1
 SETGLOB 4
 MYADDR
 CALLREF {
-	CALL $_buildNftCode_internal_macro$
+	CALL $_buildNftCode_c58e679e_internal_macro$
 }
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
@@ -2263,7 +2263,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 CALLREF {
-	CALL $nftCodeHash_internal_macro$
+	CALL $nftCodeHash_c1102341_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2319,7 +2319,7 @@ IFREF {
 }
 THROW 0
 
-.macro nftCodeHash_internal_macro
+.macro nftCodeHash_c1102341_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 55
 GETGLOB 4
 PUSHINT 0
@@ -2331,7 +2331,7 @@ SETINDEXQ 1
 SETGLOB 4
 MYADDR
 CALLREF {
-	CALL $_buildNftCode_internal_macro$
+	CALL $_buildNftCode_c58e679e_internal_macro$
 }
 HASHCU
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
@@ -2362,7 +2362,7 @@ LDU 256
 ENDS
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 CALLREF {
-	CALL $nftAddress_internal_macro$
+	CALL $nftAddress_f88fba8c_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2422,7 +2422,7 @@ IFREF {
 }
 THROW 0
 
-.macro nftAddress_internal_macro
+.macro nftAddress_f88fba8c_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 65
 GETGLOB 4
 PUSHINT 0
@@ -2433,24 +2433,24 @@ FALSE
 SETINDEXQ 1
 SETGLOB 4
 CALLREF {
-	CALL $_resolveNft_internal_macro$
+	CALL $_resolveNft_2d542587_internal_macro$
 }
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
-.globl	_resolveNft_internal
-.type	_resolveNft_internal, @function
-CALL $_resolveNft_internal_macro$
+.globl	_resolveNft_2d542587_internal
+.type	_resolveNft_2d542587_internal, @function
+CALL $_resolveNft_2d542587_internal_macro$
 
-.macro _resolveNft_internal_macro
+.macro _resolveNft_2d542587_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 73
 MYADDR
 CALLREF {
-	CALL $_buildNftCode_internal_macro$
+	CALL $_buildNftCode_c58e679e_internal_macro$
 }
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 74
 SWAP
 CALLREF {
-	CALL $_buildNftState_internal_macro$
+	CALL $_buildNftState_c971fdf8_internal_macro$
 }
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 75
 HASHCU
@@ -2466,11 +2466,11 @@ ENDC
 CTOS
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
-.globl	_buildNftCode_internal
-.type	_buildNftCode_internal, @function
-CALL $_buildNftCode_internal_macro$
+.globl	_buildNftCode_c58e679e_internal
+.type	_buildNftCode_c58e679e_internal, @function
+CALL $_buildNftCode_c58e679e_internal_macro$
 
-.macro _buildNftCode_internal_macro
+.macro _buildNftCode_c58e679e_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 85
 NEWC
 STSLICE
@@ -2586,11 +2586,11 @@ CALLREF {
 }
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
-.globl	TIP4_1Collection__buildNftState
-.type	TIP4_1Collection__buildNftState, @function
-CALL $TIP4_1Collection__buildNftState_macro$
+.globl	TIP4_1Collection__buildNftState_c971fdf8
+.type	TIP4_1Collection__buildNftState_c971fdf8, @function
+CALL $TIP4_1Collection__buildNftState_c971fdf8_macro$
 
-.macro TIP4_1Collection__buildNftState_macro
+.macro TIP4_1Collection__buildNftState_c971fdf8_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 97
 PUSHINT 0
 NEWC
@@ -2618,11 +2618,11 @@ STZERO
 ENDC
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
-.globl	_isOwner_internal
-.type	_isOwner_internal, @function
-CALL $_isOwner_internal_macro$
+.globl	_isOwner_52494a14_internal
+.type	_isOwner_52494a14_internal, @function
+CALL $_isOwner_52494a14_internal_macro$
 
-.macro _isOwner_internal_macro
+.macro _isOwner_52494a14_internal_macro
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 105
 TRUE
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
@@ -2646,7 +2646,7 @@ LDU 32
 ENDS
 .loc ../contracts/TIP6/TIP6.tsol, 0
 CALLREF {
-	CALL $supportsInterface_internal_macro$
+	CALL $supportsInterface_01ffc9a7_internal_macro$
 }
 OVER
 PUSHCONT {
@@ -2699,7 +2699,7 @@ IFREF {
 }
 THROW 0
 
-.macro supportsInterface_internal_macro
+.macro supportsInterface_01ffc9a7_internal_macro
 .loc ../contracts/TIP6/TIP6.tsol, 22
 GETGLOB 4
 PUSHINT 0
