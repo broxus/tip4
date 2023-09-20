@@ -72,7 +72,7 @@ contract Nft is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft {
         address sendGasTo,  
         address callbackTo, 
         TvmCell callbackPayload
-    ) external virtual pure onlyManager {
+    ) external virtual onlyManager {
         tvm.accept();
         IBurnableCollection(_collection).acceptNftBurn{ 
             value: 0, 
