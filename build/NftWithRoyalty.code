@@ -345,8 +345,9 @@ ENDS
 CALLREF {
 	CALL $burn_f1e96f29_internal_macro$
 }
-IFREF {
-	CALL $upd_only_time_in_c4$
+DROP
+CALLREF {
+	CALL $c7_to_c4$
 }
 THROW 0
 
@@ -356,9 +357,9 @@ GETGLOB 9
 GETGLOB 14
 SDEQ
 THROWIFNOT 103
-.loc ../contracts/NftWithRoyalty.tsol, 102
+.loc ../contracts/NftWithRoyalty.tsol, 101
 ACCEPT
-.loc ../contracts/NftWithRoyalty.tsol, 103
+.loc ../contracts/NftWithRoyalty.tsol, 102
 XCHG S2
 GETGLOB 14
 GETGLOB 13

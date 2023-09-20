@@ -40,9 +40,9 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _beforeTransfer(
-        address /*to*/,
+        address to,
         address sendGasTo,
-        mapping(address => CallbackParams) /*callbacks*/
+        mapping(address => CallbackParams) callbacks
     )
         internal
         virtual
@@ -52,9 +52,9 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _afterTransfer(
-        address /*to*/,
-        address /*sendGasTo*/,
-        mapping(address => CallbackParams) /*callbacks*/
+        address to,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
     )
         internal
         virtual
@@ -64,10 +64,10 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _beforeChangeOwner(
-        address /*oldOwner*/,
-        address /*newOwner*/,
+        address oldOwner,
+        address newOwner,
         address sendGasTo, 
-        mapping(address => CallbackParams) /*callbacks*/
+        mapping(address => CallbackParams) callbacks
     )
         internal
         virtual
@@ -77,10 +77,10 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }   
 
     function _afterChangeOwner(
-        address /*oldOwner*/,
-        address /*newOwner*/,
-        address /*sendGasTo*/,
-        mapping(address => CallbackParams) /*callbacks*/
+        address oldOwner,
+        address newOwner,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
     )
         internal
         virtual
@@ -96,7 +96,6 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     )
         external
         virtual
-        view
         onlyManager
     {
         tvm.accept();
