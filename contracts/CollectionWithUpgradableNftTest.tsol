@@ -15,7 +15,7 @@ import "./TIP4_6/platform/PlatformType.tsol";
 import "./TIP4_6/platform/Platform.tsol";
 import "./TIP4_6/interfaces/ITIP4_6Collection.tsol";
 
-contract CollectionWithUpgradableNft is
+contract CollectionWithUpgradableNftTest is
 	TIP4_2Collection,
 	TIP4_3Collection,
 	IBurnableCollection,
@@ -319,6 +319,10 @@ contract CollectionWithUpgradableNft is
 			}(_buildNftCode(address(this)), _nftVersion, remainingGasTo);
 			emit UpgradeNftRequested(currentNftVersion, _nftVersion,  msg.sender,  remainingGasTo);
 		}
+	}
+
+	function bla() external pure returns (string) {
+        return 'blablabla';
 	}
 
 	function upgrade(

@@ -1,0 +1,9 @@
+pragma ever-solidity ^0.61.2;
+
+interface ITIP4_6Nft {
+    event NftUpgraded(uint32 oldVersion, uint32 newVersion, address initiator);
+
+    function requestUpgrade(address sendGasTo) external;
+
+    function version() external view responsible returns (uint32);
+}

@@ -108,21 +108,57 @@ SWAP
 CALLREF {
 	CALL $_transferOwnership_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 45
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 54
 ACCEPT
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 46
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 55
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 47
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 56
 SETGLOB 21
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 48
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 57
 SETGLOB 23
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 49
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 59
 GETGLOB 24
+DUP
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 60
 INC
 UFITS 32
 SETGLOB 24
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 61
+MYADDR
+CALLREF {
+	CALL $_buildNftCode_internal_macro$
+}
+HASHCU
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 62
+DUP
+GETGLOB 24
+ROLL 3
+PUSHSLICE xc00000000000000000000000001ad45c42
+NEWC
+STSLICE
+STU 32
+STU 32
+STU 256
+STU 256
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 63
+GETGLOB 25
+INC
+UFITS 32
+SETGLOB 25
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 64
+PUSHINT 1000000000
+MYADDR
+PARSEMSGADDR
+THIRD
+CALLREF {
+	CALL $__tonToGas_macro$
+}
+SETGLOB 26
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 CALLREF {
 	CALL $c7_to_c4$
@@ -138,7 +174,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 63
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 79
 ENDS
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 CALLREF {
@@ -176,7 +212,7 @@ THROW 0
 CALL $codeDepth_internal_macro$
 
 .macro codeDepth_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 64
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 80
 MYADDR
 CALLREF {
 	CALL $_buildNftCode_internal_macro$
@@ -193,7 +229,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 67
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 83
 LDU 32
 GETGLOB 4
 ROT
@@ -256,7 +292,7 @@ IFREF {
 THROW 0
 
 .macro nftVersion_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 68
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 84
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -268,6 +304,90 @@ SETGLOB 4
 GETGLOB 24
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 
+.macro collectionVersion
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 87
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+CALLREF {
+	CALL $collectionVersion_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 2376538621
+	STUR 130
+	STU 32
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 106
+	STZEROES
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 32
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro collectionVersion_internal_macro
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 88
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+GETGLOB 25
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+
 .macro platformCodeInfo
 DROP
 GETGLOB 6
@@ -277,7 +397,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 71
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 92
 LDU 32
 GETGLOB 4
 ROT
@@ -351,10 +471,10 @@ THROW 0
 CALL $platformCodeInfo_internal_macro$
 
 .macro platformCodeInfo_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 80
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 102
 GETGLOB 23
 HASHCU
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 81
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 103
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -376,7 +496,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 84
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 106
 LDU 32
 GETGLOB 4
 ROT
@@ -443,7 +563,7 @@ THROW 0
 CALL $platformCode_internal_macro$
 
 .macro platformCode_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 85
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 107
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -455,6 +575,98 @@ SETGLOB 4
 GETGLOB 23
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 
+.macro gasUpgradeValue
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 110
+LDU 32
+GETGLOB 4
+ROT
+SETINDEXQ 5
+SETGLOB 4
+ENDS
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+CALLREF {
+	CALL $gasUpgradeValue_internal_macro$
+}
+PUSH S2
+PUSHCONT {
+	PUSH S4
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 98
+	STZEROES
+	REVERSE 2, 1
+	STSLICECONST xba667261
+	STU 128
+	STU 128
+	ENDC
+	PUSHINT 0
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	OVER
+	THIRD
+	GETGLOB 9
+	ROLL 3
+	SECOND
+	NEWC
+	STSLICECONST x2_
+	STI 1
+	STSLICECONST x1_
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 1
+	STUR 106
+	XCHG S2
+	NEWC
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	STU 128
+	STU 128
+	STBREFR
+	ENDC
+	GETGLOB 4
+	INDEX 4
+}
+IFELSE
+SENDRAWMSG
+IFREF {
+	CALL $upd_only_time_in_c4$
+}
+THROW 0
+
+.macro gasUpgradeValue_internal_macro
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 119
+GETGLOB 4
+PUSHINT 0
+SETINDEXQ 2
+PUSHINT 64
+SETINDEXQ 4
+FALSE
+SETINDEXQ 1
+SETGLOB 4
+PUSHINT 1600000000
+GETGLOB 26
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+
 .macro setNftCode
 DROP
 GETGLOB 6
@@ -464,7 +676,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 88
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 122
 LDREF
 ENDS
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
@@ -504,13 +716,41 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 89
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 123
+GETGLOB 24
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 124
+MYADDR
+CALLREF {
+	CALL $_buildNftCode_internal_macro$
+}
+HASHCU
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 125
+ROT
 SETGLOB 11
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 90
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 126
 GETGLOB 24
 INC
 UFITS 32
 SETGLOB 24
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 127
+MYADDR
+CALLREF {
+	CALL $_buildNftCode_internal_macro$
+}
+HASHCU
+SWAP
+GETGLOB 24
+ROLL 3
+PUSHSLICE xc00000000000000000000000001ad45c42
+NEWC
+STSLICE
+STU 32
+STU 32
+STU 256
+STU 256
+ENDC
+PUSHINT 0
+SENDRAWMSG
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 
 .macro mintNft
@@ -522,7 +762,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 93
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 130
 OVER
 PUSHCONT {
 	LDREF
@@ -570,7 +810,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 94
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 131
 DEPTH
 ADDCONST -2
 PICK
@@ -585,11 +825,11 @@ ADD
 UFITS 128
 GREATER
 THROWIFNOT 104
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 98
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 135
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 99
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 136
 PUSHINT 0
 PUSHPOW2 7
 CALLREF {
@@ -606,7 +846,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 102
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 139
 LDU 32
 GETGLOB 4
 ROT
@@ -672,7 +912,7 @@ IFREF {
 THROW 0
 
 .macro totalMinted_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 103
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 140
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -693,7 +933,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 106
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 143
 OVER
 PUSHCONT {
 	LDREF
@@ -745,7 +985,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 107
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 144
 DEPTH
 ADDCONST -2
 PICK
@@ -760,11 +1000,11 @@ PUSHINT 1000000000
 ADD
 GREATER
 THROWIFNOT 104
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 111
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 148
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 113
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 150
 SECOND
 PUSHINT 0
 NULL
@@ -780,7 +1020,7 @@ PUSHCONT {
 	NOT
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 114
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 151
 	PUSH2 S3, S0
 	PUSHINT 3000000000
 	PUSHINT 0
@@ -801,29 +1041,29 @@ BLKDROP 4
 CALL $_mintNft_internal_macro$
 
 .macro _mintNft_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 120
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 157
 GETGLOB 22
 DUP
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 121
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 158
 INC
 SETGLOB 22
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 122
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 159
 GETGLOB 12
 INC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 124
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 161
 MYADDR
 CALLREF {
 	CALL $_buildNftCode_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 125
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 162
 GETGLOB 23
 PUSH S2
 CALLREF {
 	CALL $_buildNftState_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 127
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 164
 GETGLOB 24
 GETGLOB 14
 GETGLOB 17
@@ -845,7 +1085,7 @@ STREF
 STU 32
 STBREFR
 ENDC
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 138
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 175
 GETGLOB 9
 SWAP
 SWAP2
@@ -901,12 +1141,14 @@ STBREFR
 ENDC
 ROLL 3
 SENDRAWMSG
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 145
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 182
 GETGLOB 9
 PUSH S3
 BLKSWAP 3, 2
 SWAP
-PUSHSLICE xc0000000000000000000000001
+PUSHREFSLICE {
+	.blob xc0000000000000000000000001
+}
 NEWC
 STSLICE
 ROLLREV 5
@@ -937,15 +1179,15 @@ SENDRAWMSG
 CALL $_resolveNft_internal_macro$
 
 .macro _resolveNft_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 157
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 194
 GETGLOB 23
 SWAP
 CALLREF {
 	CALL $_buildNftState_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 158
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 195
 HASHCU
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 159
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 196
 MYADDR
 PARSEMSGADDR
 THIRD
@@ -966,7 +1208,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 162
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 199
 OVER
 PUSHCONT {
 	LDREF
@@ -1009,7 +1251,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 163
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 200
 SETGLOB 21
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 
@@ -1018,7 +1260,7 @@ SETGLOB 21
 CALL $_buildNftState_internal_macro$
 
 .macro _buildNftState_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 176
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 213
 PUSHINT 0
 NEWC
 STU 256
@@ -1066,7 +1308,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 187
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 224
 OVER
 PUSHCONT {
 	LDREF
@@ -1116,11 +1358,11 @@ THROW 0
 CALL $resolveIndexCodeHash_internal_macro$
 
 .macro resolveIndexCodeHash_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 188
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 225
 CALLREF {
 	CALL $_buildIndexCode_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 189
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 226
 HASHCU
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 
@@ -1133,7 +1375,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 192
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 229
 OVER
 PUSHCONT {
 	LDREF
@@ -1168,7 +1410,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 200
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 237
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -1186,16 +1428,18 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 202
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 239
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 203
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 240
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
-PUSHSLICE xc0000000000000000000000001
+PUSHREFSLICE {
+	.blob xc0000000000000000000000001
+}
 NEWC
 STSLICE
 ROLLREV 4
@@ -1215,13 +1459,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 205
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 242
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 206
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 243
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -1261,7 +1505,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 220
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 257
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -1285,7 +1529,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 228
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 265
 OVER
 PUSHCONT {
 	LDU 32
@@ -1311,14 +1555,13 @@ ENDS
 CALLREF {
 	CALL $forceUpgradeNft_internal_macro$
 }
-DROP
-CALLREF {
-	CALL $c7_to_c4$
+IFREF {
+	CALL $upd_only_time_in_c4$
 }
 THROW 0
 
 .macro forceUpgradeNft_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 58
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 74
 DROP
 GETGLOB 9
 PARSEMSGADDR
@@ -1340,32 +1583,35 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 59
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 75
 DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 233
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 270
 PUSHINT 0
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 234
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 271
 OVER
 FIRST
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 235
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 272
 OVER
 ADDCONST 5
 OVER
 MIN
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 237
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 274
 ROT
 PUSHCONT {
 	PUSH2 S0, S1
 	LESS
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 238
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 275
 	GETGLOB 9
 	GETGLOB 24
-	GETGLOB 11
+	MYADDR
+	CALLREF {
+		CALL $_buildNftCode_internal_macro$
+	}
 	PUSH2 S3, S6
 	SECOND
 	PUSHINT 32
@@ -1389,18 +1635,48 @@ PUSHCONT {
 	ENDC
 	PUSHPOW2 7
 	SENDRAWMSG
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 237
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 280
+	CALLREF {
+		CALL $owner_internal_macro$
+	}
+	PUSH2 S1, S4
+	SECOND
+	PUSHINT 32
+	DICTUGET
+	THROWIFNOT 50
+	GETGLOB 24
+	DUP
+	PUSHREFSLICE {
+		.blob xc0000000000000000000000001
+	}
+	NEWC
+	STSLICE
+	ROLLREV 4
+	NEWC
+	STSLICECONST x6e917ed5
+	STU 32
+	STU 32
+	STSLICE
+	SWAP
+	NEWC
+	STSLICE
+	STBREFR
+	STBREFR
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 274
 	INC
 	.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
 }
 WHILE
 DROP
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 245
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 283
 DUP
 ROT
 LESS
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 246
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 284
 	PUSH2 S0, S1
 	MYADDR
 	FALSE
@@ -1423,7 +1699,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 253
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 291
 	CALLREF {
 		CALL $owner_internal_macro$
 	}
@@ -1449,7 +1725,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 261
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 299
 OVER
 PUSHCONT {
 	LDU 32
@@ -1474,7 +1750,7 @@ IFREF {
 THROW 0
 
 .macro requestUpgradeNft_internal_macro
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 53
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 69
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -1492,26 +1768,31 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 54
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 70
 DROP
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 270
-SWAP
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 308
+OVER
 GETGLOB 24
 EQUAL
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 271
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 309
 	DUP
 	NEWC
 	STSLICECONST x42_
 	STSLICE
 	PUSHINT 111
 	STZEROES
+	ENDC
+	PUSHPOW2 7
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithUpgradableNft.tsol, 277
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 315
 	DUP
 	GETGLOB 24
-	GETGLOB 11
+	MYADDR
+	CALLREF {
+		CALL $_buildNftCode_internal_macro$
+	}
 	GETGLOB 9
 	FALSE
 	NEWC
@@ -1528,13 +1809,237 @@ PUSHCONT {
 	STU 32
 	STSLICE
 	STBREFR
+	ENDC
+	PUSHPOW2 7
+	SENDRAWMSG
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 320
+	DUP
+	GETGLOB 9
+	GETGLOB 24
+	PUSH S4
+	PUSHREFSLICE {
+		.blob xc0000000000000000000000001
+	}
+	NEWC
+	STSLICE
+	ROLLREV 4
+	NEWC
+	STSLICECONST x6e917ed5
+	STU 32
+	STU 32
+	STSLICE
+	SWAP
+	NEWC
+	STSLICE
+	STBREFR
+	STBREFR
+	ENDC
+	PUSHINT 0
 }
 IFELSE
-ENDC
-PUSHPOW2 7
 SENDRAWMSG
 .loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+DROP2
+
+.macro upgrade
 DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 324
+OVER
+PUSHCONT {
+	LDREF
+	LDU 32
+	LDREF
+	ENDS
+	CTOS
+}
+PUSHCONT {
+	LDREF
+	LDU 32
+}
+IFELSE
+LDMSGADDR
+ENDS
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+CALLREF {
+	CALL $upgrade_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro upgrade_internal_macro
+.loc ../contracts/access/OwnableInternal.tsol, 31
+GETGLOB 9
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+NEQINT 0
+DUP
+PUSHCONT {
+	DROP
+	CALLREF {
+		CALL $owner_internal_macro$
+	}
+	GETGLOB 9
+	SDEQ
+}
+IF
+THROWIFNOT 100
+.loc ../contracts/access/OwnableInternal.tsol, 32
+DEPTH
+ADDCONST -2
+PICK
+THROWIFNOT 101
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 332
+GETGLOB 25
+ROT
+EQUAL
+PUSHCONT {
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 333
+	DUP
+	NEWC
+	STSLICECONST x42_
+	STSLICE
+	PUSHINT 111
+	STZEROES
+	ENDC
+	PUSHINT 130
+	SENDRAWMSG
+}
+PUSHCONT {
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 339
+	GETGLOB 26
+	GETGLOB 25
+	GETGLOB 15
+	GETGLOB 18
+	GETGLOB 13
+	GETGLOB 11
+	GETGLOB 12
+	GETGLOB 14
+	GETGLOB 17
+	GETGLOB 16
+	GETGLOB 24
+	GETGLOB 23
+	CALLREF {
+		CALL $owner_internal_macro$
+	}
+	GETGLOB 22
+	GETGLOB 21
+	NEWC
+	STU 128
+	STU 256
+	STSLICE
+	STREF
+	STU 32
+	ROLLREV 10
+	NEWC
+	STU 128
+	STU 128
+	STREF
+	STU 128
+	STREF
+	STREF
+	STU 128
+	STREF
+	STU 32
+	STU 128
+	STBREFR
+	ENDC
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 357
+	PUSH S2
+	SETCODE
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 358
+	PUSH S2
+	CTOS
+	DUP
+	PUSHSLICE x8adb35
+	SDEQ
+	PUSHCONT {
+		PLDREFIDX 1
+		CTOS
+	}
+	IF
+	PLDREF
+	CTOS
+	BLESS
+	POP C3
+	.loc ../contracts/CollectionWithUpgradableNft.tsol, 360
+	CALLREF {
+		CALL $:onCodeUpgrade$
+	}
+}
+IFELSE
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+DROP2
+
+.internal-alias :onCodeUpgrade, 2
+.internal :onCodeUpgrade
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 365
+PUSHREFSLICE {
+	.blob x8000000000000000000000000000000000000000000000000000000000000000001_
+}
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 366
+SWAP
+CTOS
+LDU 128
+LDU 256
+LDMSGADDR
+LDREF
+LDU 32
+LDREF
+ENDS
+CTOS
+LDU 128
+LDU 128
+LDREF
+LDU 128
+LDREF
+LDREF
+LDU 128
+LDREF
+LDU 32
+LDU 128
+ENDS
+REVERSE 15, 0
+SETGLOB 21
+SETGLOB 22
+POP S13
+SETGLOB 23
+SETGLOB 24
+SETGLOB 16
+SETGLOB 17
+SETGLOB 14
+SETGLOB 12
+SETGLOB 11
+SETGLOB 13
+SETGLOB 18
+SETGLOB 15
+SETGLOB 25
+SETGLOB 26
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 399
+CALLREF {
+	CALL $_transferOwnership_internal_macro$
+}
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 400
+GETGLOB 25
+INC
+UFITS 32
+SETGLOB 25
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 0
+CALLREF {
+	CALL $c7_to_c4$
+}
+COMMIT
+THROW 0
 
 .macro owner
 DROP
@@ -1670,7 +2175,9 @@ GETGLOB 19
 OVER
 SETGLOB 19
 .loc ../contracts/access/OwnableInternal.tsol, 27
-PUSHSLICE xc0000000000000000000000001
+PUSHREFSLICE {
+	.blob xc0000000000000000000000001
+}
 NEWC
 STSLICE
 ROTREV
@@ -3352,22 +3859,26 @@ LDU 128
 LDU 256
 LDREF
 LDU 32
+LDU 32
+LDU 128
 ENDS
-SETGLOB 24
-SETGLOB 23
-SETGLOB 22
-SETGLOB 21
-SETGLOB 20
-SETGLOB 19
-SETGLOB 18
-SETGLOB 17
-SETGLOB 16
-SETGLOB 15
-SETGLOB 14
-SETGLOB 13
-SETGLOB 12
-SETGLOB 11
-SETGLOB 10
+PUSHINT 0
+GETGLOBVAR
+GETGLOB 1
+GETGLOB 2
+GETGLOB 3
+GETGLOB 4
+GETGLOB 5
+GETGLOB 6
+GETGLOB 7
+GETGLOB 8
+GETGLOB 9
+PUSHINT 17
+PUSHINT 10
+BLKSWX
+PUSHINT 27
+TUPLEVAR
+POP C7
 SETGLOB 3
 SETGLOB 2
 
@@ -3381,6 +3892,17 @@ PUSHCONT {
 	PUSHROOT
 	CTOS
 	PLDDICT ; D
+	PUSHINT 0
+	GETGLOBVAR
+	GETGLOB 1
+	GETGLOB 2
+	GETGLOB 3
+	GETGLOB 4
+	GETGLOB 5
+	GETGLOB 6
+	GETGLOB 7
+	GETGLOB 8
+	GETGLOB 9
 	NEWDICT
 	PUSHREF {
 	}
@@ -3394,7 +3916,7 @@ PUSHCONT {
 		.blob x8000000000000000000000000000000000000000000000000000000000000000001_
 	}
 	PUSHINT 1
-	PUSH S11
+	PUSH S21
 	PUSHINT 64
 	DICTUGET
 	ZEROSWAPIFNOT
@@ -3407,21 +3929,10 @@ PUSHCONT {
 	PUSHREF {
 	}
 	PUSHINT 0
-	SETGLOB 24
-	SETGLOB 23
-	SETGLOB 22
-	SETGLOB 21
-	SETGLOB 20
-	SETGLOB 19
-	SETGLOB 18
-	SETGLOB 17
-	SETGLOB 16
-	SETGLOB 15
-	SETGLOB 14
-	SETGLOB 13
-	SETGLOB 12
-	SETGLOB 11
-	SETGLOB 10
+	BLKPUSH 2, 0
+	PUSHINT 27
+	TUPLEVAR
+	POP C7
 	PUSHINT 64
 	DICTUGET
 	THROWIFNOT 61
@@ -3441,21 +3952,17 @@ IFREFELSE {
 }
 
 .macro c7_to_c4
-GETGLOB 24
-GETGLOB 23
-GETGLOB 22
-GETGLOB 21
-GETGLOB 20
-GETGLOB 19
-GETGLOB 18
-GETGLOB 17
-GETGLOB 16
-GETGLOB 15
-GETGLOB 14
-GETGLOB 13
-GETGLOB 12
-GETGLOB 11
-GETGLOB 10
+PUSH C7
+FALSE
+PUSHINT 27
+SETINDEXVARQ
+PUSHINT 28
+UNTUPLEVAR
+DROP
+PUSHINT 27
+PUSHINT 0
+REVX
+BLKDROP 10
 GETGLOB 3
 GETGLOB 2
 NEWC
@@ -3466,7 +3973,7 @@ STDICT
 STREF
 STU 128
 STREF
-ROLLREV 11
+ROLLREV 13
 NEWC
 STREF
 STREF
@@ -3474,13 +3981,15 @@ STU 128
 STU 128
 STU 128
 STSLICE
-ROLLREV 5
+ROLLREV 7
 NEWC
 STU 64
 STU 128
 STU 256
 STREF
 STU 32
+STU 32
+STU 128
 STBREFR
 STBREFR
 ENDC
@@ -3607,11 +4116,11 @@ THROW 60
 
 .macro public_function_selector
 DUP
-PUSHINT 852767119
+PUSHINT 839183401
 LEQ
 IFJMPREF {
 	DUP
-	PUSHINT 235197086
+	PUSHINT 229054973
 	LEQ
 	IFJMPREF {
 		DUP
@@ -3633,16 +4142,22 @@ IFJMPREF {
 			CALL $indexCode$
 		}
 		DUP
+		PUSHINT 229054973
+		EQUAL
+		IFJMPREF {
+			CALL $collectionVersion$
+		}
+	}
+	DUP
+	PUSHINT 328815174
+	LEQ
+	IFJMPREF {
+		DUP
 		PUSHINT 235197086
 		EQUAL
 		IFJMPREF {
 			CALL $transferOwnership$
 		}
-	}
-	DUP
-	PUSHINT 348956614
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 263162756
 		EQUAL
@@ -3661,17 +4176,17 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $codeDepth$
 		}
+	}
+	DUP
+	PUSHINT 618124789
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 348956614
 		EQUAL
 		IFJMPREF {
 			CALL $indexCodeHash$
 		}
-	}
-	DUP
-	PUSHINT 660199689
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 460317608
 		EQUAL
@@ -3690,17 +4205,17 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $getJson$
 		}
+	}
+	DUP
+	PUSHINT 839183401
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 660199689
 		EQUAL
 		IFJMPREF {
 			CALL $requestUpgradeNft$
 		}
-	}
-	DUP
-	PUSHINT 852767119
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 687288259
 		EQUAL
@@ -3719,12 +4234,6 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $supportsInterface$
 		}
-		DUP
-		PUSHINT 852767119
-		EQUAL
-		IFJMPREF {
-			CALL $setRemainOnNft$
-		}
 	}
 }
 DUP
@@ -3732,9 +4241,15 @@ PUSHINT 2012589119
 LEQ
 IFJMPREF {
 	DUP
-	PUSHINT 1383720816
+	PUSHINT 979792481
 	LEQ
 	IFJMPREF {
+		DUP
+		PUSHINT 852767119
+		EQUAL
+		IFJMPREF {
+			CALL $setRemainOnNft$
+		}
 		DUP
 		PUSHINT 880007004
 		EQUAL
@@ -3748,6 +4263,17 @@ IFJMPREF {
 			CALL $resolveIndexBasis$
 		}
 		DUP
+		PUSHINT 979792481
+		EQUAL
+		IFJMPREF {
+			CALL $gasUpgradeValue$
+		}
+	}
+	DUP
+	PUSHINT 1594609630
+	LEQ
+	IFJMPREF {
+		DUP
 		PUSHINT 1140466772
 		EQUAL
 		IFJMPREF {
@@ -3759,11 +4285,6 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $nftAddress$
 		}
-	}
-	DUP
-	PUSHINT 1649107961
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 1479945602
 		EQUAL
@@ -3776,6 +4297,11 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $owner$
 		}
+	}
+	DUP
+	PUSHINT 1688565960
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 1629421668
 		EQUAL
@@ -3788,17 +4314,23 @@ IFJMPREF {
 		IFJMPREF {
 			CALL $platformCodeInfo$
 		}
-	}
-	DUP
-	PUSHINT 2012589119
-	LEQ
-	IFJMPREF {
 		DUP
 		PUSHINT 1684047032
 		EQUAL
 		IFJMPREF {
 			CALL $mintNft$
 		}
+		DUP
+		PUSHINT 1688565960
+		EQUAL
+		IFJMPREF {
+			CALL $upgrade$
+		}
+	}
+	DUP
+	PUSHINT 2012589119
+	LEQ
+	IFJMPREF {
 		DUP
 		PUSHINT 1912079397
 		EQUAL

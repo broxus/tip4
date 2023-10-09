@@ -31,7 +31,16 @@
 				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"value0","type":"uint32"}
+				{"name":"version","type":"uint32"}
+			]
+		},
+		{
+			"name": "collectionVersion",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"version","type":"uint32"}
 			]
 		},
 		{
@@ -40,8 +49,8 @@
 				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
-				{"name":"value0","type":"uint256"},
-				{"name":"value1","type":"uint16"}
+				{"name":"hash","type":"uint256"},
+				{"name":"depth","type":"uint16"}
 			]
 		},
 		{
@@ -51,6 +60,16 @@
 			],
 			"outputs": [
 				{"name":"code","type":"cell"}
+			]
+		},
+		{
+			"name": "gasUpgradeValue",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"fixedValue","type":"uint128"},
+				{"name":"dynamicValue","type":"uint128"}
 			]
 		},
 		{
@@ -131,9 +150,19 @@
 		{
 			"name": "requestUpgradeNft",
 			"inputs": [
-				{"name":"currentVersion","type":"uint32"},
+				{"name":"currentNftVersion","type":"uint32"},
 				{"name":"remainingGasTo","type":"address"},
 				{"name":"nftId","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"newCode","type":"cell"},
+				{"name":"newVersion","type":"uint32"},
+				{"name":"remainingGasTo","type":"address"}
 			],
 			"outputs": [
 			]
@@ -261,6 +290,28 @@
 	],
 	"events": [
 		{
+			"name": "UpgradeNftRequested",
+			"inputs": [
+				{"name":"oldVersion","type":"uint32"},
+				{"name":"newVersion","type":"uint32"},
+				{"name":"nft","type":"address"},
+				{"name":"initiator","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "NftCodeUpdated",
+			"inputs": [
+				{"name":"oldVersion","type":"uint32"},
+				{"name":"newVersion","type":"uint32"},
+				{"name":"oldCodeHash","type":"uint256"},
+				{"name":"newCodeHash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "OwnershipTransferred",
 			"inputs": [
 				{"name":"oldOwner","type":"address"},
@@ -311,6 +362,8 @@
 		{"name":"_remainOnNft","type":"uint128"},
 		{"name":"_totalMinted","type":"uint256"},
 		{"name":"_codePlatform","type":"cell"},
-		{"name":"_nftVersion","type":"uint32"}
+		{"name":"_nftVersion","type":"uint32"},
+		{"name":"_currentVersion","type":"uint32"},
+		{"name":"dynamicGas","type":"uint128"}
 	]
 }

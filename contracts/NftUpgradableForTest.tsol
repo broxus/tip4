@@ -11,7 +11,7 @@ import "./TIP4_3/TIP4_3Nft.tsol";
 import "./CollectionWithUpgradableNft.tsol";
 import "./TIP4_6/interfaces/ITIP4_6Nft.tsol";
 
-contract NftUpgradable is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6Nft {
+contract NftUpgradableForTest is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6Nft {
 
     uint32 currentVersion;
 
@@ -181,6 +181,10 @@ contract NftUpgradable is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6Nft {
             flag: 64,
             bounce: false
         }(currentVersion, sendGasTo, _id);
+	}
+
+    function bla() external pure returns (string){
+        return 'blablabla';
 	}
 
     modifier onlyCollection virtual {

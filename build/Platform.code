@@ -24,7 +24,7 @@ PUSHCONT {
 IFELSE
 LDMSGADDR
 ENDS
-.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 20
+.loc ../contracts/TIP4_6/platform/Platform.tsol, 20
 GETGLOB 9
 GETGLOB 10
 SDEQ
@@ -39,7 +39,7 @@ PUSHCONT {
 }
 IF
 PUSHCONT {
-	.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 21
+	.loc ../contracts/TIP4_6/platform/Platform.tsol, 21
 	OVER
 	GETGLOB 12
 	GETGLOB 10
@@ -48,10 +48,10 @@ PUSHCONT {
 	STREF
 	STREF
 	ENDC
-	.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 22
+	.loc ../contracts/TIP4_6/platform/Platform.tsol, 22
 	PUSH S3
 	SETCODE
-	.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 23
+	.loc ../contracts/TIP4_6/platform/Platform.tsol, 23
 	PUSH S3
 	CTOS
 	DUP
@@ -66,14 +66,14 @@ PUSHCONT {
 	CTOS
 	BLESS
 	POP C3
-	.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 24
+	.loc ../contracts/TIP4_6/platform/Platform.tsol, 24
 	FALSE
 	CALLREF {
 		CALL $:onCodeUpgrade$
 	}
 }
 PUSHCONT {
-	.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 26
+	.loc ../contracts/TIP4_6/platform/Platform.tsol, 26
 	DUP
 	NEWC
 	STSLICECONST x42_
@@ -87,7 +87,7 @@ PUSHCONT {
 	SENDRAWMSG
 }
 IFELSE
-.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 0
+.loc ../contracts/TIP4_6/platform/Platform.tsol, 0
 BLKDROP 3
 CALLREF {
 	CALL $c7_to_c4$
@@ -97,7 +97,7 @@ THROW 0
 .internal-alias :onCodeUpgrade, 2
 .internal :onCodeUpgrade
 DROP2
-.loc ../contracts/TIP4_upgradable/platform/Platform.tsol, 0
+.loc ../contracts/TIP4_6/platform/Platform.tsol, 0
 CALLREF {
 	CALL $c7_to_c4$
 }

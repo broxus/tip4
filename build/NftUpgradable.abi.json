@@ -28,6 +28,15 @@
 			]
 		},
 		{
+			"name": "version",
+			"inputs": [
+				{"name":"answerId","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"nftVersion","type":"uint32"}
+			]
+		},
+		{
 			"name": "upgrade",
 			"inputs": [
 				{"name":"newCode","type":"cell"},
@@ -40,6 +49,7 @@
 		{
 			"name": "requestUpgrade",
 			"inputs": [
+				{"name":"sendGasTo","type":"address"}
 			],
 			"outputs": [
 			]
@@ -139,6 +149,16 @@
 		{"key":1,"name":"_id","type":"uint256"}
 	],
 	"events": [
+		{
+			"name": "NftUpgraded",
+			"inputs": [
+				{"name":"oldVersion","type":"uint32"},
+				{"name":"newVersion","type":"uint32"},
+				{"name":"initiator","type":"address"}
+			],
+			"outputs": [
+			]
+		},
 		{
 			"name": "NftCreated",
 			"inputs": [
