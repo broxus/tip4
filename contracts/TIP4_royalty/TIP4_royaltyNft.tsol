@@ -1,4 +1,4 @@
-pragma ever-solidity ^0.61.2;
+pragma ever-solidity 0.62.0;
 
 pragma AbiHeader expire;
 pragma AbiHeader time;
@@ -33,6 +33,6 @@ abstract contract TIP4_royaltyNft is TIP4_1Nft, IRoyaltyInfo, IRoyaltyStructure 
         returns(address receiver, uint128 royaltyAmount)
     {
         uint128 amount = math.muldivc(salePrice, _royalty.numerator, _royalty.denominator);
-        return {value: 0, flag: 128, bounce: false} (_royalty.receiver, amount);
+        return {value: 0, flag: 64, bounce: false} (_royalty.receiver, amount);
     }
 }

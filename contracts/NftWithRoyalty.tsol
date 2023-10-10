@@ -1,4 +1,4 @@
-pragma ever-solidity ^0.61.2;
+pragma ever-solidity 0.62.0;
 
 pragma AbiHeader expire;
 pragma AbiHeader time;
@@ -40,8 +40,8 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _beforeTransfer(
-        address to, 
-        address sendGasTo, 
+        address to,
+        address sendGasTo,
         mapping(address => CallbackParams) callbacks
     )
         internal
@@ -52,8 +52,8 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _afterTransfer(
-        address to, 
-        address sendGasTo, 
+        address to,
+        address sendGasTo,
         mapping(address => CallbackParams) callbacks
     )
         internal
@@ -64,7 +64,7 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }
 
     function _beforeChangeOwner(
-        address oldOwner, 
+        address oldOwner,
         address newOwner,
         address sendGasTo, 
         mapping(address => CallbackParams) callbacks
@@ -77,9 +77,9 @@ contract NftWithRoyalty is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, TIP4_royaltyNft{
     }   
 
     function _afterChangeOwner(
-        address oldOwner, 
+        address oldOwner,
         address newOwner,
-        address sendGasTo, 
+        address sendGasTo,
         mapping(address => CallbackParams) callbacks
     )
         internal

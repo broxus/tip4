@@ -18,6 +18,14 @@
 			]
 		},
 		{
+			"name": "bla",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"string"}
+			]
+		},
+		{
 			"name": "upgrade",
 			"inputs": [
 				{"name":"newCode","type":"cell"},

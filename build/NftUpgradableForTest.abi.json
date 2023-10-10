@@ -28,6 +28,14 @@
 			]
 		},
 		{
+			"name": "bla",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"string"}
+			]
+		},
+		{
 			"name": "burn",
 			"inputs": [
 				{"name":"sendGasTo","type":"address"},

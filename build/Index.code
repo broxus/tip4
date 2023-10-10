@@ -1,4 +1,4 @@
-.version sol 0.61.2
+.version sol 0.62.0
 
 .macro constructor
 DROP
@@ -158,7 +158,7 @@ SETGLOB 4
 ENDS
 .loc ../contracts/TIP4_3/Index.tsol, 0
 CALLREF {
-	CALL $getInfo_internal_macro$
+	CALL $getInfo_5a9b0b89_internal_macro$
 }
 PUSH S3
 PUSHCONT {
@@ -234,11 +234,11 @@ IFREF {
 }
 THROW 0
 
-.globl	getInfo_internal
-.type	getInfo_internal, @function
-CALL $getInfo_internal_macro$
+.globl	getInfo_5a9b0b89_internal
+.type	getInfo_5a9b0b89_internal, @function
+CALL $getInfo_5a9b0b89_internal_macro$
 
-.macro getInfo_internal_macro
+.macro getInfo_5a9b0b89_internal_macro
 .loc ../contracts/TIP4_3/Index.tsol, 51
 GETGLOB 4
 PUSHINT 0
@@ -274,7 +274,7 @@ LDMSGADDR
 ENDS
 .loc ../contracts/TIP4_3/Index.tsol, 0
 CALLREF {
-	CALL $destruct_internal_macro$
+	CALL $destruct_1beb2615_internal_macro$
 }
 DROP
 CALLREF {
@@ -282,11 +282,11 @@ CALLREF {
 }
 THROW 0
 
-.globl	destruct_internal
-.type	destruct_internal, @function
-CALL $destruct_internal_macro$
+.globl	destruct_1beb2615_internal
+.type	destruct_1beb2615_internal, @function
+CALL $destruct_1beb2615_internal_macro$
 
-.macro destruct_internal_macro
+.macro destruct_1beb2615_internal_macro
 .loc ../contracts/TIP4_3/Index.tsol, 61
 PUSHREF {
 	.blob x4d6574686f6420666f72204e4654206f6e6c79

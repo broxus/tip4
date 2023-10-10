@@ -1,4 +1,4 @@
-pragma ever-solidity ^0.61.2;
+pragma ever-solidity 0.62.0;
 
 pragma AbiHeader expire;
 pragma AbiHeader time;
@@ -6,7 +6,27 @@ pragma AbiHeader pubkey;
 
 import "../abstract/CollectionUpgradableBase.tsol";
 
-contract CollectionWithUpgradableNftTest is CollectionUpgradableBase {
+import "../structures/ICollectionUpgradeData.tsol";
+
+contract CollectionWithUpgradableNftTest is CollectionUpgradableBase, ICollectionUpgradeData {
+
+	constructor(
+		TvmCell codeNft,
+		TvmCell codePlatform,
+		TvmCell codeIndex,
+		TvmCell codeIndexBasis,
+		address owner,
+		uint128 remainOnNft,
+		string json
+	) CollectionUpgradableBase(
+		codeNft,
+		codePlatform,
+		codeIndex,
+		codeIndexBasis,
+		owner,
+		remainOnNft,
+		json
+	) public {}
 
 	function bla() external pure returns (string) {
         return 'blablabla';
@@ -83,7 +103,7 @@ contract CollectionWithUpgradableNftTest is CollectionUpgradableBase {
 
 		_transferOwnership(data.owner);
 
-		data.remainingGasT.transfer({
+		data.remainingGasTo.transfer({
 			value: 0,
 			flag: 128 + 2,
 			bounce: false
