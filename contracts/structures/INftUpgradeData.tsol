@@ -1,0 +1,17 @@
+pragma ever-solidity ^0.61.2;
+
+interface INftUpgradeData {
+
+    struct NftUpgradeData {
+         uint256 id;
+         address collection;
+         address owner;
+         address manager;
+         string json;
+         uint128 indexDeployValue;
+         uint128 indexDestroyValue;
+         TvmCell codeIndex;
+         uint32 currentVersion;
+         address remainingGasTo;
+    }
+}

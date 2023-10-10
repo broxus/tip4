@@ -4,12 +4,12 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
-import "./structures/INftUpgradeData.tsol";
-import "./abstract/NftUpgradableBase.tsol";
+import "../abstract/NftUpgradableBase.tsol";
+import "../structures/INftUpgradeData.tsol";
 
-contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
+contract NftUpgradableForTest is NftUpgradableBase, INftUpgradeData {
 
-    function onCodeUpgrade(TvmCell input, bool upgrade) internal {
+  function onCodeUpgrade(TvmCell input, bool upgrade) internal {
         tvm.resetStorage();
         if (!upgrade) {
         _upgradeFromPlatform(input);
@@ -77,6 +77,7 @@ contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
                     codeIndex: _codeIndex,
                     currentVersion: newVersion,
                     remainingGasTo: remainingGasTo
+
                 })
             );
 
@@ -86,4 +87,9 @@ contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
             onCodeUpgrade(cellParams, true);
         }
     }
+
+    function bla() external pure returns (string){
+        return 'blablabla';
+	}
+
 }

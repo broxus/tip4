@@ -1,0 +1,23 @@
+pragma ever-solidity ^0.61.2;
+
+interface ICollectionUpgradeData {
+
+    struct CollectionUpgradeData {
+        uint128 remainOnNft;
+        uint256 totalMinted;
+        address owner;
+        TvmCell codePlatform;
+        uint32 nftVersion;
+        uint128 indexDeployValue;
+        uint128 indexDestroyValue;
+        TvmCell codeIndex;
+        uint128 totalSupply;
+        TvmCell codeNft;
+        string json;
+        uint128 deployIndexBasisValue;
+        TvmCell codeIndexBasis;
+        uint32 currentVersion;
+        uint128 dynamicGas;
+        address remainingGasTo;
+    }
+}

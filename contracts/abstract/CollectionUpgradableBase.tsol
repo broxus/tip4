@@ -1,21 +1,17 @@
 pragma ever-solidity ^0.61.2;
 
-pragma AbiHeader expire;
-pragma AbiHeader time;
-pragma AbiHeader pubkey;
+import "../interfaces/IAcceptNftBurnCallback.tsol";
+import "../interfaces/IBurnableCollection.tsol";
 
-import "./interfaces/IAcceptNftBurnCallback.tsol";
-import "./interfaces/IBurnableCollection.tsol";
+import "../NftUpgradable.tsol";
+import "../TIP4_2/TIP4_2Collection.tsol";
+import "../TIP4_3/TIP4_3Collection.tsol";
+import "../access/OwnableInternal.tsol";
+import "../TIP4_6/platform/PlatformType.tsol";
+import "../TIP4_6/platform/Platform.tsol";
+import "../TIP4_6/interfaces/ITIP4_6Collection.tsol";
 
-import "./NftUpgradable.tsol";
-import "./TIP4_2/TIP4_2Collection.tsol";
-import "./TIP4_3/TIP4_3Collection.tsol";
-import "./access/OwnableInternal.tsol";
-import "./TIP4_6/platform/PlatformType.tsol";
-import "./TIP4_6/platform/Platform.tsol";
-import "./TIP4_6/interfaces/ITIP4_6Collection.tsol";
-
-contract CollectionWithUpgradableNft is
+abstract contract CollectionUpgradableBase is
 	TIP4_2Collection,
 	TIP4_3Collection,
 	IBurnableCollection,
@@ -270,11 +266,13 @@ contract CollectionWithUpgradableNft is
 		offset = 0;
 		uint256 lenght = nfts.length;
 		uint256 takeUntil = math.min(offset + 5, lenght);
+		require(msg.value > takeUntil * 1 ever, value_is_less_than_required);
 
 		for (uint256 i = offset; i < takeUntil; i++) {
+
 			NftUpgradable(nfts[i]).upgrade{
-				value: 0,
-				flag: 128,
+				value: 1 ever,
+				flag: 1,
 				bounce: false
 			}(_buildNftCode(address(this)), _nftVersion, msg.sender);
 			emit UpgradeNftRequested(_nftVersion, _nftVersion, nfts[i], owner());
@@ -284,13 +282,13 @@ contract CollectionWithUpgradableNft is
             CollectionWithUpgradableNft(address(this))
                 .forceUpgradeNft{
                     value: 0,
-                    flag: 128,
+                    flag: 64,
                     bounce: false
                 }(nfts, takeUntil);
         } else {
             owner().transfer({
                 value: 0,
-                flag: 128,
+                flag: 64,
                 bounce: false
             });
         }
@@ -308,13 +306,13 @@ contract CollectionWithUpgradableNft is
 		if (currentNftVersion == _nftVersion) {
 			remainingGasTo.transfer({
                 value: 0,
-                flag: 128,
+                flag: 64,
 				bounce: false
             });
 		} else {
 			NftUpgradable(msg.sender).upgrade{
 				value: 0,
-				flag: 128,
+				flag: 64,
 				bounce: false
 			}(_buildNftCode(address(this)), _nftVersion, remainingGasTo);
 			emit UpgradeNftRequested(currentNftVersion, _nftVersion,  msg.sender,  remainingGasTo);

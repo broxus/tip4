@@ -4,28 +4,13 @@ pragma AbiHeader expire;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
-import "./abstract/CollectionUpgradableBase.tsol";
-import "./structures/ICollectionUpgradeData.tsol";
+import "../abstract/CollectionUpgradableBase.tsol";
 
-contract CollectionWithUpgradableNft is CollectionUpgradableBase, ICollectionUpgradeData {
+contract CollectionWithUpgradableNftTest is CollectionUpgradableBase {
 
-	constructor(
-		TvmCell codeNft,
-		TvmCell codePlatform,
-		TvmCell codeIndex,
-		TvmCell codeIndexBasis,
-		address owner,
-		uint128 remainOnNft,
-		string json
-	) CollectionUpgradableBase(
-		codeNft,
-		codePlatform,
-		codeIndex,
-		codeIndexBasis,
-		owner,
-		remainOnNft,
-		json
-	) public {}
+	function bla() external pure returns (string) {
+        return 'blablabla';
+	}
 
 	function upgrade(
         TvmCell newCode,
@@ -98,7 +83,7 @@ contract CollectionWithUpgradableNft is CollectionUpgradableBase, ICollectionUpg
 
 		_transferOwnership(data.owner);
 
-		data.remainingGasTo.transfer({
+		data.remainingGasT.transfer({
 			value: 0,
 			flag: 128 + 2,
 			bounce: false
