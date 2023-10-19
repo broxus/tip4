@@ -1,0 +1,321 @@
+pragma ever-solidity ^0.62.0;
+
+import "../interfaces/IAcceptNftBurnCallback.tsol";
+import "../interfaces/IBurnableCollection.tsol";
+
+import "../NftUpgradable.tsol";
+import "../TIP4_2/TIP4_2Collection.tsol";
+import "../TIP4_3/TIP4_3Collection.tsol";
+import "../access/OwnableInternal.tsol";
+import "../TIP4_6/platform/PlatformType.tsol";
+import "../TIP4_6/platform/Platform.tsol";
+import "../TIP4_6/interfaces/ITIP4_6Collection.tsol";
+
+abstract contract CollectionUpgradableBase is
+	TIP4_2Collection,
+	TIP4_3Collection,
+	IBurnableCollection,
+	OwnableInternal,
+	ITIP4_6Collection
+{
+
+	uint64 static nonce_;
+
+	uint8 constant value_is_less_than_required = 104;
+
+	/// _remainOnNft - the number of EVERs that will remain after the entire mint
+	/// process is completed on the Nft contract
+	uint128 _remainOnNft;
+	uint256 _totalMinted;
+	TvmCell _codePlatform;
+	uint32 _nftVersion;
+	uint32 _currentVersion;
+	uint128 dynamicGas;
+
+	constructor(
+		TvmCell codeNft,
+		TvmCell codePlatform,
+		TvmCell codeIndex,
+		TvmCell codeIndexBasis,
+		address owner,
+		uint128 remainOnNft,
+		string json
+	)
+		public
+		OwnableInternal(owner)
+		TIP4_1Collection(codeNft)
+		TIP4_2Collection(json)
+		TIP4_3Collection(codeIndex, codeIndexBasis)
+	{
+		tvm.accept();
+		tvm.rawReserve(1 ever, 0);
+		_remainOnNft = remainOnNft;
+		_codePlatform = codePlatform;
+
+		uint32 oldVersion = _nftVersion;
+		_nftVersion++;
+		uint256 codeGash = tvm.hash(_buildNftCode(address(this)));
+		emit NftCodeUpdated(oldVersion, _nftVersion, codeGash, codeGash);
+		_currentVersion++;
+		dynamicGas = valueToGas(1 ever, address(this).wid);
+
+	}
+
+	modifier onlyNft(uint256 id) virtual {
+        require(msg.sender.value != 0 && msg.sender == _resolveNft(id), 100);
+        _;
+    }
+
+	modifier onlyOwnerOrSelf() virtual {
+        require(msg.sender.value != 0 && (owner() == msg.sender || msg.sender == address(this)), 100);
+        require(msg.value != 0, 101);
+        _;
+    }
+
+	function codeDepth() public view returns(uint16) {
+        return (_buildNftCode(address(this)).depth());
+	}
+
+	function nftVersion() external override view responsible returns (uint32 version) {
+        return {value: 0, flag: 64, bounce: false} _nftVersion;
+    }
+
+	function collectionVersion() external view responsible returns (uint32 version) {
+        return {value: 0, flag: 64, bounce: false} _currentVersion;
+    }
+
+
+	function platformCodeInfo()
+		public
+		override
+		view
+		responsible
+		returns (
+			uint256 hash,
+			uint16 depth
+		)
+	{
+		hash = tvm.hash(_codePlatform);
+        return {value: 0, flag: 64, bounce: false} (hash, _codePlatform.depth());
+    }
+
+	function platformCode() public override view responsible returns (TvmCell code) {
+        return {value: 0, flag: 64, bounce: false} (_codePlatform);
+    }
+
+    function gasUpgradeValue()
+		external
+		view
+		responsible
+		returns (
+			uint128 fixedValue,
+			uint128 dynamicValue
+		)
+	{
+		return {value: 0, flag: 64, bounce: false} (1.6 ever,  dynamicGas);
+	}
+
+	function setNftCode(TvmCell code) public onlyOwner {
+		uint32 oldVersion = _nftVersion;
+		uint256 oldCodeHash = tvm.hash(_buildNftCode(address(this)));
+		_codeNft = code;
+		_nftVersion++;
+		emit NftCodeUpdated(oldVersion, _nftVersion, oldCodeHash, tvm.hash(_buildNftCode(address(this))));
+	}
+
+	function mintNft(address _owner, string _json) public virtual onlyOwner {
+		require(
+			msg.value > _remainOnNft + _indexDeployValue * 2 + 0.3 ever,
+			value_is_less_than_required
+		);
+		tvm.rawReserve(1 ever, 0);
+		_mintNft(_owner, _json, 0, 128);
+	}
+
+	function totalMinted() external view responsible returns (uint256 count) {
+		return {value: 0, flag: 64, bounce: false} (_totalMinted);
+	}
+
+	function batchMintNft(address _owner, string[] _jsons) public virtual onlyOwner {
+		require(
+			msg.value > (_remainOnNft + 3 ever) * _jsons.length + 1 ever,
+			value_is_less_than_required
+		);
+		tvm.rawReserve(1 ever, 0);
+
+		for ((string _json) : _jsons) {
+			_mintNft(_owner, _json, 3 ever, 0);
+		}
+	}
+
+	function _mintNft(address owner, string json, uint128 value, uint16 flag) internal virtual {
+
+		uint256 id = uint256(_totalMinted);
+		_totalMinted++;
+		_totalSupply++;
+
+		TvmCell codeNft = _buildNftCode(address(this));
+		TvmCell stateNft = _buildNftState(_codePlatform, id);
+
+		TvmCell params = abi.encode(
+			owner,
+			msg.sender,
+			_remainOnNft,
+			json,
+			_indexDeployValue,
+			_indexDestroyValue,
+			_codeIndex,
+			_nftVersion
+		);
+
+		address nftAddr = new Platform{
+            stateInit: stateNft,
+            value: value,
+            flag: flag,
+            bounce: false
+        }(codeNft, params, msg.sender);
+
+		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
+	}
+
+	function _resolveNft(
+        uint256 id
+    )
+		internal
+		virtual
+		view
+		override
+		returns (address nft)
+	{
+        TvmCell state = _buildNftState(_codePlatform, id);
+        uint256 hashState = tvm.hash(state);
+        nft = address.makeAddrStd(address(this).wid, hashState);
+    }
+
+	function setRemainOnNft(uint128 remainOnNft) external virtual onlyOwner {
+		_remainOnNft = remainOnNft;
+	}
+
+	function _buildNftState(
+		TvmCell code,
+		uint256 id
+	)
+		internal
+		pure
+		virtual
+		override (TIP4_2Collection, TIP4_3Collection)
+		returns (TvmCell)
+	{
+		return tvm.buildStateInit({
+			contr: Platform,
+			varInit: {
+				_root: address(this),
+				_platformType:  uint8(PlatformType.NFT),
+				_initialData: abi.encode(id)
+			},
+			code: code
+		});
+	}
+
+	function resolveIndexCodeHash(address collection, address owner) public view returns (uint256 hash) {
+		TvmCell code = _buildIndexCode(collection, owner);
+		return tvm.hash(code);
+	}
+
+	function acceptNftBurn(
+		uint256 _id,
+		address _owner,
+		address _manager,
+		address _sendGasTo,
+		address _callbackTo,
+		TvmCell _callbackPayload
+	) external override {
+		require(msg.sender.value != 0 && _resolveNft(_id) == msg.sender, 100);
+
+		_totalSupply--;
+		emit NftBurned(_id, msg.sender, _owner, _manager);
+
+		if (_callbackTo.value != 0) {
+			IAcceptNftBurnCallback(_callbackTo).onAcceptNftBurn{
+				value: 0,
+				flag: 64 + 2,
+				bounce: false
+			}(
+				address(this),
+				_id,
+				msg.sender,
+				_owner,
+				_manager,
+				_sendGasTo,
+				_callbackPayload
+			);
+		} else {
+			_sendGasTo.transfer({
+				value: 0,
+				flag: 64 + 2,
+				bounce: false
+			});
+		}
+	}
+
+	function forceUpgradeNft(
+		address[] nfts,
+		uint256 offset
+	) external view onlyOwnerOrSelf {
+
+		offset = 0;
+		uint256 lenght = nfts.length;
+		uint256 takeUntil = math.min(offset + 5, lenght);
+		require(msg.value > takeUntil * 1 ever, value_is_less_than_required);
+
+		for (uint256 i = offset; i < takeUntil; i++) {
+
+			NftUpgradable(nfts[i]).upgrade{
+				value: 1 ever,
+				flag: 1,
+				bounce: false
+			}(_buildNftCode(address(this)), _nftVersion, msg.sender);
+			emit UpgradeNftRequested(_nftVersion, _nftVersion, nfts[i], owner());
+		}
+
+		if (takeUntil < lenght) {
+            CollectionWithUpgradableNft(address(this))
+                .forceUpgradeNft{
+                    value: 0,
+                    flag: 64,
+                    bounce: false
+                }(nfts, takeUntil);
+        } else {
+            owner().transfer({
+                value: 0,
+                flag: 64,
+                bounce: false
+            });
+        }
+	}
+
+	function requestUpgradeNft(
+		uint32 currentNftVersion,
+		address remainingGasTo,
+		uint256 nftId
+	)
+		external
+		view
+		onlyNft(nftId)
+	{
+		if (currentNftVersion == _nftVersion) {
+			remainingGasTo.transfer({
+                value: 0,
+                flag: 64,
+				bounce: false
+            });
+		} else {
+			NftUpgradable(msg.sender).upgrade{
+				value: 0,
+				flag: 64,
+				bounce: false
+			}(_buildNftCode(address(this)), _nftVersion, remainingGasTo);
+			emit UpgradeNftRequested(currentNftVersion, _nftVersion,  msg.sender,  remainingGasTo);
+		}
+	}
+}

@@ -1,16 +1,16 @@
 {
     "collection": {
             "type": "Basic NFT",
-            "name": "",
-            "description": "",
+            "name": "Collection with fake dynamic royalty",
+            "description": "Collection with fake dynamic royalty",
             "preview": {
-                "source": "",
-                "mimetype": ""
+                "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHGjV11i-H1OYMj3eMIgSb2QnnIBUUWIyXXA&usqp=CAU",
+                "mimetype": "image/jpeg"
             },
             "files": [
                 {
-                    "source": "",
-                    "mimetype": ""
+                    "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLCiQpH5j5N0sK1IZnlHBzKPVviIxgUfZSNKILjO7U_T-kLXN40fQtw8G7uPxva5DeMic&usqp=CAU",
+                    "mimetype": "image/jpeg"
                 }
             ],
             "external_url": ""
@@ -18,33 +18,48 @@
     "nfts":
         [
             {
-                "address": "",
-                "preview_url": "",
-                "url": "",
-                "name": "",
-                "description": "",
-                "mimetype": "",
-                "mimetype_preview": "",
+                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "preview_url":	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQswWWoSqYtxRaVgX8kLc07s0MfW3XWfUs11OrRNLWH6RijaUO-ZnVhWzympSm0xnUoiXg&usqp=CAU",
+                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQswWWoSqYtxRaVgX8kLc07s0MfW3XWfUs11OrRNLWH6RijaUO-ZnVhWzympSm0xnUoiXg&usqp=CAU",
+                "name": "NFT with fake dynamic royalty",
+                "description": "NFT with fake dynamic royalty",
+                "mimetype": "image/jpeg",
+                "mimetype_preview": "image/jpeg",
                 "external_url": "",
                 "royalty": {
-                    "numerator": "0",
+                    "numerator": "10",
                     "denominator": "100",
-                    "receiver": ""
+                    "receiver": "0:1cd111d3a06e9fcd2eff2847ba0f6e36ead43e9842df791d3621c0ef7619c570"
                 }
             },
             {
-                "address": "",
-                "preview_url":	"",
-                "url": "",
-                "name": "",
-                "description": "",
-                "mimetype": "",
-                "mimetype_preview": "",
+                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "preview_url":	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Ry2ER9-5YKxtQ7HfiT2nsb8Kqo8hi1vjRA&usqp=CAU",
+                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Ry2ER9-5YKxtQ7HfiT2nsb8Kqo8hi1vjRA&usqp=CAU",
+                "name": "NFT with fake dynamic royalty",
+                "description": "NFT with fake dynamic royalty",
+                "mimetype": "image/jpeg",
+                "mimetype_preview": "image/jpeg",
                 "external_url": "",
                 "royalty": {
-                    "numerator": "0",
+                    "numerator": "10",
                     "denominator": "100",
-                    "receiver": ""
+                    "receiver": "0:1cd111d3a06e9fcd2eff2847ba0f6e36ead43e9842df791d3621c0ef7619c570"
+                }
+            },
+            {
+                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "preview_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ694seCoMVhbQp1jcd9ZR9lohmAJ4qH9YUQB83D_0PXiAEwWFRarN8b_c3IVUA7evnwK8&usqp=CAU",
+                "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ694seCoMVhbQp1jcd9ZR9lohmAJ4qH9YUQB83D_0PXiAEwWFRarN8b_c3IVUA7evnwK8&usqp=CAU",
+                "name": "NFT with fake dynamic royalty",
+                "description": "NFT with fake dynamic royalty",
+                "mimetype": "image/jpeg",
+                "mimetype_preview": "image/jpeg",
+                "external_url": "",
+                "royalty": {
+                    "numerator": "10",
+                    "denominator": "100",
+                    "receiver": "0:1cd111d3a06e9fcd2eff2847ba0f6e36ead43e9842df791d3621c0ef7619c570"
                 }
             }
         ]

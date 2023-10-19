@@ -97,6 +97,10 @@ async function main() {
           },
         ],
         external_url: element.external_url,
+        royalty: {
+          royaltyType: "Dynamic",
+          description: "The percentage of royalties depends on the time of existence of the NFT: up to a year - 10%, from 1-5 years - 20%, more than 5 years - 30%"
+        }
       };
 
       let royalty_ = {

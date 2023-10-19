@@ -31,7 +31,6 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
 
     /// Unique NFT id
     uint256 static _id;
-
     /// Address of NftCollection contract
     address _collection;
 
@@ -55,12 +54,18 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
         optional(TvmCell) optSalt = tvm.codeSalt(tvm.code());
         require(optSalt.hasValue(), value_is_empty);
         (address collection) = optSalt.get().toSlice().decode(address);
-        require(msg.sender == collection, sender_is_not_collection);
+        _collection = collection;
+        _init4_1(owner, sendGasTo, remainOnNft);
+    }
+
+
+    function _init4_1(address owner, address sendGasTo, uint128 remainOnNft) internal {
+        require(msg.sender == _collection, sender_is_not_collection);
         require(remainOnNft != 0, value_is_empty);
         require(msg.value > remainOnNft, value_is_less_than_required);
+
         tvm.rawReserve(remainOnNft, 0);
 
-        _collection = collection;
         _owner = owner;
         _manager = owner;
 
@@ -122,7 +127,6 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
                 bounce: false
             });
         }
-
     }
 
     /// @notice Change Nft owner
@@ -225,7 +229,6 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
                 bounce: false
             });
         }
-
     }
 
     function _changeManager(

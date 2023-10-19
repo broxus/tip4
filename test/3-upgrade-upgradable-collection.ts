@@ -1,0 +1,60 @@
+import {
+    deployAccount,
+    deployCollectionWithUbgradableNftAndMintNft
+} from "./utils";
+
+import { Account } from "everscale-standalone-client/nodejs";
+
+const logger = require('mocha-logger');
+const { expect } = require('chai');
+import {Contract, lockliftChai} from "locklift";
+import chai from "chai";
+import {FactorySource} from "../build/factorySource";
+import {CollectionWithUbgradableNft} from "./wrappers/collection";
+import {NftC} from "./wrappers/nft";
+import BigNumber from "bignumber.js";
+import { NftCUBG } from "./wrappers/nft_ubg";
+chai.use(lockliftChai);
+const fs = require('fs')
+
+
+let account1: Account;
+let nft: NftC;
+let collection: CollectionWithUbgradableNft;
+
+
+describe("Test Upgrade Ubgradable Collection", async function () {
+    it('Deploy account', async function () {
+        account1 = await deployAccount(0, 20);
+    });
+    it('Deploy NFT-Collection and Mint Nft', async function () {
+        let accForNft: Account[] = [];
+        accForNft.push(account1);
+        const [coll, nftS] = await deployCollectionWithUbgradableNftAndMintNft(account1, 1, "metadata-template.json", accForNft);
+        nft = nftS[0];
+        collection = coll;
+    });
+    it('Upgrade Collection', async function () {
+        const oldCollectionVersion = await collection.getCollectionVersion();
+        expect(oldCollectionVersion.version).to.be.eq('1');
+
+        const expectedVersion = new BigNumber(oldCollectionVersion.version).plus(1).toString();
+        const newCode = locklift.factory.getContractArtifacts('CollectionWithUpgradableNftTest').code;
+
+        await collection.upgrade(
+          account1,
+          expectedVersion,
+          account1.address,
+          newCode
+          );
+
+        const newCollection = await locklift.factory.getDeployedContract('CollectionWithUpgradableNftTest', collection.address);
+
+        const bla = (await newCollection.methods.bla({}).call()).value0;
+        expect(bla).to.be.eq('blablabla');
+
+        const newVersion = await newCollection.methods.collectionVersion({answerId: 0}).call();
+        expect(newVersion.version).to.be.eq('2');
+    });
+
+});

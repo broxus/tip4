@@ -1,0 +1,109 @@
+pragma ever-solidity 0.62.0;
+
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
+
+import "./structures/INftUpgradeData.tsol";
+import "./abstract/NftUpgradableBase.tsol";
+
+contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
+
+    constructor(
+        address owner,
+        address sendGasTo,
+        uint128 remainOnNft,
+        string json,
+        uint128 indexDeployValue,
+        uint128 indexDestroyValue,
+        TvmCell codeIndex
+    ) NftUpgradableBase (
+        owner,
+        sendGasTo,
+        remainOnNft,
+        json,
+        indexDeployValue,
+        indexDestroyValue,
+        codeIndex
+    ) public {
+        tvm.accept();
+    }
+
+    function onCodeUpgrade(TvmCell input, bool upgrade) internal {
+        tvm.resetStorage();
+        if (!upgrade) {
+        _upgradeFromPlatform(input);
+        } else {
+        _upgradeFromVersion(input);
+        }
+    }
+
+    function _upgradeFromPlatform(TvmCell _data) private {
+        (
+            address root,
+            TvmCell initialData,
+            TvmCell initialParams
+        ) = abi.decode(_data, (address, TvmCell, TvmCell));
+        _collection = root;
+        _id = abi.decode(initialData, uint256);
+        _init(initialParams);
+    }
+
+    function _upgradeFromVersion(TvmCell _data) private {
+        NftUpgradeDataNext data = abi.decode(_data, NftUpgradeData);
+        _id = data.id;
+        _collection = data.collection;
+        _owner = data.owner;
+        _manager = data.manager;
+        _json = data.json;
+        _indexDeployValue = data.indexDeployValue;
+        _indexDestroyValue = data.indexDestroyValue;
+        _codeIndex = data.codeIndex;
+        currentVersion = data.currentVersion;
+
+        data.remainingGasTo.transfer({
+            value: 0,
+            flag: 128 + 2,
+            bounce: false
+        });
+    }
+
+    function upgrade(
+        TvmCell newCode,
+        uint32 newVersion,
+        address remainingGasTo
+    )
+        external
+        onlyCollection
+    {
+        tvm.rawReserve(0, 4);
+        if (currentVersion == newVersion) {
+            remainingGasTo.transfer({
+                value: 0,
+                flag: 128 + 2,
+                bounce: false
+            });
+		} else {
+            emit NftUpgraded(currentVersion, newVersion, remainingGasTo);
+            TvmCell cellParams = abi.encode(
+                NftUpgradeDataPref({
+                    id: _id,
+                    collection: _collection,
+                    owner: _owner,
+                    manager: _manager,
+                    json: _json,
+                    indexDeployValue: _indexDeployValue,
+                    indexDestroyValue: _indexDestroyValue,
+                    codeIndex: _codeIndex,
+                    currentVersion: newVersion,
+                    remainingGasTo: remainingGasTo
+                })
+            );
+
+            tvm.setcode(newCode);
+            tvm.setCurrentCode(newCode);
+
+            onCodeUpgrade(cellParams, true);
+        }
+    }
+}

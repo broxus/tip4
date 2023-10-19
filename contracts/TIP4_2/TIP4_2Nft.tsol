@@ -20,8 +20,11 @@ abstract contract TIP4_2Nft is TIP4_1Nft, ITIP4_2JSON_Metadata {
     constructor(
         string json
     ) public {
-        _json = json;
+        _init4_2(json);
+    }
 
+    function _init4_2(string json) internal {
+        _json = json;
         _supportedInterfaces[
             bytes4(tvm.functionId(ITIP4_2JSON_Metadata.getJson))
         ] = true;

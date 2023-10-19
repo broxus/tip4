@@ -1,0 +1,131 @@
+pragma ever-solidity 0.62.0;
+
+import "../interfaces/IBurnableCollection.tsol";
+import "../TIP4_1/TIP4_1Nft.tsol";
+import "../TIP4_2/TIP4_2Nft.tsol";
+import "../TIP4_3/TIP4_3Nft.tsol";
+import "../CollectionWithUpgradableNft.tsol";
+import "../TIP4_6/interfaces/ITIP4_6Nft.tsol";
+import "../structures/INftUpgradeData.tsol";
+
+abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6Nft {
+
+    uint32 currentVersion;
+
+    constructor(
+        address owner,
+        address sendGasTo,
+        uint128 remainOnNft,
+        string json,
+        uint128 indexDeployValue,
+        uint128 indexDestroyValue,
+        TvmCell codeIndex
+    ) TIP4_1Nft(
+        owner,
+        sendGasTo,
+        remainOnNft
+    ) TIP4_2Nft (
+        json
+    ) TIP4_3Nft (
+        indexDeployValue,
+        indexDestroyValue,
+        codeIndex
+    ) public {
+        tvm.accept();
+    }
+
+    function _beforeTransfer(
+        address to,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
+    ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
+        TIP4_3Nft._destructIndex(sendGasTo);
+    }
+
+    function _afterTransfer(
+        address to,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
+    ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
+        TIP4_3Nft._deployIndex();
+    }
+
+    function _beforeChangeOwner(
+        address oldOwner,
+        address newOwner,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
+    ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
+        TIP4_3Nft._destructIndex(sendGasTo);
+    }
+
+    function _afterChangeOwner(
+        address oldOwner,
+        address newOwner,
+        address sendGasTo,
+        mapping(address => CallbackParams) callbacks
+    ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
+        TIP4_3Nft._deployIndex();
+    }
+
+    function burn(
+        address sendGasTo,
+        address callbackTo,
+        TvmCell callbackPayload
+    ) external virtual view onlyManager {
+        tvm.accept();
+        IBurnableCollection(_collection).acceptNftBurn{
+            value: 0,
+            flag: 128 + 32,
+            bounce: false
+        }(
+            _id,
+            _owner,
+            _manager,
+            sendGasTo,
+            callbackTo,
+            callbackPayload
+        );
+    }
+
+    function version() external override view responsible returns (uint32 nftVersion){
+        return {value: 0, flag: 64, bounce: false} currentVersion;
+    }
+
+    function requestUpgrade(address sendGasTo) external override onlyOwner {
+        CollectionWithUpgradableNft(_collection).requestUpgradeNft{
+            value: 0,
+            flag: 64,
+            bounce: false
+        }(currentVersion, sendGasTo, _id);
+	}
+
+    function _init(TvmCell params) internal {
+        (
+            address owner,
+            address remainingGasTo,
+            uint128 remainOnNft,
+            string json,
+			uint128 indexDeployValue,
+			uint128 indexDestroyValue,
+			TvmCell codeIndex,
+            uint32 nftVersion
+        ) = abi.decode(params, (address, address, uint128, string, uint128, uint128, TvmCell, uint32));
+
+        _init4_1(owner, remainingGasTo, remainOnNft);
+        _init4_2(json);
+        _init4_3(indexDeployValue, indexDestroyValue, codeIndex);
+        currentVersion = nftVersion;
+    }
+
+    modifier onlyCollection virtual {
+        require(msg.sender.value != 0 && msg.sender == _collection, 100);
+        _;
+    }
+
+    modifier onlyOwner() virtual {
+        require(msg.sender.value != 0 && _owner == msg.sender, 100);
+        require(msg.value != 0, 101);
+        _;
+    }
+}

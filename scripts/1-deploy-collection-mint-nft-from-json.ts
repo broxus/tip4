@@ -26,7 +26,7 @@ async function main() {
     },
   ]);
 
-  const data = fs.readFileSync("metadata-template.json", "utf8");
+  const data = fs.readFileSync("metadata-test.json", "utf8");
   if (data) array_json = JSON.parse(data);
 
   const requiredGas = new BigNumber(array_json.length)

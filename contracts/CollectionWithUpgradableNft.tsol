@@ -1,0 +1,107 @@
+pragma ever-solidity 0.62.0;
+
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
+
+import "./abstract/CollectionUpgradableBase.tsol";
+import "./structures/ICollectionUpgradeData.tsol";
+
+contract CollectionWithUpgradableNft is CollectionUpgradableBase, ICollectionUpgradeData {
+
+	constructor(
+		TvmCell codeNft,
+		TvmCell codePlatform,
+		TvmCell codeIndex,
+		TvmCell codeIndexBasis,
+		address owner,
+		uint128 remainOnNft,
+		string json
+	) CollectionUpgradableBase(
+		codeNft,
+		codePlatform,
+		codeIndex,
+		codeIndexBasis,
+		owner,
+		remainOnNft,
+		json
+	) public {}
+
+	function upgrade(
+        TvmCell newCode,
+        uint32 newVersion,
+        address remainingGasTo
+    )
+        external
+        onlyOwner
+    {
+        if (_currentVersion == newVersion) {
+			tvm.rawReserve(1 ever, 0);
+            remainingGasTo.transfer({
+                value: 0,
+                flag: 128 + 2,
+                bounce: false
+            });
+		} else {
+            TvmCell cellParams = abi.encode(
+				CollectionUpgradeDataPref({
+					remainOnNft: _remainOnNft,
+					totalMinted: _totalMinted,
+					owner: owner(),
+					codePlatform: _codePlatform,
+					nftVersion: _nftVersion,
+					indexDeployValue: _indexDeployValue,
+					indexDestroyValue: _indexDestroyValue,
+					codeIndex: _codeIndex,
+					totalSupply: _totalSupply,
+					codeNft: _codeNft,
+					json: _json,
+					deployIndexBasisValue: _deployIndexBasisValue,
+					codeIndexBasis: _codeIndexBasis,
+					currentVersion: newVersion,
+					dynamicGas: dynamicGas,
+					remainingGasTo: remainingGasTo
+				})
+            );
+
+            tvm.setcode(newCode);
+            tvm.setCurrentCode(newCode);
+
+            onCodeUpgrade(cellParams);
+        }
+    }
+
+	function onCodeUpgrade(TvmCell _data) private {
+		tvm.resetStorage();
+		tvm.rawReserve(1 ever, 0);
+
+		address remainingGasTo;
+
+		CollectionUpgradeDataNext data = abi.decode(_data, CollectionUpgradeData);
+
+		_remainOnNft = data.remainOnNft;
+		_totalMinted = data.totalMinted;
+
+		_codePlatform = data.codePlatform;
+		_nftVersion = data.nftVersion;
+		_indexDeployValue = data.indexDeployValue;
+		_indexDestroyValue = data.indexDestroyValue;
+		_codeIndex = data.codeIndex;
+		_totalSupply = data.totalSupply;
+		_codeNft = data.codeNft;
+		_json = data.json;
+		_deployIndexBasisValue = data.deployIndexBasisValue;
+		_codeIndexBasis = data.codeIndexBasis;
+		_currentVersion = data.currentVersion;
+		dynamicGas = data.dynamicGas;
+//		remainingGasTo = data.remainingGasTo;
+
+		_transferOwnership(data.owner);
+
+		data.remainingGasTo.transfer({
+			value: 0,
+			flag: 128 + 2,
+			bounce: false
+		});
+	}
+}
