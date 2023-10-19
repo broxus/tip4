@@ -346,8 +346,8 @@ SDEQ
 AND
 THROWIFNOT 100
 .loc ../contracts/NftUpgradable.tsol, 79
-PUSHINT 1000000000
 PUSHINT 0
+PUSHINT 4
 RAWRESERVE
 .loc ../contracts/NftUpgradable.tsol, 80
 GETGLOB 19
