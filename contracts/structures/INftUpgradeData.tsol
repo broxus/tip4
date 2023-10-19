@@ -2,7 +2,20 @@ pragma ever-solidity 0.62.0;
 
 interface INftUpgradeData {
 
-    struct NftUpgradeData {
+    struct NftUpgradeDataPref {
+         uint256 id;
+         address collection;
+         address owner;
+         address manager;
+         string json;
+         uint128 indexDeployValue;
+         uint128 indexDestroyValue;
+         TvmCell codeIndex;
+         uint32 currentVersion;
+         address remainingGasTo;
+    }
+
+    struct NftUpgradeDataNext {
          uint256 id;
          address collection;
          address owner;

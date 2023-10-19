@@ -50,7 +50,7 @@ contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
     }
 
     function _upgradeFromVersion(TvmCell _data) private {
-        NftUpgradeData data = abi.decode(_data, NftUpgradeData);
+        NftUpgradeDataNext data = abi.decode(_data, NftUpgradeData);
         _id = data.id;
         _collection = data.collection;
         _owner = data.owner;
@@ -76,7 +76,7 @@ contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
         external
         onlyCollection
     {
-        tvm.rawReserve(1 ever, 0);
+        tvm.rawReserve(0, 4);
         if (currentVersion == newVersion) {
             remainingGasTo.transfer({
                 value: 0,
@@ -86,7 +86,7 @@ contract NftUpgradable is NftUpgradableBase, INftUpgradeData {
 		} else {
             emit NftUpgraded(currentVersion, newVersion, remainingGasTo);
             TvmCell cellParams = abi.encode(
-                NftUpgradeData({
+                NftUpgradeDataPref({
                     id: _id,
                     collection: _collection,
                     owner: _owner,

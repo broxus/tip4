@@ -49,7 +49,7 @@ contract CollectionWithUpgradableNftTest is CollectionUpgradableBase, ICollectio
             });
 		} else {
             TvmCell cellParams = abi.encode(
-				CollectionUpgradeData({
+				CollectionUpgradeDataPref({
 					remainOnNft: _remainOnNft,
 					totalMinted: _totalMinted,
 					owner: owner(),
@@ -82,7 +82,7 @@ contract CollectionWithUpgradableNftTest is CollectionUpgradableBase, ICollectio
 
 		address remainingGasTo;
 
-		CollectionUpgradeData data = abi.decode(_data, CollectionUpgradeData);
+		CollectionUpgradeDataNext data = abi.decode(_data, CollectionUpgradeData);
 
 		_remainOnNft = data.remainOnNft;
 		_totalMinted = data.totalMinted;
