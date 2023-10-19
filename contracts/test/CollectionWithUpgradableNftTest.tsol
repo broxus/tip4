@@ -82,7 +82,7 @@ contract CollectionWithUpgradableNftTest is CollectionUpgradableBase, ICollectio
 
 		address remainingGasTo;
 
-		CollectionUpgradeDataNext data = abi.decode(_data, CollectionUpgradeData);
+		CollectionUpgradeDataNext data = abi.decode(_data, CollectionUpgradeDataNext);
 
 		_remainOnNft = data.remainOnNft;
 		_totalMinted = data.totalMinted;
