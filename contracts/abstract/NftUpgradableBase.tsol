@@ -1,4 +1,4 @@
-pragma ever-solidity 0.62.0;
+pragma ever-solidity >= 0.62.0;
 
 import "../interfaces/IBurnableCollection.tsol";
 import "../TIP4_1/TIP4_1Nft.tsol";
