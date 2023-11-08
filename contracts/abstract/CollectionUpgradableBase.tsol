@@ -2,8 +2,8 @@ pragma ever-solidity ^0.62.0;
 
 import "../interfaces/IAcceptNftBurnCallback.tsol";
 import "../interfaces/IBurnableCollection.tsol";
+import "../TIP4_6/interfaces/INftUpgradable.tsol";
 
-import "../NftUpgradable.tsol";
 import "../TIP4_2/TIP4_2Collection.tsol";
 import "../TIP4_3/TIP4_3Collection.tsol";
 import "../access/OwnableInternal.tsol";
@@ -83,7 +83,6 @@ abstract contract CollectionUpgradableBase is
 	function collectionVersion() external view responsible returns (uint32 version) {
         return {value: 0, flag: 64, bounce: false} _currentVersion;
     }
-
 
 	function platformCodeInfo()
 		public
@@ -270,7 +269,7 @@ abstract contract CollectionUpgradableBase is
 
 		for (uint256 i = offset; i < takeUntil; i++) {
 
-			NftUpgradable(nfts[i]).upgrade{
+			INftUpgradable(nfts[i]).upgrade{
 				value: 1 ever,
 				flag: 1,
 				bounce: false
@@ -279,7 +278,7 @@ abstract contract CollectionUpgradableBase is
 		}
 
 		if (takeUntil < lenght) {
-            CollectionWithUpgradableNft(address(this))
+            CollectionUpgradableBase(address(this))
                 .forceUpgradeNft{
                     value: 0,
                     flag: 64,
@@ -310,7 +309,7 @@ abstract contract CollectionUpgradableBase is
 				bounce: false
             });
 		} else {
-			NftUpgradable(msg.sender).upgrade{
+			INftUpgradable(msg.sender).upgrade{
 				value: 0,
 				flag: 64,
 				bounce: false
