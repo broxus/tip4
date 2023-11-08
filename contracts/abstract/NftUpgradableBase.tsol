@@ -5,10 +5,10 @@ import "../TIP4_1/TIP4_1Nft.tsol";
 import "../TIP4_2/TIP4_2Nft.tsol";
 import "../TIP4_3/TIP4_3Nft.tsol";
 import "./CollectionUpgradableBase.tsol";
-import "../TIP4_6/interfaces/ITIP4_6Nft.tsol";
+import "../TIP4_6/interfaces/ITIP4_6NFT.tsol";
 import "../structures/INftUpgradeData.tsol";
 
-abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6Nft {
+abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6NFT {
 
     uint32 currentVersion;
 
@@ -116,6 +116,11 @@ abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6N
         _init4_2(json);
         _init4_3(indexDeployValue, indexDestroyValue, codeIndex);
         currentVersion = nftVersion;
+
+        _supportedInterfaces[
+            bytes4(tvm.functionId(ITIP4_6NFT.requestUpgrade)) ^
+            bytes4(tvm.functionId(ITIP4_6NFT.version))
+        ] = true;
     }
 
     modifier onlyCollection virtual {

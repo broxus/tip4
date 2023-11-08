@@ -59,6 +59,11 @@ abstract contract CollectionUpgradableBase is
 		_currentVersion++;
 		dynamicGas = valueToGas(1 ever, address(this).wid);
 
+		_supportedInterfaces[
+            bytes4(tvm.functionId(ITIP4_6Collection.nftVersion)) ^
+            bytes4(tvm.functionId(ITIP4_6Collection.platformCode)) ^
+            bytes4(tvm.functionId(ITIP4_6Collection.platformCodeInfo))
+        ] = true;
 	}
 
 	modifier onlyNft(uint256 id) virtual {
