@@ -4,7 +4,7 @@ import "../interfaces/IBurnableCollection.tsol";
 import "../TIP4_1/TIP4_1Nft.tsol";
 import "../TIP4_2/TIP4_2Nft.tsol";
 import "../TIP4_3/TIP4_3Nft.tsol";
-import "../CollectionWithUpgradableNft.tsol";
+import "./CollectionUpgradableBase.tsol";
 import "../TIP4_6/interfaces/ITIP4_6Nft.tsol";
 import "../structures/INftUpgradeData.tsol";
 
@@ -93,7 +93,7 @@ abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6N
     }
 
     function requestUpgrade(address sendGasTo) external override onlyOwner {
-        CollectionWithUpgradableNft(_collection).requestUpgradeNft{
+        CollectionUpgradableBase(_collection).requestUpgradeNft{
             value: 0,
             flag: 64,
             bounce: false

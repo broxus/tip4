@@ -1,0 +1,9 @@
+pragma ever-solidity >= 0.62.0;
+
+interface INftUpgradable {
+    function upgrade(
+        TvmCell newCode,
+        uint32 newVersion,
+        address remainingGasTo
+    ) external;
+}
