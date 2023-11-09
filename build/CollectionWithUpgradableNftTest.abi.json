@@ -370,6 +370,7 @@
 		{"name":"_remainOnNft","type":"uint128"},
 		{"name":"_totalMinted","type":"uint256"},
 		{"name":"_codePlatform","type":"cell"},
+		{"name":"_saltyCodePlatform","type":"cell"},
 		{"name":"_nftVersion","type":"uint32"},
 		{"name":"_currentVersion","type":"uint32"},
 		{"name":"dynamicGas","type":"uint128"}

@@ -63,7 +63,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
     const data = fs.readFileSync(pathJsonFile, 'utf8');
     if (data) array_json = JSON.parse(data);
 
-    const { contract: collection } = await locklift.factory.deployContract({
+    const { contract: collection, tx } = await locklift.factory.deployContract({
         contract: "CollectionWithUpgradableNft",
         publicKey: (signer?.publicKey) as string,
         constructorParams: {
@@ -78,7 +78,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
         initParams: {
             nonce_: locklift.utils.getRandomNonce()
         },
-        value: toNano(5)
+        value: toNano(4)
     });
 
     logger.log(`Collection address: ${collection.address.toString()}`);
@@ -108,7 +108,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
 
             const tx = await locklift.tracing.trace(
                  collection.methods.mintNft ({
-                _owner: accForNft[ch].address,
+                _owner: accForNft[0].address,
                 _json: payload
                  }).send({
                         from: account.address,
@@ -122,7 +122,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
             let nftAddress = await collection.methods.nftAddress({ answerId: 0, id: (Number(totalMinted.count) - 1).toFixed() }).call();
             let nftCN = await NftC.from_addr(nftAddress.nft, accForNft[ch]);
             nftMinted.push(nftCN);
-            logger.log(`Nft address: ${nftAddress.nft.toString()}, owner: ${accForNft[ch].address.toString()}`);
+            logger.log(`Nft address: ${nftAddress.nft.toString()} owner: ${accForNft[ch].address.toString()}`);
             ch++;
         }
     }

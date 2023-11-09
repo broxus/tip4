@@ -28,6 +28,7 @@ abstract contract CollectionUpgradableBase is
 	uint128 _remainOnNft;
 	uint256 _totalMinted;
 	TvmCell _codePlatform;
+	TvmCell _saltyCodePlatform;
 	uint32 _nftVersion;
 	uint32 _currentVersion;
 	uint128 dynamicGas;
@@ -51,11 +52,12 @@ abstract contract CollectionUpgradableBase is
 		tvm.rawReserve(1 ever, 0);
 		_remainOnNft = remainOnNft;
 		_codePlatform = codePlatform;
+		_saltyCodePlatform = _buildPlatformCode(address(this));
 
 		uint32 oldVersion = _nftVersion;
 		_nftVersion++;
-		uint256 codeGash = tvm.hash(_buildNftCode(address(this)));
-		emit NftCodeUpdated(oldVersion, _nftVersion, codeGash, codeGash);
+		uint256 codeHash = tvm.hash(_buildNftCode(address(this)));
+		emit NftCodeUpdated(oldVersion, _nftVersion, codeHash, codeHash);
 		_currentVersion++;
 		dynamicGas = valueToGas(1 ever, address(this).wid);
 
@@ -89,6 +91,12 @@ abstract contract CollectionUpgradableBase is
         return {value: 0, flag: 64, bounce: false} _currentVersion;
     }
 
+	function _buildPlatformCode(address collection) internal virtual view returns (TvmCell) {
+        TvmBuilder salt;
+        salt.store(collection);
+        return tvm.setCodeSalt(_codePlatform, salt.toCell());
+    }
+
 	function platformCodeInfo()
 		public
 		override
@@ -99,12 +107,18 @@ abstract contract CollectionUpgradableBase is
 			uint16 depth
 		)
 	{
-		hash = tvm.hash(_codePlatform);
-        return {value: 0, flag: 64, bounce: false} (hash, _codePlatform.depth());
+        return {
+				value: 0,
+				flag: 64,
+				bounce: false
+		} (
+		tvm.hash(_saltyCodePlatform),
+		_saltyCodePlatform.depth()
+		);
     }
 
 	function platformCode() public override view responsible returns (TvmCell code) {
-        return {value: 0, flag: 64, bounce: false} (_codePlatform);
+        return {value: 0, flag: 64, bounce: false} (_saltyCodePlatform);
     }
 
     function gasUpgradeValue()
@@ -159,7 +173,7 @@ abstract contract CollectionUpgradableBase is
 		_totalSupply++;
 
 		TvmCell codeNft = _buildNftCode(address(this));
-		TvmCell stateNft = _buildNftState(_codePlatform, id);
+		TvmCell stateNft = _buildNftState(_saltyCodePlatform, id);
 
 		TvmCell params = abi.encode(
 			owner,
@@ -191,7 +205,7 @@ abstract contract CollectionUpgradableBase is
 		override
 		returns (address nft)
 	{
-        TvmCell state = _buildNftState(_codePlatform, id);
+        TvmCell state = _buildNftState(_saltyCodePlatform, id);
         uint256 hashState = tvm.hash(state);
         nft = address.makeAddrStd(address(this).wid, hashState);
     }
