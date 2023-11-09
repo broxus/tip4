@@ -1,4 +1,5 @@
 import { Migration } from "./migration";
+import { toNano } from "locklift";
 
 const migration = new Migration();
 const BigNumber = require("bignumber.js");
@@ -52,26 +53,26 @@ async function main() {
 
   console.log("Start deploy collection");
 
-  const { contract: collection, tx } = await locklift.factory.deployContract({
+  const { contract: collection } = await locklift.factory.deployContract({
     contract: "CollectionWithUpgradableNft",
-    publicKey: signer?.publicKey as string,
+    publicKey: (signer?.publicKey) as string,
     constructorParams: {
-      codeNft: Nft.code,
-      codePlatform: Nft.code,
-      codeIndex: Index.code,
-      codeIndexBasis: IndexBasis.code,
-      owner: account.address,
-      remainOnNft: locklift.utils.toNano(0.2),
-      json: JSON.stringify(array_json.collection),
+        codeNft: Nft.code,
+        codePlatform: Platform.code,
+        codeIndex: Index.code,
+        codeIndexBasis: IndexBasis.code,
+        owner: account.address,
+        remainOnNft: toNano(0.2),
+        json: JSON.stringify(array_json.collection)
     },
     initParams: {
-      nonce_: locklift.utils.getRandomNonce(),
+        nonce_: locklift.utils.getRandomNonce()
     },
-    value: locklift.utils.toNano(4),
-  });
+    value: toNano(5)
+});
 
   // const collection = (await locklift.factory.getDeployedContract('Collection', new Address('0:432da1db5a47e400ab62570938ec95310610fa483483b3fd7fa25db98cd144e0')));
-  console.log("Collection", collection.address);
+  console.log("Collection", collection.address.toString());
   migration.store(collection, "Collection");
 
   if (array_json.nfts) {
