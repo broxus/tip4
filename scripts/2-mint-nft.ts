@@ -1,8 +1,8 @@
 import { Migration } from "./migration";
+import ora from "ora";
+import prompts from "prompts";
 
 const migration = new Migration();
-const ora = require("ora");
-const prompts = require("prompts");
 export type AddressN = `0:${string}`;
 export const isValidEverAddress = (address: string): address is AddressN =>
   /^(?:-1|0):[0-9a-fA-F]{64}$/.test(address);

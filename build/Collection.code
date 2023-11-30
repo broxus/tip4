@@ -1085,14 +1085,12 @@ HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 SWAP
 GETGLOB 18
 ROT
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -2585,15 +2583,6 @@ STOPTREF
 STOPTREF
 STZERO
 ENDC
-.loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
-
-.globl	_isOwner_52494a14_internal
-.type	_isOwner_52494a14_internal, @function
-CALL $_isOwner_52494a14_internal_macro$
-
-.macro _isOwner_52494a14_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 105
-TRUE
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
 .macro supportsInterface

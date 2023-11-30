@@ -42,7 +42,7 @@ interface ITIP4_1NFT is ICallbackParamsStructure {
 
     /// @notice Change NFT owner
     /// @dev Invoked from manager address only
-    /// @dev Good practices is сhange manager address to newOwner address too
+    /// @dev Good practices is change manager address to newOwner address too
     /// @dev Emit OwnerChanged
     /// @dev Emit ManagerChanged events if manager address changed
     /// @param newOwner - New owner of NFT

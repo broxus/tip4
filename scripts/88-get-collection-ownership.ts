@@ -1,7 +1,7 @@
 import { Migration } from "./migration";
+import prompts from "prompts";
 
 const migration = new Migration();
-const prompts = require("prompts");
 
 export type AddressN = `0:${string}`;
 export const isValidEverAddress = (address: string): address is AddressN =>

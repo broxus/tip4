@@ -282,8 +282,8 @@ abstract contract CollectionUpgradableBase is
 	) external view onlyOwnerOrSelf {
 
 		offset = 0;
-		uint256 lenght = nfts.length;
-		uint256 takeUntil = math.min(offset + 5, lenght);
+		uint256 length = nfts.length;
+		uint256 takeUntil = math.min(offset + 5, length);
 		require(msg.value > takeUntil * 1 ever, value_is_less_than_required);
 
 		for (uint256 i = offset; i < takeUntil; i++) {
@@ -296,7 +296,7 @@ abstract contract CollectionUpgradableBase is
 			emit UpgradeNftRequested(_nftVersion, _nftVersion, nfts[i], owner());
 		}
 
-		if (takeUntil < lenght) {
+		if (takeUntil < length) {
             CollectionUpgradableBase(address(this))
                 .forceUpgradeNft{
                     value: 0,

@@ -43,7 +43,7 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
     /**
         @notice Initializes the contract by setting a `owner` to the NFT.
         Collection address get from the contract code that is "building" into Collection._buildNftCode, Collection._buildNftState
-        _supportedInterfaces mapping used in TIP-6 standart
+        _supportedInterfaces mapping used in TIP-6 standard
         Emit TokenMinted event
     */
     constructor(
@@ -267,53 +267,41 @@ abstract contract TIP4_1Nft is ITIP4_1NFT, TIP6 {
         address to,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        to; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     function _afterTransfer(
         address to,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        to; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     function _beforeChangeOwner(
         address oldOwner,
         address newOwner,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        oldOwner; newOwner; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     function _afterChangeOwner(
         address oldOwner,
         address newOwner,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        oldOwner; newOwner; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     function _beforeChangeManager(
         address oldManager,
         address newManager,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        oldManager; newManager; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     function _afterChangeManager(
         address oldManager,
         address newManager,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
-    ) internal virtual {
-        oldManager; newManager; sendGasTo; callbacks; //disable warnings
-    }
+    ) internal virtual;
 
     modifier onlyManager virtual {
         require(msg.sender == _manager, sender_is_not_manager);

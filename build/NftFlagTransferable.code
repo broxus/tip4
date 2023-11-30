@@ -293,6 +293,15 @@ GETGLOB 19
 THROWIFNOT 108
 .loc ../contracts/NftFlagTransferable.tsol, 0
 
+.globl	_afterChangeManager_83a727c6_internal
+.type	_afterChangeManager_83a727c6_internal, @function
+CALL $_afterChangeManager_83a727c6_internal_macro$
+
+.macro _afterChangeManager_83a727c6_internal_macro
+.loc ../contracts/NftFlagTransferable.tsol, 98
+BLKDROP 4
+.loc ../contracts/NftFlagTransferable.tsol, 0
+
 .macro burn
 DROP
 GETGLOB 6
@@ -302,7 +311,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/NftFlagTransferable.tsol, 92
+.loc ../contracts/NftFlagTransferable.tsol, 101
 OVER
 PUSHCONT {
 	LDREF
@@ -321,21 +330,20 @@ ENDS
 CALLREF {
 	CALL $burn_f1e96f29_internal_macro$
 }
-DROP
-CALLREF {
-	CALL $c7_to_c4$
+IFREF {
+	CALL $upd_only_time_in_c4$
 }
 THROW 0
 
 .macro burn_f1e96f29_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 319
+.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 307
 GETGLOB 9
 GETGLOB 14
 SDEQ
 THROWIFNOT 103
-.loc ../contracts/NftFlagTransferable.tsol, 97
+.loc ../contracts/NftFlagTransferable.tsol, 106
 ACCEPT
-.loc ../contracts/NftFlagTransferable.tsol, 98
+.loc ../contracts/NftFlagTransferable.tsol, 107
 XCHG S2
 GETGLOB 14
 GETGLOB 13
@@ -1338,7 +1346,7 @@ THROW 0
 CALL $transfer_8949bc6b_internal_macro$
 
 .macro transfer_8949bc6b_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 319
+.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 307
 GETGLOB 9
 GETGLOB 14
 SDEQ
@@ -1524,7 +1532,7 @@ THROW 0
 CALL $changeOwner_209c18eb_internal_macro$
 
 .macro changeOwner_209c18eb_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 319
+.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 307
 GETGLOB 9
 GETGLOB 14
 SDEQ
@@ -1735,7 +1743,7 @@ CALLREF {
 THROW 0
 
 .macro changeManager_ae63d46b_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 319
+.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 307
 GETGLOB 9
 GETGLOB 14
 SDEQ
@@ -2021,60 +2029,6 @@ GETGLOB 11
 GETGLOB 13
 GETGLOB 14
 GETGLOB 12
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	TIP4_1Nft__beforeTransfer_4721b701
-.type	TIP4_1Nft__beforeTransfer_4721b701, @function
-CALL $TIP4_1Nft__beforeTransfer_4721b701_macro$
-
-.macro TIP4_1Nft__beforeTransfer_4721b701_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 271
-BLKDROP 3
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	TIP4_1Nft__afterTransfer_41f289ae
-.type	TIP4_1Nft__afterTransfer_41f289ae, @function
-CALL $TIP4_1Nft__afterTransfer_41f289ae_macro$
-
-.macro TIP4_1Nft__afterTransfer_41f289ae_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 279
-BLKDROP 3
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	TIP4_1Nft__beforeChangeOwner_14992e29
-.type	TIP4_1Nft__beforeChangeOwner_14992e29, @function
-CALL $TIP4_1Nft__beforeChangeOwner_14992e29_macro$
-
-.macro TIP4_1Nft__beforeChangeOwner_14992e29_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 288
-BLKDROP 4
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	TIP4_1Nft__afterChangeOwner_4a7c15bb
-.type	TIP4_1Nft__afterChangeOwner_4a7c15bb, @function
-CALL $TIP4_1Nft__afterChangeOwner_4a7c15bb_macro$
-
-.macro TIP4_1Nft__afterChangeOwner_4a7c15bb_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 297
-BLKDROP 4
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	TIP4_1Nft__beforeChangeManager_98a59d63
-.type	TIP4_1Nft__beforeChangeManager_98a59d63, @function
-CALL $TIP4_1Nft__beforeChangeManager_98a59d63_macro$
-
-.macro TIP4_1Nft__beforeChangeManager_98a59d63_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 306
-BLKDROP 4
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
-
-.globl	_afterChangeManager_83a727c6_internal
-.type	_afterChangeManager_83a727c6_internal, @function
-CALL $_afterChangeManager_83a727c6_internal_macro$
-
-.macro _afterChangeManager_83a727c6_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 315
-BLKDROP 4
 .loc ../contracts/TIP4_1/TIP4_1Nft.tsol, 0
 
 .macro supportsInterface

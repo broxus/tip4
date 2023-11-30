@@ -1,10 +1,10 @@
 import { Migration } from "./migration";
 import { Address } from "locklift";
+import { BigNumber } from 'bignumber.js';
+import { readFileSync } from "fs";
+import prompts from "prompts";
 
 const migration = new Migration();
-const BigNumber = require("bignumber.js");
-const fs = require("fs");
-const prompts = require("prompts");
 
 export type AddressN = `0:${string}`;
 export const isValidEverAddress = (address: string): address is AddressN =>
@@ -27,7 +27,7 @@ async function main() {
     },
   ]);
 
-  const data = fs.readFileSync("metadata-royalty-template.json", "utf8");
+  const data = readFileSync("metadata-royalty-template.json", "utf8");
   if (data) array_json = JSON.parse(data);
 
   const requiredGas = new BigNumber(array_json.length)
@@ -46,9 +46,9 @@ async function main() {
     );
   }
 
-  const Nft = await locklift.factory.getContractArtifacts("NftWithRoyalty");
-  const Index = await locklift.factory.getContractArtifacts("Index");
-  const IndexBasis = await locklift.factory.getContractArtifacts("IndexBasis");
+  const Nft = locklift.factory.getContractArtifacts("NftWithRoyalty");
+  const Index = locklift.factory.getContractArtifacts("Index");
+  const IndexBasis = locklift.factory.getContractArtifacts("IndexBasis");
 
   type Royalty = {
     numerator: number;
@@ -58,7 +58,7 @@ async function main() {
 
   console.log("Start deploy collection");
 
-  const { contract: collection, tx } = await locklift.factory.deployContract({
+  const { contract: collection } = await locklift.factory.deployContract({
     contract: "CollectionWithRoyalty",
     publicKey: signer?.publicKey as string,
     constructorParams: {
@@ -87,8 +87,8 @@ async function main() {
         name: element.name,
         description: element.description,
         preview: {
-          source: element.preview_url,
-          mimetype: element.mimetype_preview,
+          source: element['preview_url'],
+          mimetype: element['mimetype_preview'],
         },
         files: [
           {
