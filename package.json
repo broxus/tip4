@@ -3,7 +3,11 @@
   "version": "1.0.1",
   "description": "Set of ready-to-use tvm nft token contracts following tip4 standard",
   "main": "",
-  "scripts": {},
+  "scripts": {
+    "build": "locklift build --config locklift.config.ts",
+    "test": "locklift test --disable-build --config locklift.config.ts --network locklift",
+    "deploy": "locklift deploy --disable-build --config locklift.config.ts --network locklift"
+  },
   "bugs": {
     "url": "https://github.com/broxus/tip4/issues"
   },
@@ -23,6 +27,7 @@
   "homepage": "https://github.com/broxus/tip4",
   "license": "ISC",
   "devDependencies": {
+    "@broxus/locklift-deploy": "^1.1.1",
     "@types/chai": "^4.3.1",
     "@types/commander": "^2.12.2",
     "@types/mocha": "^9.1.1",

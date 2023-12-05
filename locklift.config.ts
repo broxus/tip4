@@ -1,10 +1,21 @@
+import '@broxus/locklift-deploy';
+
 import { LockliftConfig } from "locklift";
+import { Deployments } from '@broxus/locklift-deploy';
 import { FactorySource } from "./build/factorySource";
 import * as dotenv from "dotenv";
 dotenv.config();
 
 declare global {
   const locklift: import("locklift").Locklift<FactorySource>;
+}
+
+declare module 'locklift' {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  export interface Locklift {
+    deployments: Deployments<FactorySource>;
+  }
 }
 
 const config: LockliftConfig = {
