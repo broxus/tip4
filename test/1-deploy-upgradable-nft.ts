@@ -59,6 +59,6 @@ describe("Test Upgradable NFT", async function () {
                 }
             }
         })
-        expect(new BigNumber(nftCodeFromCollection.codeHash).toString(16)).to.be.eq(codeHash.toString());
+        expect(new BigNumber(nftCodeFromCollection.codeHash).isEqualTo(codeHash, 16)).to.be.true;
     });
 });

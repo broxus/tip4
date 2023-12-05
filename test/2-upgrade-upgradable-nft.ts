@@ -74,7 +74,7 @@ describe("Test Upgrade Upgradable NFT", async function () {
         });
 
         const codeHashFromCollection = await collection.getNftCodeHash();
-        expect(new BigNumber(codeHashFromCollection.codeHash).toString(16)).to.be.eq(codeHash.toString());
+        expect(new BigNumber(codeHashFromCollection.codeHash).isEqualTo(codeHash, 16)).to.be.true;
 
 
         const { hash: newCodeHash } = await locklift.provider.setCodeSalt({
@@ -87,9 +87,9 @@ describe("Test Upgrade Upgradable NFT", async function () {
             }
         });
 
-        await collection.setNftCode(account1, newCode, '3000000000');
+        await locklift.transactions.waitFinalized(collection.setNftCode(account1, newCode, '3000000000'));
         const newCodeFromCollection = await collection.getNftCodeHash();
-        expect(new BigNumber(newCodeFromCollection.codeHash).toString(16)).to.be.eq(newCodeHash.toString());
+        expect(new BigNumber(newCodeFromCollection.codeHash).isEqualTo(newCodeHash, 16)).to.be.true;
 
         const eventNftCodeUpdated = await collection.getEvent('NftCodeUpdated') as any;
         expect(eventNftCodeUpdated.oldVersion).to.be.eq('1');
@@ -101,7 +101,7 @@ describe("Test Upgrade Upgradable NFT", async function () {
         const oldVersion = await nft.getNftVersion();
         expect(oldVersion.nftVersion).to.be.eq('1');
 
-        await nft.requestUpgrade(account1, account1.address, upgradeValue.toString());
+        await locklift.transactions.waitFinalized(nft.requestUpgrade(account1, account1.address, upgradeValue.toString()));
 
         const eventUpgradeNftRequested = await collection.getEvent('UpgradeNftRequested') as {
             oldVersion: string;
