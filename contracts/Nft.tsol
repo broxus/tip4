@@ -92,6 +92,9 @@ contract Nft is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft {
         TvmCell callbackPayload
     ) external view virtual onlyManager {
         tvm.accept();
+
+        _destructIndex(sendGasTo);
+
         IBurnableCollection(_collection).acceptNftBurn{ 
             value: 0, 
             flag: 128 + 32, 

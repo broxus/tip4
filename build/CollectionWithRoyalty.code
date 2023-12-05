@@ -1324,9 +1324,7 @@ SETINDEXQ 4
 FALSE
 SETINDEXQ 1
 SETGLOB 4
-CALLREF {
-	CALL $_buildIndexBasisCode_789e5705_internal_macro$
-}
+GETGLOB 15
 HASHCU
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
