@@ -1,6 +1,6 @@
 import { Account } from "everscale-standalone-client/nodejs";
 import { CallbackType } from "../utils";
-import {Address, Contract, toNano, zeroAddress} from "locklift";
+import { Address, Contract, zeroAddress } from "locklift";
 import { FactorySource } from "../../build/factorySource";
 
 export class NftCUBG {
@@ -15,8 +15,8 @@ export class NftCUBG {
     }
 
     static async from_addr(addr: Address, owner: Account) {
-        const contract = await locklift.factory.getDeployedContract('NftUpgradableForTest', addr);
-        return new NftC(contract, owner);
+        const contract = locklift.factory.getDeployedContract('NftUpgradableForTest', addr);
+        return new NftCUBG(contract, owner);
     }
 
     async getInfo() {
@@ -43,10 +43,12 @@ export class NftCUBG {
     }
 
     async requestUpgrade(initiator: Account, gasValue: any) {
-        return await this.contract.methods.requestUpgrade({}).send({
-            from: initiator.address,
-            amount: gasValue
-        });
+        return await this.contract.methods
+            .requestUpgrade({ sendGasTo: initiator.address })
+            .send({
+                from: initiator.address,
+                amount: gasValue
+            });
     }
 
     async getEvents(event_name: string) {

@@ -1,6 +1,6 @@
 import { Account } from "everscale-standalone-client/nodejs";
 import { CallbackType } from "../utils";
-import {Address, Contract, toNano, zeroAddress} from "locklift";
+import { Address, Contract, zeroAddress } from "locklift";
 import { FactorySource } from "../../build/factorySource";
 
 export class NftC {
@@ -15,7 +15,7 @@ export class NftC {
     }
 
     static async from_addr(addr: Address, owner: Account) {
-        const contract = await locklift.factory.getDeployedContract('NftUpgradable', addr);
+        const contract = locklift.factory.getDeployedContract('NftUpgradable', addr);
         return new NftC(contract, owner);
     }
 

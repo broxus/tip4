@@ -391,7 +391,7 @@ SETGLOB 27
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 80
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 78
 CTOS
 LDU 128
 LDU 256
@@ -420,69 +420,69 @@ PUSHINT 16
 TUPLEVAR
 SWAP
 ENDS
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 82
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 80
 DUP
 FIRST
 SETGLOB 21
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 83
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 81
 DUP
 SECOND
 SETGLOB 22
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 85
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 83
 DUP
 INDEX 3
 SETGLOB 23
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 86
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 84
 DUP
 INDEX 4
 SETGLOB 25
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 87
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 85
 DUP
 INDEX 5
 SETGLOB 16
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 88
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 86
 DUP
 INDEX 6
 SETGLOB 17
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 89
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 87
 DUP
 INDEX 7
 SETGLOB 14
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 90
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 88
 DUP
 INDEX 8
 SETGLOB 12
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 91
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 89
 DUP
 INDEX 9
 SETGLOB 11
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 92
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 90
 DUP
 INDEX 10
 SETGLOB 13
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 93
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 91
 DUP
 INDEX 11
 SETGLOB 18
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 94
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 92
 DUP
 INDEX 12
 SETGLOB 15
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 95
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 93
 DUP
 INDEX 13
 SETGLOB 26
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 96
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 94
 DUP
 INDEX 14
 SETGLOB 27
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 99
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 97
 DUP
 THIRD
 CALLREF {
 	CALL $_transferOwnership_d29d44ee_internal_macro$
 }
-.loc ../contracts/CollectionWithUpgradableNft.tsol, 101
+.loc ../contracts/CollectionWithUpgradableNft.tsol, 99
 INDEX 15
 NEWC
 STSLICECONST x42_
@@ -2490,14 +2490,12 @@ HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 SWAP
 GETGLOB 18
 ROT
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -2700,9 +2698,7 @@ SETINDEXQ 4
 FALSE
 SETINDEXQ 1
 SETGLOB 4
-CALLREF {
-	CALL $_buildIndexBasisCode_789e5705_internal_macro$
-}
+GETGLOB 15
 HASHCU
 .loc ../contracts/TIP4_3/TIP4_3Collection.tsol, 0
 
@@ -3990,15 +3986,6 @@ STOPTREF
 STOPTREF
 STZERO
 ENDC
-.loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
-
-.globl	_isOwner_52494a14_internal
-.type	_isOwner_52494a14_internal, @function
-CALL $_isOwner_52494a14_internal_macro$
-
-.macro _isOwner_52494a14_internal_macro
-.loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 105
-TRUE
 .loc ../contracts/TIP4_1/TIP4_1Collection.tsol, 0
 
 .macro supportsInterface

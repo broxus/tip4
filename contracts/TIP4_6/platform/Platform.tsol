@@ -31,5 +31,5 @@ contract Platform {
         }
     }
 
-    function onCodeUpgrade(TvmCell input, bool upgrade) private {}
+    function onCodeUpgrade(TvmCell /*input*/, bool /*upgrade*/) private {}
 }

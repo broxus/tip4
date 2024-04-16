@@ -1,12 +1,12 @@
 import { FactorySource } from "../build/factorySource";
-import {Address, Contract, zeroAddress, WalletTypes, toNano, getRandomNonce} from "locklift";
+import { Address, Contract, WalletTypes, toNano, getRandomNonce } from "locklift";
 import { Account } from "everscale-standalone-client/nodejs";
 import { NftC } from "./wrappers/nft";
-import {CollectionWithUbgradableNft} from "./wrappers/collection";
+import { CollectionWithUpgradableNft } from "./wrappers/collection";
+import { expect } from "chai";
+import { readFileSync } from "fs";
 
-const fs = require('fs')
 const logger = require("mocha-logger");
-const { expect } = require("chai");
 
 
 export type AddressN = `0:${string}`
@@ -49,21 +49,21 @@ export const deployAccount = async function (key_number = 0, initial_balance = 1
     return account;
 }
 
-export const deployCollectionWithUbgradableNftAndMintNft = async function (account: Account, remainOnNft: 1, pathJsonFile: "metadata-template.json", accForNft: Account[]) {
-    const Nft = (await locklift.factory.getContractArtifacts("NftUpgradable"));
-    const Index = (await locklift.factory.getContractArtifacts("Index"));
-    const IndexBasis = (await locklift.factory.getContractArtifacts("IndexBasis"));
-    const Platform = (await locklift.factory.getContractArtifacts("Platform"));
+export const deployCollectionWithUpgradableNftAndMintNft = async function (account: Account, remainOnNft: 1, pathJsonFile: "metadata-template.json", accForNft: Account[]) {
+    const Nft = locklift.factory.getContractArtifacts("NftUpgradable");
+    const Index = locklift.factory.getContractArtifacts("Index");
+    const IndexBasis = locklift.factory.getContractArtifacts("IndexBasis");
+    const Platform = locklift.factory.getContractArtifacts("Platform");
     const signer = await locklift.keystore.getSigner('0');
 
     remainOnNft = remainOnNft || 0;
     accForNft = accForNft || "";
 
     let array_json: any;
-    const data = fs.readFileSync(pathJsonFile, 'utf8');
+    const data = readFileSync(pathJsonFile, 'utf8');
     if (data) array_json = JSON.parse(data);
 
-    const { contract: collection, tx } = await locklift.factory.deployContract({
+    const { contract: collection } = await locklift.factory.deployContract({
         contract: "CollectionWithUpgradableNft",
         publicKey: (signer?.publicKey) as string,
         constructorParams: {
@@ -93,7 +93,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
                 "name": element.name,
                 "description": element.description,
                 "preview": {
-                    "source": element.preview_url,
+                    "source": element['preview_url'],
                     "mimetype": "image/png"
                 },
                 "files": [
@@ -106,7 +106,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
             }
             let payload = JSON.stringify(item);
 
-            const tx = await locklift.tracing.trace(
+            await locklift.tracing.trace(
                  collection.methods.mintNft ({
                 _owner: accForNft[0].address,
                 _json: payload
@@ -127,7 +127,7 @@ export const deployCollectionWithUbgradableNftAndMintNft = async function (accou
         }
     }
 
-    return [new CollectionWithUbgradableNft(collection, account), nftMinted] as const;
+    return [new CollectionWithUpgradableNft(collection, account), nftMinted] as const;
 }
 export const deployNFT = async function (account: Account, collection: CollectionType, nft_name: string, nft_description: string, nft_url: string, externalUrl: string, ownerNFT = account) {
     let item = {

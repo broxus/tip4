@@ -38,7 +38,7 @@ abstract contract MultiOwner is OwnableInternal {
         return managers_;
     }
 
-    function isAnyOwner() internal returns(bool) {
+    function isAnyOwner() internal view returns (bool) {
         if (msg.sender == owner()) {
             return true;
         }

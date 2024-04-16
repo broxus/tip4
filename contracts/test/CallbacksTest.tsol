@@ -1,0 +1,76 @@
+pragma ever-solidity >= 0.62.0;
+
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
+
+import "../interfaces/IAcceptNftBurnCallback.tsol";
+import "../TIP4_1/interfaces/INftChangeManager.tsol";
+import "../TIP4_1/interfaces/INftChangeOwner.tsol";
+import "../TIP4_1/interfaces/INftTransfer.tsol";
+
+contract CallbacksTest is
+    INftChangeManager,
+    INftChangeOwner,
+    INftTransfer,
+    IAcceptNftBurnCallback
+{
+    uint32 private static _nonce;
+
+    function onNftChangeManager(
+        uint256 id,
+        address owner,
+        address oldManager,
+        address newManager,
+        address collection,
+        address sendGasTo,
+        TvmCell payload
+    ) external override {
+        tvm.rawReserve(1 ever, 0);
+
+        id; owner; oldManager; newManager; collection; sendGasTo; payload;
+    }
+
+    function onNftChangeOwner(
+        uint256 id,
+        address manager,
+        address oldOwner,
+        address newOwner,
+        address collection,
+        address sendGasTo,
+        TvmCell payload
+    ) external override {
+        tvm.rawReserve(1 ever, 0);
+
+        id; manager; oldOwner; newOwner; collection; sendGasTo; payload;
+    }
+
+    function onNftTransfer(
+        uint256 id,
+        address oldOwner,
+        address newOwner,
+        address oldManager,
+        address newManager,
+        address collection,
+        address gasReceiver,
+        TvmCell payload
+    ) external override {
+        tvm.rawReserve(1 ever, 0);
+
+        id; oldOwner; newOwner; oldManager; newManager; collection; gasReceiver; payload;
+    }
+
+    function onAcceptNftBurn(
+        address _collection,
+        uint256 _id,
+        address _nft,
+        address _owner,
+        address _manager,
+        address _remainingGasTo,
+        TvmCell _payload
+    ) external override {
+        tvm.rawReserve(1 ever, 0);
+
+        _collection; _id; _nft; _owner; _manager; _remainingGasTo; _payload;
+    }
+}

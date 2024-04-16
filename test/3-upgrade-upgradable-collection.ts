@@ -1,36 +1,29 @@
 import {
     deployAccount,
-    deployCollectionWithUbgradableNftAndMintNft
+    deployCollectionWithUpgradableNftAndMintNft
 } from "./utils";
 
 import { Account } from "everscale-standalone-client/nodejs";
 
-const logger = require('mocha-logger');
-const { expect } = require('chai');
-import {Contract, lockliftChai} from "locklift";
-import chai from "chai";
-import {FactorySource} from "../build/factorySource";
-import {CollectionWithUbgradableNft} from "./wrappers/collection";
-import {NftC} from "./wrappers/nft";
-import BigNumber from "bignumber.js";
-import { NftCUBG } from "./wrappers/nft_ubg";
-chai.use(lockliftChai);
-const fs = require('fs')
+import { expect } from "chai";
+import { CollectionWithUpgradableNft } from "./wrappers/collection";
+import { NftC } from "./wrappers/nft";
+import { BigNumber } from "bignumber.js";
 
 
 let account1: Account;
 let nft: NftC;
-let collection: CollectionWithUbgradableNft;
+let collection: CollectionWithUpgradableNft;
 
 
-describe("Test Upgrade Ubgradable Collection", async function () {
+describe("Test Upgrade Upgradable Collection", async function () {
     it('Deploy account', async function () {
         account1 = await deployAccount(0, 20);
     });
     it('Deploy NFT-Collection and Mint Nft', async function () {
         let accForNft: Account[] = [];
         accForNft.push(account1);
-        const [coll, nftS] = await deployCollectionWithUbgradableNftAndMintNft(account1, 1, "metadata-template.json", accForNft);
+        const [coll, nftS] = await deployCollectionWithUpgradableNftAndMintNft(account1, 1, "metadata-template.json", accForNft);
         nft = nftS[0];
         collection = coll;
     });
@@ -48,7 +41,7 @@ describe("Test Upgrade Ubgradable Collection", async function () {
           newCode
           );
 
-        const newCollection = await locklift.factory.getDeployedContract('CollectionWithUpgradableNftTest', collection.address);
+        const newCollection = locklift.factory.getDeployedContract('CollectionWithUpgradableNftTest', collection.address);
 
         const bla = (await newCollection.methods.bla({}).call()).value0;
         expect(bla).to.be.eq('blablabla');

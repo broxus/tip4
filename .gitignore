@@ -3,6 +3,8 @@ node_modules/
 .env
 migration-log.json
 
+.cache/
+build/*.map.json
 deployments/
 
 .DS_Store

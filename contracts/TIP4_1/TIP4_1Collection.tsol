@@ -17,7 +17,7 @@ import './TIP4_1Nft.tsol';
 /// For detect what interfaces a smart contract implements used TIP-6.1 standard. ...
 abstract contract TIP4_1Collection is ITIP4_1Collection, TIP6 {
 
-    /// Code of the TIP4_1Nft conract or of the custom Nft contract based on the TIP4_1Nft
+    /// Code of the TIP4_1Nft contract or of the custom Nft contract based on the TIP4_1Nft
     TvmCell _codeNft;
 
     /// Number of minted tokens
@@ -100,9 +100,4 @@ abstract contract TIP4_1Collection is ITIP4_1Collection, TIP6 {
             code: code
         });
     }
-
-    function _isOwner() internal virtual returns(bool) {
-        return true;
-    }
-
 }

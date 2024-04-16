@@ -75,8 +75,6 @@ contract CollectionWithUpgradableNft is CollectionUpgradableBase, ICollectionUpg
 		tvm.resetStorage();
 		tvm.rawReserve(1 ever, 0);
 
-		address remainingGasTo;
-
 		CollectionUpgradeDataNext data = abi.decode(_data, CollectionUpgradeDataNext);
 
 		_remainOnNft = data.remainOnNft;

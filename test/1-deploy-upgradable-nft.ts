@@ -1,35 +1,28 @@
 import {
     deployAccount,
-    sleep,
-    deployCollectionWithUbgradableNftAndMintNft
+    deployCollectionWithUpgradableNftAndMintNft
 } from "./utils";
 
 import { Account } from "everscale-standalone-client/nodejs";
 
-const logger = require('mocha-logger');
-const { expect } = require('chai');
-import {Contract, lockliftChai} from "locklift";
-import chai from "chai";
-import {FactorySource} from "../build/factorySource";
-import {CollectionWithUbgradableNft} from "./wrappers/collection";
-import {NftC} from "./wrappers/nft";
-import BigNumber from "bignumber.js";
-chai.use(lockliftChai);
-const fs = require('fs')
+import { expect } from "chai";
+import { CollectionWithUpgradableNft } from "./wrappers/collection";
+import { NftC } from "./wrappers/nft";
+import { BigNumber } from "bignumber.js";
 
 
 let account1: Account;
 let nft: NftC;
-let collection: CollectionWithUbgradableNft;
+let collection: CollectionWithUpgradableNft;
 
-describe("Test Ubgradable NFT", async function () {
+describe("Test Upgradable NFT", async function () {
     it('Deploy account', async function () {
         account1 = await deployAccount(0, 20);
     });
     it('Deploy NFT-Collection and Mint Nft', async function () {
         let accForNft: Account[] = [];
         accForNft.push(account1);
-        const [coll, nftS] = await deployCollectionWithUbgradableNftAndMintNft(account1, 1, "metadata-template.json", accForNft);
+        const [coll, nftS] = await deployCollectionWithUpgradableNftAndMintNft(account1, 1, "metadata-template.json", accForNft);
         nft = nftS[0];
         collection = coll;
     });
@@ -62,6 +55,6 @@ describe("Test Ubgradable NFT", async function () {
                 }
             }
         })
-        expect(new BigNumber(nftCodeFromCollection.codeHash).toString(16)).to.be.eq(codeHash.toString());
+        expect(new BigNumber(nftCodeFromCollection.codeHash).isEqualTo(codeHash, 16)).to.be.true;
     });
 });

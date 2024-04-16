@@ -45,55 +45,64 @@ contract NftFlagTransferable is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft {
 	}
 
     function _beforeTransfer(
-        address to, 
+        address /*to*/,
         address sendGasTo, 
-        mapping(address => CallbackParams) callbacks
+        mapping(address => CallbackParams) /*callbacks*/
     ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
         require(_transferable, not_transferable);
         TIP4_3Nft._destructIndex(sendGasTo);
     }
 
     function _afterTransfer(
-        address to, 
-        address sendGasTo, 
-        mapping(address => CallbackParams) callbacks
+        address /*to*/,
+        address /*sendGasTo*/,
+        mapping(address => CallbackParams) /*callbacks*/
     ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
         TIP4_3Nft._deployIndex();
     }
 
     function _beforeChangeOwner(
-        address oldOwner, 
-        address newOwner,
+        address /*oldOwner*/,
+        address /*newOwner*/,
         address sendGasTo, 
-        mapping(address => CallbackParams) callbacks
+        mapping(address => CallbackParams) /*callbacks*/
     ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
         require(_transferable, not_transferable);
         TIP4_3Nft._destructIndex(sendGasTo);
     }   
 
     function _afterChangeOwner(
-        address oldOwner, 
-        address newOwner,
-        address sendGasTo, 
-        mapping(address => CallbackParams) callbacks
+        address /*oldOwner*/,
+        address /*newOwner*/,
+        address /*sendGasTo*/,
+        mapping(address => CallbackParams) /*callbacks*/
     ) internal virtual override(TIP4_1Nft, TIP4_3Nft) {
         TIP4_3Nft._deployIndex();
     }
 
     function _beforeChangeManager(
+        address /*oldManager*/,
+        address /*newManager*/,
+        address /*sendGasTo*/,
+        mapping(address => CallbackParams) /*callbacks*/
+    ) internal virtual override {
+        require(_transferable, not_transferable);
+    }
+
+    function _afterChangeManager(
         address oldManager,
         address newManager,
         address sendGasTo,
         mapping(address => CallbackParams) callbacks
     ) internal virtual override {
-        require(_transferable, not_transferable);
+        oldManager; newManager; sendGasTo; callbacks;
     }
 
     function burn(
         address sendGasTo,
         address callbackTo,
         TvmCell callbackPayload
-    ) external virtual onlyManager {
+    ) external view virtual onlyManager {
         tvm.accept();
         IBurnableCollection(_collection).acceptNftBurn{
             value: 0,

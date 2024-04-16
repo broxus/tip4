@@ -1,9 +1,9 @@
 import { Migration } from "./migration";
+import ora from "ora";
+import prompts from "prompts";
+import { BigNumber } from "bignumber.js";
 
 const migration = new Migration();
-const ora = require("ora");
-const prompts = require("prompts");
-const BigNumber = require("bignumber.js");
 const INCREMENT = 20;
 
 export type AddressN = `0:${string}`;
@@ -32,7 +32,7 @@ async function main() {
     },
   ]);
 
-  var config: { [k: string]: any } = {};
+  let config: { [k: string]: any } = {};
   config.owner = response.owner;
   config.nftAmount = response.nftAmount;
 
@@ -97,11 +97,11 @@ async function main() {
 
   const spinner = ora("Deploying Collection").start();
 
-  const Nft = await locklift.factory.getContractArtifacts("Nft");
-  const Index = await locklift.factory.getContractArtifacts("Index");
-  const IndexBasis = await locklift.factory.getContractArtifacts("IndexBasis");
+  const Nft = locklift.factory.getContractArtifacts("Nft");
+  const Index = locklift.factory.getContractArtifacts("Index");
+  const IndexBasis = locklift.factory.getContractArtifacts("IndexBasis");
 
-  const { contract: collection, tx } = await locklift.factory.deployContract({
+  const { contract: collection } = await locklift.factory.deployContract({
     contract: "Collection",
     publicKey: signer?.publicKey as string,
     constructorParams: {
