@@ -220,7 +220,7 @@ describe('NFT', () => {
         .call()
         .then((r) => r.index);
       const indexByUserAndCollection = await nft.methods
-        .resolveIndex({ answerId: 0, collection: zeroAddress, owner: user })
+        .resolveIndex({ answerId: 0, collection: collection.address, owner: user })
         .call()
         .then((r) => r.index);
 
@@ -245,7 +245,7 @@ describe('NFT', () => {
         .call()
         .then((r) => r.index);
       const indexByUserAndCollectionAfter = await nft.methods
-        .resolveIndex({ answerId: 0, collection: zeroAddress, owner: owner })
+        .resolveIndex({ answerId: 0, collection: collection.address, owner: owner })
         .call()
         .then((r) => r.index);
       const isIndexByUserAfterDeployed = await locklift.provider
@@ -340,7 +340,7 @@ describe('NFT', () => {
         .call()
         .then((r) => r.index);
       const indexByUserAndCollection = await nft.methods
-        .resolveIndex({ answerId: 0, collection: zeroAddress, owner: owner })
+        .resolveIndex({ answerId: 0, collection: collection.address, owner: owner })
         .call()
         .then((r) => r.index);
 

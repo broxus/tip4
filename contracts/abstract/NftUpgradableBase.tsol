@@ -68,22 +68,18 @@ abstract contract NftUpgradableBase is TIP4_1Nft, TIP4_2Nft, TIP4_3Nft, ITIP4_6N
     }
 
     function _beforeChangeManager(
-        address oldManager,
-        address newManager,
-        address sendGasTo,
-        mapping(address => CallbackParams) callbacks
-    ) internal virtual override {
-        oldManager; newManager; sendGasTo; callbacks;
-    }
+        address /*oldManager*/,
+        address /*newManager*/,
+        address /*sendGasTo*/,
+        mapping(address => CallbackParams) /*callbacks*/
+    ) internal virtual override {}
 
     function _afterChangeManager(
-        address oldManager,
-        address newManager,
-        address sendGasTo,
-        mapping(address => CallbackParams) callbacks
-    ) internal virtual override {
-        oldManager; newManager; sendGasTo; callbacks;
-    }
+        address /*oldManager*/,
+        address /*newManager*/,
+        address /*sendGasTo*/,
+        mapping(address => CallbackParams) /*callbacks*/
+    ) internal virtual override {}
 
     function burn(
         address sendGasTo,

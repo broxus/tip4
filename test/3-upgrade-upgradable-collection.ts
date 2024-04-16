@@ -5,13 +5,10 @@ import {
 
 import { Account } from "everscale-standalone-client/nodejs";
 
-import { lockliftChai } from "locklift";
-import chai, { expect } from "chai";
+import { expect } from "chai";
 import { CollectionWithUpgradableNft } from "./wrappers/collection";
 import { NftC } from "./wrappers/nft";
 import { BigNumber } from "bignumber.js";
-
-chai.use(lockliftChai);
 
 
 let account1: Account;

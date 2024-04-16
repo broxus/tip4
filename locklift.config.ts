@@ -1,9 +1,12 @@
 import '@broxus/locklift-deploy';
 
-import { LockliftConfig } from "locklift";
+import { LockliftConfig, lockliftChai } from "locklift";
 import { Deployments } from '@broxus/locklift-deploy';
 import { FactorySource } from "./build/factorySource";
 import * as dotenv from "dotenv";
+import chai from "chai";
+
+chai.use(lockliftChai);
 dotenv.config();
 
 declare global {

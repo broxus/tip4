@@ -334,7 +334,7 @@ CALLREF {
 THROW 0
 
 .macro upgrade_fb9d1513_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 144
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 140
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -496,7 +496,7 @@ CALLREF {
 CALL $_beforeChangeManager_98a59d63_internal_macro$
 
 .macro _beforeChangeManager_98a59d63_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 76
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 70
 BLKDROP 4
 .loc ../contracts/abstract/NftUpgradableBase.tsol, 0
 
@@ -505,7 +505,7 @@ BLKDROP 4
 CALL $_afterChangeManager_83a727c6_internal_macro$
 
 .macro _afterChangeManager_83a727c6_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 85
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 77
 BLKDROP 4
 .loc ../contracts/abstract/NftUpgradableBase.tsol, 0
 
@@ -518,7 +518,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 88
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 84
 OVER
 PUSHCONT {
 	LDREF
@@ -548,9 +548,9 @@ GETGLOB 9
 GETGLOB 14
 SDEQ
 THROWIFNOT 103
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 93
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 89
 ACCEPT
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 94
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 90
 XCHG S2
 GETGLOB 14
 GETGLOB 13
@@ -597,7 +597,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 108
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 104
 LDU 32
 GETGLOB 4
 ROT
@@ -660,7 +660,7 @@ IFREF {
 THROW 0
 
 .macro version_54fd4d50_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 109
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 105
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -681,7 +681,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 112
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 108
 OVER
 PUSHCONT {
 	LDREF
@@ -702,7 +702,7 @@ CALLREF {
 THROW 0
 
 .macro requestUpgrade_6b9f97ef_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 149
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 145
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -713,12 +713,12 @@ GETGLOB 9
 SDEQ
 AND
 THROWIFNOT 100
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 150
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 146
 DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 113
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 109
 GETGLOB 11
 SWAP
 GETGLOB 19
@@ -748,7 +748,7 @@ SENDRAWMSG
 CALL $_init_58f8ee94_internal_macro$
 
 .macro _init_58f8ee94_internal_macro
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 121
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 117
 CTOS
 LDMSGADDR
 LDREF
@@ -762,24 +762,24 @@ LDU 128
 LDREF
 LDU 32
 ENDS
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 132
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 128
 BLKSWAP 3, 5
 CALLREF {
 	CALL $_init4_1_094f8df3_internal_macro$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 133
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 129
 ROLL 4
 CALLREF {
 	CALL $_init4_2_7c86c315_internal_macro$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 134
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 130
 ROLLREV 3
 CALLREF {
 	CALL $_init4_3_8f662628_internal_macro$
 }
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 135
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 131
 SETGLOB 19
-.loc ../contracts/abstract/NftUpgradableBase.tsol, 137
+.loc ../contracts/abstract/NftUpgradableBase.tsol, 133
 GETGLOB 10
 PUSHINT 2067098323
 PUSHINT 322087217
