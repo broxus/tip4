@@ -18,7 +18,7 @@
     "nfts":
         [
             {
-                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "address": "0:bb34e1e5110b2841c9b3ea951704656337ac4acc8a1c61bfca291e1fe7e19e6e",
                 "preview_url":	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQswWWoSqYtxRaVgX8kLc07s0MfW3XWfUs11OrRNLWH6RijaUO-ZnVhWzympSm0xnUoiXg&usqp=CAU",
                 "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQswWWoSqYtxRaVgX8kLc07s0MfW3XWfUs11OrRNLWH6RijaUO-ZnVhWzympSm0xnUoiXg&usqp=CAU",
                 "name": "NFT with fake dynamic royalty",
@@ -33,7 +33,7 @@
                 }
             },
             {
-                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "address": "0:bb34e1e5110b2841c9b3ea951704656337ac4acc8a1c61bfca291e1fe7e19e6e",
                 "preview_url":	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Ry2ER9-5YKxtQ7HfiT2nsb8Kqo8hi1vjRA&usqp=CAU",
                 "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Ry2ER9-5YKxtQ7HfiT2nsb8Kqo8hi1vjRA&usqp=CAU",
                 "name": "NFT with fake dynamic royalty",
@@ -48,7 +48,7 @@
                 }
             },
             {
-                "address": "0:afcc999c2a1ac2011d59a8d098f9fe414dbafe02c2c05736ce806be4e6bcdf5d",
+                "address": "0:bb34e1e5110b2841c9b3ea951704656337ac4acc8a1c61bfca291e1fe7e19e6e",
                 "preview_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ694seCoMVhbQp1jcd9ZR9lohmAJ4qH9YUQB83D_0PXiAEwWFRarN8b_c3IVUA7evnwK8&usqp=CAU",
                 "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ694seCoMVhbQp1jcd9ZR9lohmAJ4qH9YUQB83D_0PXiAEwWFRarN8b_c3IVUA7evnwK8&usqp=CAU",
                 "name": "NFT with fake dynamic royalty",

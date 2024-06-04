@@ -1,0 +1,61 @@
+/// We recommend using the compiler version 0.62.0.
+/// You can use other versions, but we do not guarantee compatibility of the compiler version.
+pragma ever-solidity >= 0.62.0;
+
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
+
+
+import '../TIP4_1/TIP4_1Collection.tsol';
+import './TIP4_2_2Nft.tsol';
+import "./interfaces/ITIP4_2_2Collection.tsol";
+
+
+/// This contract implement TIP4_1Collection and ITIP4_2_2Collection (add JSON Metadata)
+/// Add change deploy contract in _buildNftState (TIP4_1Nft => TIP4_2_2Nft)
+abstract contract TIP4_2_2Collection is TIP4_1Collection, ITIP4_2_2Collection {
+
+    string baseNftUrl;
+    string collectionUrl_;
+
+    constructor(
+        string _baseNftUrl,
+        string _collectionUrl
+    ) public {
+        tvm.accept();
+
+        baseNftUrl = _baseNftUrl;
+        collectionUrl_ = _collectionUrl;
+
+        emit collectionMetadataUpdated();
+        emit nftMetadataUpdated();
+
+        _supportedInterfaces[
+            bytes4(tvm.functionId(ITIP4_2_2Collection.getCollectionUrl)) ^
+            bytes4(tvm.functionId(ITIP4_2_2Collection.getNftUrl))
+        ] = true;
+    }
+
+    function getCollectionUrl() external override view responsible returns (string collectionUrl) {
+        return {value: 0, flag: 64, bounce: false} (collectionUrl_);
+    }
+
+    function getNftUrl(TvmCell parts) external override responsible returns (string nftUrl) {
+        uint256 id = parts.toSlice().decode(uint256);
+        string nftUrl_ = baseNftUrl + format("{}", id) + '.json';
+        return {value: 0, flag: 64, bounce: false} (nftUrl_);
+    }
+
+    function _buildNftState(
+        TvmCell code,
+        uint256 id
+    ) internal virtual override pure returns (TvmCell) {
+        return tvm.buildStateInit({
+            contr: TIP4_2_2Nft,
+            varInit: {_id: id},
+            code: code
+        });
+    }
+
+}

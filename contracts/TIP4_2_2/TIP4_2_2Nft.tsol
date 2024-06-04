@@ -1,0 +1,38 @@
+/// We recommend using the compiler version 0.62.0.
+/// You can use other versions, but we do not guarantee compatibility of the compiler version.
+pragma ever-solidity >= 0.62.0;
+
+pragma AbiHeader expire;
+pragma AbiHeader time;
+pragma AbiHeader pubkey;
+
+import "./interfaces/ITIP4_2_2NFT.tsol";
+import "../TIP4_1/TIP4_1Nft.tsol";
+
+
+/// This contract implement ITIP4_2_2NFT (add JSON Metadata)
+abstract contract TIP4_2_2Nft is TIP4_1Nft, ITIP4_2_2NFT {
+
+    constructor() public {
+        tvm.accept();
+
+        emit metadataUpdated();
+
+        _supportedInterfaces[
+            bytes4(tvm.functionId(ITIP4_2_2NFT.getUrlParts))
+        ] = true;
+    }
+
+    function _init4_2_2() internal {
+        _supportedInterfaces[
+            bytes4(tvm.functionId(ITIP4_2_2NFT.getUrlParts))
+        ] = true;
+    }
+
+    function getUrlParts() external override view responsible returns (TvmCell part) {
+        TvmBuilder part_;
+        part_.store(_id);
+        return {value: 0, flag: 64, bounce: false} (part_.toCell());
+    }
+
+}
