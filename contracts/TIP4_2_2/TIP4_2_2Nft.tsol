@@ -16,7 +16,7 @@ abstract contract TIP4_2_2Nft is TIP4_1Nft, ITIP4_2_2NFT {
     constructor() public {
         tvm.accept();
 
-        emit metadataUpdated();
+        emit MetadataUpdated();
 
         _supportedInterfaces[
             bytes4(tvm.functionId(ITIP4_2_2NFT.getUrlParts))

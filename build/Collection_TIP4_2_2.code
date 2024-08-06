@@ -73,13 +73,13 @@ SETGLOB 13
 SETGLOB 14
 .loc ../contracts/TIP4_2_2/TIP4_2_2Collection.tsol, 31
 PUSHREF {
-	.blob xc000000000000000000000000029fb3907
+	.blob xc00000000000000000000000002c67a3dd
 }
 PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/TIP4_2_2/TIP4_2_2Collection.tsol, 32
 PUSHREF {
-	.blob xc00000000000000000000000000e728027
+	.blob xc00000000000000000000000002761033f
 }
 PUSHINT 0
 SENDRAWMSG
@@ -258,7 +258,62 @@ THROWIFNOT 101
 SETGLOB 13
 .loc ../contracts/Collection_TIP4_2_2.tsol, 52
 PUSHREF {
-	.blob xc00000000000000000000000000e728027
+	.blob xc00000000000000000000000002761033f
+}
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/Collection_TIP4_2_2.tsol, 0
+
+.macro setCollectionUrl
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc ../contracts/Collection_TIP4_2_2.tsol, 55
+LDREF
+ENDS
+.loc ../contracts/Collection_TIP4_2_2.tsol, 0
+CALLREF {
+	CALL $setCollectionUrl_945b0c1f_internal_macro$
+}
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro setCollectionUrl_945b0c1f_internal_macro
+.loc ../contracts/access/OwnableInternal.tsol, 31
+GETGLOB 9
+PARSEMSGADDR
+INDEX 3
+PLDU 256
+NEQINT 0
+DUP
+PUSHCONT {
+	DROP
+	CALLREF {
+		CALL $owner_8da5cb5b_internal_macro$
+	}
+	GETGLOB 9
+	SDEQ
+}
+IF
+THROWIFNOT 100
+.loc ../contracts/access/OwnableInternal.tsol, 32
+DEPTH
+ADDCONST -2
+PICK
+THROWIFNOT 101
+.loc ../contracts/Collection_TIP4_2_2.tsol, 56
+SETGLOB 14
+.loc ../contracts/Collection_TIP4_2_2.tsol, 57
+PUSHREF {
+	.blob xc00000000000000000000000002c67a3dd
 }
 PUSHINT 0
 SENDRAWMSG
@@ -273,7 +328,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 55
+.loc ../contracts/Collection_TIP4_2_2.tsol, 60
 OVER
 PUSHCONT {
 	LDREF
@@ -320,7 +375,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/Collection_TIP4_2_2.tsol, 56
+.loc ../contracts/Collection_TIP4_2_2.tsol, 61
 DEPTH
 ADDCONST -2
 PICK
@@ -335,11 +390,11 @@ ADD
 UFITS 128
 GREATER
 THROWIFNOT 104
-.loc ../contracts/Collection_TIP4_2_2.tsol, 60
+.loc ../contracts/Collection_TIP4_2_2.tsol, 65
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Collection_TIP4_2_2.tsol, 61
+.loc ../contracts/Collection_TIP4_2_2.tsol, 66
 PUSHINT 0
 PUSHPOW2 7
 CALLREF {
@@ -356,7 +411,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 64
+.loc ../contracts/Collection_TIP4_2_2.tsol, 69
 LDU 32
 GETGLOB 4
 ROT
@@ -422,7 +477,7 @@ IFREF {
 THROW 0
 
 .macro totalMinted_a2309ff8_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 65
+.loc ../contracts/Collection_TIP4_2_2.tsol, 70
 GETGLOB 4
 PUSHINT 0
 SETINDEXQ 2
@@ -443,7 +498,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 68
+.loc ../contracts/Collection_TIP4_2_2.tsol, 73
 OVER
 PUSHCONT {
 	LDREF
@@ -491,7 +546,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/Collection_TIP4_2_2.tsol, 69
+.loc ../contracts/Collection_TIP4_2_2.tsol, 74
 DEPTH
 ADDCONST -2
 PICK
@@ -507,25 +562,25 @@ ADD
 UFITS 128
 GREATER
 THROWIFNOT 104
-.loc ../contracts/Collection_TIP4_2_2.tsol, 73
+.loc ../contracts/Collection_TIP4_2_2.tsol, 78
 PUSHINT 1000000000
 PUSHINT 0
 RAWRESERVE
-.loc ../contracts/Collection_TIP4_2_2.tsol, 75
+.loc ../contracts/Collection_TIP4_2_2.tsol, 80
 PUSHINT 0
 PUSHCONT {
 	PUSH2 S0, S1
 	LESS
 }
 PUSHCONT {
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 76
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 81
 	PUSH S2
 	PUSHINT 3000000000
 	PUSHINT 0
 	CALLREF {
 		CALL $_mintNft_34edf67c_internal_macro$
 	}
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 75
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 80
 	INC
 	UFITS 16
 	.loc ../contracts/Collection_TIP4_2_2.tsol, 0
@@ -539,28 +594,28 @@ BLKDROP 3
 CALL $_mintNft_34edf67c_internal_macro$
 
 .macro _mintNft_34edf67c_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 82
+.loc ../contracts/Collection_TIP4_2_2.tsol, 87
 GETGLOB 23
 DUP
-.loc ../contracts/Collection_TIP4_2_2.tsol, 83
+.loc ../contracts/Collection_TIP4_2_2.tsol, 88
 INC
 SETGLOB 23
-.loc ../contracts/Collection_TIP4_2_2.tsol, 84
+.loc ../contracts/Collection_TIP4_2_2.tsol, 89
 GETGLOB 12
 INC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/Collection_TIP4_2_2.tsol, 86
+.loc ../contracts/Collection_TIP4_2_2.tsol, 91
 MYADDR
 CALLREF {
 	CALL $_buildNftCode_c58e679e_internal_macro$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 87
+.loc ../contracts/Collection_TIP4_2_2.tsol, 92
 OVER
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 88
+.loc ../contracts/Collection_TIP4_2_2.tsol, 93
 GETGLOB 15
 GETGLOB 18
 GETGLOB 17
@@ -626,7 +681,7 @@ STBREFR
 ENDC
 ROLL 3
 SENDRAWMSG
-.loc ../contracts/Collection_TIP4_2_2.tsol, 97
+.loc ../contracts/Collection_TIP4_2_2.tsol, 102
 GETGLOB 9
 PUSH S3
 BLKSWAP 3, 2
@@ -666,7 +721,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 100
+.loc ../contracts/Collection_TIP4_2_2.tsol, 105
 OVER
 PUSHCONT {
 	LDREF
@@ -709,7 +764,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/Collection_TIP4_2_2.tsol, 101
+.loc ../contracts/Collection_TIP4_2_2.tsol, 106
 SETGLOB 22
 .loc ../contracts/Collection_TIP4_2_2.tsol, 0
 
@@ -718,7 +773,7 @@ SETGLOB 22
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 111
+.loc ../contracts/Collection_TIP4_2_2.tsol, 116
 PUSHINT 0
 NEWC
 STU 256
@@ -754,7 +809,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 114
+.loc ../contracts/Collection_TIP4_2_2.tsol, 119
 OVER
 PUSHCONT {
 	LDREF
@@ -804,11 +859,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 115
+.loc ../contracts/Collection_TIP4_2_2.tsol, 120
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 116
+.loc ../contracts/Collection_TIP4_2_2.tsol, 121
 HASHCU
 .loc ../contracts/Collection_TIP4_2_2.tsol, 0
 
@@ -821,7 +876,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 119
+.loc ../contracts/Collection_TIP4_2_2.tsol, 124
 OVER
 PUSHCONT {
 	LDREF
@@ -856,7 +911,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 127
+.loc ../contracts/Collection_TIP4_2_2.tsol, 132
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -874,12 +929,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/Collection_TIP4_2_2.tsol, 129
+.loc ../contracts/Collection_TIP4_2_2.tsol, 134
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/Collection_TIP4_2_2.tsol, 130
+.loc ../contracts/Collection_TIP4_2_2.tsol, 135
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -903,13 +958,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/Collection_TIP4_2_2.tsol, 132
+.loc ../contracts/Collection_TIP4_2_2.tsol, 137
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 133
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 138
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -949,7 +1004,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 147
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 152
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -2948,9 +3003,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 150000000
+	PUSHINT 50000000
 	SETGLOB 17
-	PUSHINT 100000000
+	PUSHINT 50000000
 	SETGLOB 18
 	PUSHINT 400000000
 	SETGLOB 19
@@ -3249,7 +3304,7 @@ PUSHINT 1912079397
 LEQ
 IFJMPREF {
 	DUP
-	PUSHINT 1594609630
+	PUSHINT 1479945602
 	LEQ
 	IFJMPREF {
 		DUP
@@ -3265,22 +3320,28 @@ IFJMPREF {
 			CALL $nftAddress$
 		}
 		DUP
+		PUSHINT 1470166481
+		EQUAL
+		IFJMPREF {
+			CALL $setCollectionUrl$
+		}
+		DUP
 		PUSHINT 1479945602
 		EQUAL
 		IFJMPREF {
 			CALL $indexBasisCode$
-		}
-		DUP
-		PUSHINT 1594609630
-		EQUAL
-		IFJMPREF {
-			CALL $owner$
 		}
 	}
 	DUP
 	PUSHINT 1912079397
 	LEQ
 	IFJMPREF {
+		DUP
+		PUSHINT 1594609630
+		EQUAL
+		IFJMPREF {
+			CALL $owner$
+		}
 		DUP
 		PUSHINT 1629421668
 		EQUAL

@@ -101,15 +101,32 @@ const config: LockliftConfig = {
         amount: 20,
       },
     },
+    venom_mainnet: {
+      connection: {
+        id: 1,
+        type: "jrpc",
+        group: "main",
+        data: {
+          endpoint: process.env.VENOM_MAINNET_NETWORK_ENDPOINT ?? "",
+        },
+      },
+      giver: {
+        address: process.env.VENOM_MAINNET_GIVER_ADDRESS ?? "",
+        phrase: process.env.VENOM_MAINNET_GIVER_PHRASE ?? "",
+        accountId: 0,
+      },
+      keys: {
+        phrase: process.env.VENOM_MAINNET_GIVER_PHRASE,
+        amount: 20,
+      },
+    },
     main: {
       connection: {
         id: 1,
-        type: "graphql",
+        type: "jrpc",
         group: "main",
         data: {
-          endpoints: [process.env.MAINNET_NETWORK_ENDPOINT ?? ""],
-          latencyDetectionInterval: 1000,
-          local: false,
+          endpoint: process.env.MAINNET_NETWORK_ENDPOINT ?? "",
         },
       },
       giver: {

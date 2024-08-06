@@ -34,6 +34,14 @@
 			]
 		},
 		{
+			"name": "setCollectionUrl",
+			"inputs": [
+				{"name":"_url","type":"string"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "mintNft",
 			"inputs": [
 				{"name":"_owner","type":"address"}
@@ -232,14 +240,14 @@
 			]
 		},
 		{
-			"name": "collectionMetadataUpdated",
+			"name": "CollectionMetadataUpdated",
 			"inputs": [
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "nftMetadataUpdated",
+			"name": "NftMetadataUpdated",
 			"inputs": [
 			],
 			"outputs": [
