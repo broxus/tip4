@@ -49,7 +49,12 @@ contract Collection_TIP4_2_2 is TIP4_2_2Collection, TIP4_3Collection, IBurnableC
 
 	function setBaseUrl(string _baseNftUrl) external onlyOwner {
 		baseNftUrl = _baseNftUrl;
-		emit nftMetadataUpdated();
+		emit NftMetadataUpdated();
+	}
+
+	function setCollectionUrl(string _url) external onlyOwner {
+		collectionUrl_ = _url;
+		emit CollectionMetadataUpdated();
 	}
 
 	function mintNft(address _owner) public virtual onlyOwner {

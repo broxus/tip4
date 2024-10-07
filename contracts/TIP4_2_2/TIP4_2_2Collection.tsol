@@ -28,8 +28,8 @@ abstract contract TIP4_2_2Collection is TIP4_1Collection, ITIP4_2_2Collection {
         baseNftUrl = _baseNftUrl;
         collectionUrl_ = _collectionUrl;
 
-        emit collectionMetadataUpdated();
-        emit nftMetadataUpdated();
+        emit CollectionMetadataUpdated();
+        emit NftMetadataUpdated();
 
         _supportedInterfaces[
             bytes4(tvm.functionId(ITIP4_2_2Collection.getCollectionUrl)) ^

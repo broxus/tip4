@@ -2,13 +2,13 @@ import { Migration } from "./migration";
 import { BigNumber } from "bignumber.js";
 import { readFileSync } from "fs";
 import prompts from "prompts";
+import { Address } from "locklift";
 
 const migration = new Migration();
 
 export type AddressN = `0:${string}`;
 export const isValidEverAddress = (address: string): address is AddressN =>
   /^(?:-1|0):[0-9a-fA-F]{64}$/.test(address);
-let address_list: any;
 
 async function main() {
   const signer = await locklift.keystore.getSigner("0");
@@ -85,14 +85,21 @@ async function main() {
   console.log("Collection", collection.address);
   migration.store(collection, "Collection_TIP_4_2_2");
 
+  let address_list;
   const data = readFileSync("address.json", "utf8");
   if (data) address_list = JSON.parse(data);
+  console.log(address_list)
+  console.log(address_list[0])
 
-  for (let i=0; i < response.count; i++) {
+  for (let i=0; i < address_list.length; i++) {
 
-      await collection.methods
+    let address = account.address
+    if (address_list.length > 0) {
+      address = new Address(address_list[i])
+    }
+    await collection.methods
         .mintNft({
-          _owner: address_list[i] != null ? address_list[i] : account.address
+          _owner: address
         }).send({
           from: account.address,
           amount: locklift.utils.toNano(5),
