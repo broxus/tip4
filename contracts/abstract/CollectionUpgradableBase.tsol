@@ -186,14 +186,15 @@ abstract contract CollectionUpgradableBase is
 			_nftVersion
 		);
 
-		address nftAddr = new Platform{
+		address nftAddr = address.makeAddrStd(address(this).wid, tvm.hash(stateNft));
+
+		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
+		new Platform{
             stateInit: stateNft,
             value: value,
             flag: flag,
             bounce: false
         }(codeNft, params, msg.sender);
-
-		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
 	}
 
 	function _resolveNft(

@@ -90,7 +90,11 @@ contract Collection_TIP4_2_2 is TIP4_2_2Collection, TIP4_3Collection, IBurnableC
 
 		TvmCell codeNft = _buildNftCode(address(this));
 		TvmCell stateNft = _buildNftState(codeNft, id);
-		address nftAddr = new Nft_TIP4_2_2{stateInit: stateNft, value: value, flag: flag}(
+
+		address nftAddr = address.makeAddrStd(address(this).wid, tvm.hash(stateNft));
+
+		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
+		new Nft_TIP4_2_2{stateInit: stateNft, value: value, flag: flag}(
 			owner,
 			msg.sender,
 			_remainOnNft,
@@ -98,8 +102,6 @@ contract Collection_TIP4_2_2 is TIP4_2_2Collection, TIP4_3Collection, IBurnableC
 			_indexDestroyValue,
 			_codeIndex
 		);
-
-		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
 	}
 
 	function setRemainOnNft(uint128 remainOnNft) external virtual onlyOwner {

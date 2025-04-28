@@ -89,7 +89,11 @@ contract CollectionFlagTransferable is TIP4_2Collection, TIP4_3Collection, Ownab
 
 		TvmCell codeNft = _buildNftCode(address(this));
 		TvmCell stateNft = _buildNftState(codeNft, id);
-		address nftAddr = new NftFlagTransferable{stateInit: stateNft, value: value, flag: flag}(
+
+		address nftAddr = address.makeAddrStd(address(this).wid, tvm.hash(stateNft));
+		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
+
+		new NftFlagTransferable{stateInit: stateNft, value: value, flag: flag}(
 			owner,
 			msg.sender,
 			_remainOnNft,
@@ -99,8 +103,6 @@ contract CollectionFlagTransferable is TIP4_2Collection, TIP4_3Collection, Ownab
 			_codeIndex,
 			_transferable
 		);
-
-		emit NftCreated(id, nftAddr, owner, owner, msg.sender);
 	}
 
 	function setRemainOnNft(uint128 remainOnNft) external virtual onlyOwner {
