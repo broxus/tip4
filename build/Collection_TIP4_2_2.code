@@ -615,27 +615,66 @@ OVER
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 93
+.loc ../contracts/Collection_TIP4_2_2.tsol, 94
+DUP
+HASHCU
+MYADDR
+PARSEMSGADDR
+THIRD
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+.loc ../contracts/Collection_TIP4_2_2.tsol, 96
+GETGLOB 9
+PUSH2 S6, S6
+ROLL 3
+ROLL 5
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROLLREV 5
+NEWC
+STSLICECONST x010e5db7
+STU 256
+STSLICE
+ROLLREV 3
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/Collection_TIP4_2_2.tsol, 97
 GETGLOB 15
 GETGLOB 18
 GETGLOB 17
 GETGLOB 22
 GETGLOB 9
-PUSH S9
+ROLL 8
 ROLL 6
 DUP
 HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 ROLLREV 7
-ROLL 10
-PUSH S8
+ROLL 9
+ROLL 8
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -679,36 +718,7 @@ STREF
 STBREFR
 STBREFR
 ENDC
-ROLL 3
-SENDRAWMSG
-.loc ../contracts/Collection_TIP4_2_2.tsol, 102
-GETGLOB 9
-PUSH S3
-BLKSWAP 3, 2
 SWAP
-PUSHSLICE xc0000000000000000000000001
-NEWC
-STSLICE
-ROLLREV 5
-NEWC
-STSLICECONST x010e5db7
-STU 256
-STSLICE
-ROLLREV 3
-NEWC
-STSLICE
-ROTREV
-NEWC
-STSLICE
-SWAP
-NEWC
-STSLICE
-STBREFR
-STBREFR
-STBREFR
-STBREFR
-ENDC
-PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/Collection_TIP4_2_2.tsol, 0
 
@@ -721,7 +731,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 105
+.loc ../contracts/Collection_TIP4_2_2.tsol, 107
 OVER
 PUSHCONT {
 	LDREF
@@ -764,7 +774,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/Collection_TIP4_2_2.tsol, 106
+.loc ../contracts/Collection_TIP4_2_2.tsol, 108
 SETGLOB 22
 .loc ../contracts/Collection_TIP4_2_2.tsol, 0
 
@@ -773,7 +783,7 @@ SETGLOB 22
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 116
+.loc ../contracts/Collection_TIP4_2_2.tsol, 118
 PUSHINT 0
 NEWC
 STU 256
@@ -809,7 +819,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 119
+.loc ../contracts/Collection_TIP4_2_2.tsol, 121
 OVER
 PUSHCONT {
 	LDREF
@@ -859,11 +869,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 120
+.loc ../contracts/Collection_TIP4_2_2.tsol, 122
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 121
+.loc ../contracts/Collection_TIP4_2_2.tsol, 123
 HASHCU
 .loc ../contracts/Collection_TIP4_2_2.tsol, 0
 
@@ -876,7 +886,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection_TIP4_2_2.tsol, 124
+.loc ../contracts/Collection_TIP4_2_2.tsol, 126
 OVER
 PUSHCONT {
 	LDREF
@@ -911,7 +921,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/Collection_TIP4_2_2.tsol, 132
+.loc ../contracts/Collection_TIP4_2_2.tsol, 134
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -929,12 +939,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/Collection_TIP4_2_2.tsol, 134
+.loc ../contracts/Collection_TIP4_2_2.tsol, 136
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/Collection_TIP4_2_2.tsol, 135
+.loc ../contracts/Collection_TIP4_2_2.tsol, 137
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -958,13 +968,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/Collection_TIP4_2_2.tsol, 137
+.loc ../contracts/Collection_TIP4_2_2.tsol, 139
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 138
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 140
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -1004,7 +1014,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/Collection_TIP4_2_2.tsol, 152
+	.loc ../contracts/Collection_TIP4_2_2.tsol, 154
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -3003,9 +3013,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 50000000
+	PUSHINT 150000000
 	SETGLOB 17
-	PUSHINT 50000000
+	PUSHINT 100000000
 	SETGLOB 18
 	PUSHINT 400000000
 	SETGLOB 19

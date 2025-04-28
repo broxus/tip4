@@ -494,28 +494,67 @@ OVER
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/Collection.tsol, 82
+.loc ../contracts/Collection.tsol, 83
+DUP
+HASHCU
+MYADDR
+PARSEMSGADDR
+THIRD
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+.loc ../contracts/Collection.tsol, 84
+GETGLOB 9
+PUSH2 S7, S7
+ROLL 3
+ROLL 5
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROLLREV 5
+NEWC
+STSLICECONST x010e5db7
+STU 256
+STSLICE
+ROLLREV 3
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/Collection.tsol, 86
 GETGLOB 14
 GETGLOB 17
 GETGLOB 16
-ROLL 7
+ROLL 6
 GETGLOB 21
 GETGLOB 9
-PUSH S10
+ROLL 9
 ROLL 7
 DUP
 HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 ROLLREV 8
-ROLL 11
-PUSH S9
+ROLL 10
+ROLL 9
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -560,36 +599,7 @@ STREF
 STBREFR
 STBREFR
 ENDC
-ROLL 3
-SENDRAWMSG
-.loc ../contracts/Collection.tsol, 92
-GETGLOB 9
-PUSH S3
-BLKSWAP 3, 2
 SWAP
-PUSHSLICE xc0000000000000000000000001
-NEWC
-STSLICE
-ROLLREV 5
-NEWC
-STSLICECONST x010e5db7
-STU 256
-STSLICE
-ROLLREV 3
-NEWC
-STSLICE
-ROTREV
-NEWC
-STSLICE
-SWAP
-NEWC
-STSLICE
-STBREFR
-STBREFR
-STBREFR
-STBREFR
-ENDC
-PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/Collection.tsol, 0
 
@@ -602,7 +612,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection.tsol, 95
+.loc ../contracts/Collection.tsol, 97
 OVER
 PUSHCONT {
 	LDREF
@@ -645,7 +655,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/Collection.tsol, 96
+.loc ../contracts/Collection.tsol, 98
 SETGLOB 21
 .loc ../contracts/Collection.tsol, 0
 
@@ -654,7 +664,7 @@ SETGLOB 21
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/Collection.tsol, 106
+.loc ../contracts/Collection.tsol, 108
 PUSHINT 0
 NEWC
 STU 256
@@ -690,7 +700,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection.tsol, 109
+.loc ../contracts/Collection.tsol, 111
 OVER
 PUSHCONT {
 	LDREF
@@ -740,11 +750,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/Collection.tsol, 110
+.loc ../contracts/Collection.tsol, 112
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/Collection.tsol, 111
+.loc ../contracts/Collection.tsol, 113
 HASHCU
 .loc ../contracts/Collection.tsol, 0
 
@@ -757,7 +767,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/Collection.tsol, 114
+.loc ../contracts/Collection.tsol, 116
 OVER
 PUSHCONT {
 	LDREF
@@ -792,7 +802,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/Collection.tsol, 122
+.loc ../contracts/Collection.tsol, 124
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -810,12 +820,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/Collection.tsol, 124
+.loc ../contracts/Collection.tsol, 126
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/Collection.tsol, 125
+.loc ../contracts/Collection.tsol, 127
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -839,13 +849,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/Collection.tsol, 127
+.loc ../contracts/Collection.tsol, 129
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/Collection.tsol, 128
+	.loc ../contracts/Collection.tsol, 130
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -885,7 +895,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/Collection.tsol, 142
+	.loc ../contracts/Collection.tsol, 144
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -2771,9 +2781,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 50000000
+	PUSHINT 150000000
 	SETGLOB 16
-	PUSHINT 50000000
+	PUSHINT 100000000
 	SETGLOB 17
 	PUSHINT 400000000
 	SETGLOB 18

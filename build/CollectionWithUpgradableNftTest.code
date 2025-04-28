@@ -1583,6 +1583,50 @@ STU 32
 STBREFR
 ENDC
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 189
+OVER
+HASHCU
+MYADDR
+PARSEMSGADDR
+THIRD
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 191
+GETGLOB 9
+PUSH S8
+ROLL 9
+ROLL 3
+ROLL 7
+PUSHREFSLICE {
+	.blob xc0000000000000000000000001
+}
+NEWC
+STSLICE
+ROLLREV 5
+NEWC
+STSLICECONST x010e5db7
+STU 256
+STSLICE
+ROLLREV 3
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 192
 GETGLOB 9
 SWAP
 SWAP2
@@ -1591,14 +1635,11 @@ HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
-ROLLREV 4
-ROLL 7
-PUSH S5
+ROLL 6
+SWAP
 NEWC
 STSLICECONST x42_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -1636,38 +1677,7 @@ STREF
 STSLICE
 STBREFR
 ENDC
-ROLL 3
-SENDRAWMSG
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 196
-GETGLOB 9
-PUSH S3
-BLKSWAP 3, 2
 SWAP
-PUSHREFSLICE {
-	.blob xc0000000000000000000000001
-}
-NEWC
-STSLICE
-ROLLREV 5
-NEWC
-STSLICECONST x010e5db7
-STU 256
-STSLICE
-ROLLREV 3
-NEWC
-STSLICE
-ROTREV
-NEWC
-STSLICE
-SWAP
-NEWC
-STSLICE
-STBREFR
-STBREFR
-STBREFR
-STBREFR
-ENDC
-PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 0
 
@@ -1676,15 +1686,15 @@ SENDRAWMSG
 CALL $_resolveNft_2d542587_internal_macro$
 
 .macro _resolveNft_2d542587_internal_macro
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 208
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 209
 GETGLOB 24
 SWAP
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 209
-HASHCU
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 210
+HASHCU
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 211
 MYADDR
 PARSEMSGADDR
 THIRD
@@ -1705,7 +1715,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 213
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 214
 OVER
 PUSHCONT {
 	LDREF
@@ -1748,7 +1758,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 214
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 215
 SETGLOB 21
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 0
 
@@ -1757,7 +1767,7 @@ SETGLOB 21
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 227
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 228
 PUSHINT 0
 NEWC
 STU 256
@@ -1805,7 +1815,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 238
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 239
 OVER
 PUSHCONT {
 	LDREF
@@ -1855,11 +1865,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 239
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 240
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 240
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 241
 HASHCU
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 0
 
@@ -1872,7 +1882,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 243
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 244
 OVER
 PUSHCONT {
 	LDREF
@@ -1907,7 +1917,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 251
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 252
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -1925,12 +1935,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 253
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 254
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 254
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 255
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -1956,13 +1966,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 256
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 257
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 257
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 258
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -2002,7 +2012,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 271
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 272
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -2026,7 +2036,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 279
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 280
 OVER
 PUSHCONT {
 	LDU 32
@@ -2085,17 +2095,17 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 284
-PUSHINT 0
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 285
+PUSHINT 0
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 286
 OVER
 FIRST
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 286
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 287
 OVER
 ADDCONST 5
 OVER
 MIN
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 287
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 288
 DEPTH
 ADDCONST -2
 PICK
@@ -2104,14 +2114,14 @@ PUSHINT 1000000000
 MUL
 GREATER
 THROWIFNOT 104
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 289
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 290
 ROT
 PUSHCONT {
 	PUSH2 S0, S1
 	LESS
 }
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 291
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 292
 	GETGLOB 9
 	GETGLOB 25
 	MYADDR
@@ -2141,7 +2151,7 @@ PUSHCONT {
 	ENDC
 	PUSHINT 1
 	SENDRAWMSG
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 296
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 297
 	CALLREF {
 		CALL $owner_8da5cb5b_internal_macro$
 	}
@@ -2171,18 +2181,18 @@ PUSHCONT {
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 289
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 290
 	INC
 	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 0
 }
 WHILE
 DROP
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 299
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 300
 DUP
 ROT
 LESS
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 300
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 301
 	PUSH2 S0, S1
 	MYADDR
 	FALSE
@@ -2205,7 +2215,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 307
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 308
 	CALLREF {
 		CALL $owner_8da5cb5b_internal_macro$
 	}
@@ -2231,7 +2241,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 315
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 316
 OVER
 PUSHCONT {
 	LDU 32
@@ -2276,12 +2286,12 @@ IF
 THROWIFNOT 100
 .loc ../contracts/abstract/CollectionUpgradableBase.tsol, 73
 DROP
-.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 324
+.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 325
 OVER
 GETGLOB 25
 EQUAL
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 325
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 326
 	DUP
 	NEWC
 	STSLICECONST x42_
@@ -2292,7 +2302,7 @@ PUSHCONT {
 	PUSHINT 64
 }
 PUSHCONT {
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 331
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 332
 	DUP
 	GETGLOB 25
 	MYADDR
@@ -2318,7 +2328,7 @@ PUSHCONT {
 	ENDC
 	PUSHINT 64
 	SENDRAWMSG
-	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 336
+	.loc ../contracts/abstract/CollectionUpgradableBase.tsol, 337
 	DUP
 	GETGLOB 9
 	GETGLOB 25
@@ -4235,9 +4245,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 50000000
+	PUSHINT 150000000
 	SETGLOB 16
-	PUSHINT 50000000
+	PUSHINT 100000000
 	SETGLOB 17
 	PUSHINT 400000000
 	SETGLOB 18

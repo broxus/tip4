@@ -516,29 +516,68 @@ OVER
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/CollectionWithRoyalty.tsol, 84
-ROT
+.loc ../contracts/CollectionWithRoyalty.tsol, 85
+DUP
+HASHCU
+MYADDR
+PARSEMSGADDR
+THIRD
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+.loc ../contracts/CollectionWithRoyalty.tsol, 86
+GETGLOB 9
+PUSH2 S8, S8
+ROLL 3
+ROLL 5
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROLLREV 5
+NEWC
+STSLICECONST x010e5db7
+STU 256
+STSLICE
+ROLLREV 3
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/CollectionWithRoyalty.tsol, 88
+SWAP
 GETGLOB 14
 GETGLOB 17
 GETGLOB 16
-ROLL 8
+ROLL 7
 GETGLOB 21
 GETGLOB 9
-PUSH S11
+ROLL 10
 ROLL 8
 DUP
 HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 ROLLREV 9
-ROLL 12
-PUSH S10
+ROLL 11
+ROLL 10
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -591,36 +630,7 @@ STBREFR
 STBREFR
 STBREFR
 ENDC
-ROLL 3
-SENDRAWMSG
-.loc ../contracts/CollectionWithRoyalty.tsol, 95
-GETGLOB 9
-PUSH S3
-BLKSWAP 3, 2
 SWAP
-PUSHSLICE xc0000000000000000000000001
-NEWC
-STSLICE
-ROLLREV 5
-NEWC
-STSLICECONST x010e5db7
-STU 256
-STSLICE
-ROLLREV 3
-NEWC
-STSLICE
-ROTREV
-NEWC
-STSLICE
-SWAP
-NEWC
-STSLICE
-STBREFR
-STBREFR
-STBREFR
-STBREFR
-ENDC
-PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
@@ -633,7 +643,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithRoyalty.tsol, 98
+.loc ../contracts/CollectionWithRoyalty.tsol, 100
 OVER
 PUSHCONT {
 	LDREF
@@ -676,7 +686,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionWithRoyalty.tsol, 99
+.loc ../contracts/CollectionWithRoyalty.tsol, 101
 SETGLOB 21
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
@@ -685,7 +695,7 @@ SETGLOB 21
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/CollectionWithRoyalty.tsol, 109
+.loc ../contracts/CollectionWithRoyalty.tsol, 111
 PUSHINT 0
 NEWC
 STU 256
@@ -721,7 +731,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithRoyalty.tsol, 112
+.loc ../contracts/CollectionWithRoyalty.tsol, 114
 OVER
 PUSHCONT {
 	LDREF
@@ -771,11 +781,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/CollectionWithRoyalty.tsol, 113
+.loc ../contracts/CollectionWithRoyalty.tsol, 115
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/CollectionWithRoyalty.tsol, 114
+.loc ../contracts/CollectionWithRoyalty.tsol, 116
 HASHCU
 .loc ../contracts/CollectionWithRoyalty.tsol, 0
 
@@ -788,7 +798,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionWithRoyalty.tsol, 117
+.loc ../contracts/CollectionWithRoyalty.tsol, 119
 OVER
 PUSHCONT {
 	LDREF
@@ -823,7 +833,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/CollectionWithRoyalty.tsol, 125
+.loc ../contracts/CollectionWithRoyalty.tsol, 127
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -841,12 +851,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/CollectionWithRoyalty.tsol, 127
+.loc ../contracts/CollectionWithRoyalty.tsol, 129
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/CollectionWithRoyalty.tsol, 128
+.loc ../contracts/CollectionWithRoyalty.tsol, 130
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -870,13 +880,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/CollectionWithRoyalty.tsol, 130
+.loc ../contracts/CollectionWithRoyalty.tsol, 132
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/CollectionWithRoyalty.tsol, 131
+	.loc ../contracts/CollectionWithRoyalty.tsol, 133
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -916,7 +926,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/CollectionWithRoyalty.tsol, 145
+	.loc ../contracts/CollectionWithRoyalty.tsol, 147
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -2802,9 +2812,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 50000000
+	PUSHINT 150000000
 	SETGLOB 16
-	PUSHINT 50000000
+	PUSHINT 100000000
 	SETGLOB 17
 	PUSHINT 400000000
 	SETGLOB 18

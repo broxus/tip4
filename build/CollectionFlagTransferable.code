@@ -611,29 +611,68 @@ OVER
 CALLREF {
 	CALL $_buildNftState_c971fdf8_internal_macro$
 }
-.loc ../contracts/CollectionFlagTransferable.tsol, 92
+.loc ../contracts/CollectionFlagTransferable.tsol, 93
+DUP
+HASHCU
+MYADDR
+PARSEMSGADDR
+THIRD
+NEWC
+STSLICECONST x9_
+STI 8
+STU 256
+ENDC
+CTOS
+.loc ../contracts/CollectionFlagTransferable.tsol, 94
+GETGLOB 9
+PUSH2 S7, S7
+ROLL 3
+ROLL 5
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROLLREV 5
+NEWC
+STSLICECONST x010e5db7
+STU 256
+STSLICE
+ROLLREV 3
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc ../contracts/CollectionFlagTransferable.tsol, 96
 GETGLOB 21
 GETGLOB 14
 GETGLOB 17
 GETGLOB 16
-ROLL 8
+ROLL 7
 GETGLOB 22
 GETGLOB 9
-PUSH S11
+ROLL 10
 ROLL 8
 DUP
 HASHCU
 NEWC
 STSLICECONST x801_
 STU 256
-ENDC
-CTOS
 ROLLREV 9
-ROLL 12
-PUSH S10
+ROLL 11
+ROLL 10
 NEWC
 STSLICECONST x62_
-STSLICE
+STB
 SWAP
 STGRAMS
 PUSHINT 3
@@ -679,36 +718,7 @@ STI 1
 STBREFR
 STBREFR
 ENDC
-ROLL 3
-SENDRAWMSG
-.loc ../contracts/CollectionFlagTransferable.tsol, 103
-GETGLOB 9
-PUSH S3
-BLKSWAP 3, 2
 SWAP
-PUSHSLICE xc0000000000000000000000001
-NEWC
-STSLICE
-ROLLREV 5
-NEWC
-STSLICECONST x010e5db7
-STU 256
-STSLICE
-ROLLREV 3
-NEWC
-STSLICE
-ROTREV
-NEWC
-STSLICE
-SWAP
-NEWC
-STSLICE
-STBREFR
-STBREFR
-STBREFR
-STBREFR
-ENDC
-PUSHINT 0
 SENDRAWMSG
 .loc ../contracts/CollectionFlagTransferable.tsol, 0
 
@@ -721,7 +731,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionFlagTransferable.tsol, 106
+.loc ../contracts/CollectionFlagTransferable.tsol, 108
 OVER
 PUSHCONT {
 	LDREF
@@ -764,7 +774,7 @@ DEPTH
 ADDCONST -2
 PICK
 THROWIFNOT 101
-.loc ../contracts/CollectionFlagTransferable.tsol, 107
+.loc ../contracts/CollectionFlagTransferable.tsol, 109
 SETGLOB 22
 .loc ../contracts/CollectionFlagTransferable.tsol, 0
 
@@ -773,7 +783,7 @@ SETGLOB 22
 CALL $_buildNftState_c971fdf8_internal_macro$
 
 .macro _buildNftState_c971fdf8_internal_macro
-.loc ../contracts/CollectionFlagTransferable.tsol, 117
+.loc ../contracts/CollectionFlagTransferable.tsol, 119
 PUSHINT 0
 NEWC
 STU 256
@@ -809,7 +819,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionFlagTransferable.tsol, 120
+.loc ../contracts/CollectionFlagTransferable.tsol, 122
 OVER
 PUSHCONT {
 	LDREF
@@ -859,11 +869,11 @@ THROW 0
 CALL $resolveIndexCodeHash_253cd2d2_internal_macro$
 
 .macro resolveIndexCodeHash_253cd2d2_internal_macro
-.loc ../contracts/CollectionFlagTransferable.tsol, 121
+.loc ../contracts/CollectionFlagTransferable.tsol, 123
 CALLREF {
 	CALL $_buildIndexCode_0065688c_internal_macro$
 }
-.loc ../contracts/CollectionFlagTransferable.tsol, 122
+.loc ../contracts/CollectionFlagTransferable.tsol, 124
 HASHCU
 .loc ../contracts/CollectionFlagTransferable.tsol, 0
 
@@ -876,7 +886,7 @@ ISNULL
 IFREF {
 	CALL $c4_to_c7$
 }
-.loc ../contracts/CollectionFlagTransferable.tsol, 125
+.loc ../contracts/CollectionFlagTransferable.tsol, 127
 OVER
 PUSHCONT {
 	LDREF
@@ -911,7 +921,7 @@ CALLREF {
 THROW 0
 
 .macro acceptNftBurn_7e293577_internal_macro
-.loc ../contracts/CollectionFlagTransferable.tsol, 133
+.loc ../contracts/CollectionFlagTransferable.tsol, 135
 GETGLOB 9
 PARSEMSGADDR
 INDEX 3
@@ -929,12 +939,12 @@ PUSHCONT {
 }
 IF
 THROWIFNOT 100
-.loc ../contracts/CollectionFlagTransferable.tsol, 135
+.loc ../contracts/CollectionFlagTransferable.tsol, 137
 GETGLOB 12
 DEC
 UFITS 128
 SETGLOB 12
-.loc ../contracts/CollectionFlagTransferable.tsol, 136
+.loc ../contracts/CollectionFlagTransferable.tsol, 138
 PUSH2 S3, S4
 GETGLOB 9
 PUSH S8
@@ -958,13 +968,13 @@ STBREFR
 ENDC
 PUSHINT 0
 SENDRAWMSG
-.loc ../contracts/CollectionFlagTransferable.tsol, 138
+.loc ../contracts/CollectionFlagTransferable.tsol, 140
 OVER
 PARSEMSGADDR
 INDEX 3
 PLDU 256
 PUSHCONT {
-	.loc ../contracts/CollectionFlagTransferable.tsol, 139
+	.loc ../contracts/CollectionFlagTransferable.tsol, 141
 	PUSH3 S0, S2, S3
 	PUSH S7
 	GETGLOB 9
@@ -1004,7 +1014,7 @@ PUSHCONT {
 	STBREFR
 }
 PUSHCONT {
-	.loc ../contracts/CollectionFlagTransferable.tsol, 153
+	.loc ../contracts/CollectionFlagTransferable.tsol, 155
 	PUSH S2
 	NEWC
 	STSLICECONST x42_
@@ -2893,9 +2903,9 @@ PUSHCONT {
 	SETGLOB 2
 	PUSHINT 0 ; timestamp
 	SETGLOB 3
-	PUSHINT 50000000
+	PUSHINT 150000000
 	SETGLOB 16
-	PUSHINT 50000000
+	PUSHINT 100000000
 	SETGLOB 17
 	PUSHINT 400000000
 	SETGLOB 18
